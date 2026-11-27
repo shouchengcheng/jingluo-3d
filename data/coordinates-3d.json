@@ -1,4 +1,4535 @@
 {
   "modelId": "aicuc-3d-acupoint-atlas-v1",
-  "points": {}
+  "points": {
+    "LU1": {
+      "position": [
+        0.13994,
+        1.40427,
+        0.08126
+      ],
+      "normal": [
+        0.25075,
+        0.16799,
+        0.95337
+      ],
+      "cameraPreset": {
+        "position": [
+          0.3029,
+          1.5385,
+          0.7009
+        ],
+        "target": [
+          0.1399,
+          1.4043,
+          0.0813
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "LU2": {
+      "position": [
+        0.13536,
+        1.4318,
+        0.07406
+      ],
+      "normal": [
+        0.13976,
+        0.40136,
+        0.9052
+      ],
+      "cameraPreset": {
+        "position": [
+          0.2262,
+          1.7177,
+          0.6624
+        ],
+        "target": [
+          0.1354,
+          1.4318,
+          0.0741
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "LU3": {
+      "position": [
+        0.22483,
+        1.33315,
+        0.04386
+      ],
+      "normal": [
+        -0.08283,
+        0.05097,
+        0.99526
+      ],
+      "cameraPreset": {
+        "position": [
+          0.171,
+          1.3913,
+          0.6908
+        ],
+        "target": [
+          0.2248,
+          1.3331,
+          0.0439
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "LU4": {
+      "position": [
+        0.23401,
+        1.3125,
+        0.04455
+      ],
+      "normal": [
+        -0.11535,
+        -0.04204,
+        0.99244
+      ],
+      "cameraPreset": {
+        "position": [
+          0.159,
+          1.3102,
+          0.6896
+        ],
+        "target": [
+          0.234,
+          1.3125,
+          0.0445
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas (LU3-LU5 bone-proportional surface projection)",
+        "verifiedAt": null
+      }
+    },
+    "LU5": {
+      "position": [
+        0.27989,
+        1.20926,
+        0.0455
+      ],
+      "normal": [
+        -0.14319,
+        -0.29959,
+        0.94326
+      ],
+      "cameraPreset": {
+        "position": [
+          0.1868,
+          1.0395,
+          0.6586
+        ],
+        "target": [
+          0.2799,
+          1.2093,
+          0.0455
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "LU6": {
+      "position": [
+        0.32119,
+        1.11749,
+        0.03947
+      ],
+      "normal": [
+        -0.16295,
+        -0.23257,
+        0.95883
+      ],
+      "cameraPreset": {
+        "position": [
+          0.2153,
+          0.9913,
+          0.6627
+        ],
+        "target": [
+          0.3212,
+          1.1175,
+          0.0395
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "LU7": {
+      "position": [
+        0.36019,
+        1.04179,
+        0.02926
+      ],
+      "normal": [
+        0.21825,
+        -0.0341,
+        0.9753
+      ],
+      "cameraPreset": {
+        "position": [
+          0.502,
+          1.0446,
+          0.6632
+        ],
+        "target": [
+          0.3602,
+          1.0418,
+          0.0293
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "LU8": {
+      "position": [
+        0.36936,
+        1.00508,
+        0.02642
+      ],
+      "normal": [
+        0.36194,
+        0.01192,
+        0.93213
+      ],
+      "cameraPreset": {
+        "position": [
+          0.6046,
+          1.0378,
+          0.6323
+        ],
+        "target": [
+          0.3694,
+          1.0051,
+          0.0264
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "LU9": {
+      "position": [
+        0.36936,
+        0.97526,
+        0.02614
+      ],
+      "normal": [
+        -0.12391,
+        -0.08108,
+        0.98898
+      ],
+      "cameraPreset": {
+        "position": [
+          0.2888,
+          0.9476,
+          0.669
+        ],
+        "target": [
+          0.3694,
+          0.9753,
+          0.0261
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "LU10": {
+      "position": [
+        0.37625,
+        0.92937,
+        0.03319
+      ],
+      "normal": [
+        -0.46879,
+        0.55242,
+        0.68925
+      ],
+      "cameraPreset": {
+        "position": [
+          0.1184,
+          1.2582,
+          0.4123
+        ],
+        "target": [
+          0.3762,
+          0.9294,
+          0.0332
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "LU11": {
+      "position": [
+        0.35101,
+        0.89267,
+        0.04486
+      ],
+      "normal": [
+        0.15718,
+        0.51439,
+        0.84303
+      ],
+      "cameraPreset": {
+        "position": [
+          0.4375,
+          1.2006,
+          0.5085
+        ],
+        "target": [
+          0.351,
+          0.8927,
+          0.0449
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "LI1": {
+      "position": [
+        0.4024,
+        0.84862,
+        0.00964
+      ],
+      "normal": [
+        -0.88028,
+        -0.44263,
+        0.17084
+      ],
+      "cameraPreset": {
+        "position": [
+          -0.0818,
+          0.6302,
+          0.1036
+        ],
+        "target": [
+          0.4024,
+          0.8486,
+          0.0096
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "LI2": {
+      "position": [
+        0.39322,
+        0.88945,
+        0.00596
+      ],
+      "normal": [
+        -0.73821,
+        -0.47376,
+        -0.4802
+      ],
+      "cameraPreset": {
+        "position": [
+          -0.0128,
+          0.6539,
+          -0.2581
+        ],
+        "target": [
+          0.3932,
+          0.8895,
+          0.006
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "LI3": {
+      "position": [
+        0.38772,
+        0.90414,
+        0.00821
+      ],
+      "normal": [
+        -0.56059,
+        -0.58182,
+        -0.58925
+      ],
+      "cameraPreset": {
+        "position": [
+          0.0794,
+          0.6091,
+          -0.3159
+        ],
+        "target": [
+          0.3877,
+          0.9041,
+          0.0082
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "LI4": {
+      "position": [
+        0.40378,
+        0.92249,
+        0.02436
+      ],
+      "normal": [
+        0.78002,
+        0.33519,
+        0.5284
+      ],
+      "cameraPreset": {
+        "position": [
+          0.9108,
+          1.1654,
+          0.3678
+        ],
+        "target": [
+          0.4038,
+          0.9225,
+          0.0244
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "LI5": {
+      "position": [
+        0.37854,
+        0.97526,
+        -0.02199
+      ],
+      "normal": [
+        -0.05631,
+        -0.11147,
+        -0.99217
+      ],
+      "cameraPreset": {
+        "position": [
+          0.3419,
+          0.9278,
+          -0.6669
+        ],
+        "target": [
+          0.3785,
+          0.9753,
+          -0.022
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "LI6": {
+      "position": [
+        0.36248,
+        1.05096,
+        -0.02582
+      ],
+      "normal": [
+        0.21819,
+        -0.06465,
+        -0.97376
+      ],
+      "cameraPreset": {
+        "position": [
+          0.5043,
+          1.0339,
+          -0.6588
+        ],
+        "target": [
+          0.3625,
+          1.051,
+          -0.0258
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "LI10": {
+      "position": [
+        0.34183,
+        1.13126,
+        0.03773
+      ],
+      "normal": [
+        0.57929,
+        0.02838,
+        0.81463
+      ],
+      "cameraPreset": {
+        "position": [
+          0.7184,
+          1.1747,
+          0.5672
+        ],
+        "target": [
+          0.3418,
+          1.1313,
+          0.0377
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "LI11": {
+      "position": [
+        0.31889,
+        1.1932,
+        0.04584
+      ],
+      "normal": [
+        0.39036,
+        0.15196,
+        0.90803
+      ],
+      "cameraPreset": {
+        "position": [
+          0.5726,
+          1.317,
+          0.6361
+        ],
+        "target": [
+          0.3189,
+          1.1932,
+          0.0458
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "LI14": {
+      "position": [
+        0.26821,
+        1.31938,
+        0.01377
+      ],
+      "normal": [
+        0.87368,
+        0.41994,
+        0.24563
+      ],
+      "cameraPreset": {
+        "position": [
+          0.8361,
+          1.6173,
+          0.1734
+        ],
+        "target": [
+          0.2682,
+          1.3194,
+          0.0138
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "LI15": {
+      "position": [
+        0.21565,
+        1.40427,
+        0.04599
+      ],
+      "normal": [
+        0.77992,
+        0.2983,
+        0.55023
+      ],
+      "cameraPreset": {
+        "position": [
+          0.7226,
+          1.6232,
+          0.4036
+        ],
+        "target": [
+          0.2157,
+          1.4043,
+          0.046
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "LI16": {
+      "position": [
+        0.21085,
+        1.43409,
+        -0.00459
+      ],
+      "normal": [
+        0.7827,
+        0.58235,
+        -0.21966
+      ],
+      "cameraPreset": {
+        "position": [
+          0.7196,
+          1.8376,
+          -0.1474
+        ],
+        "target": [
+          0.2109,
+          1.4341,
+          -0.0046
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "LI20": {
+      "position": [
+        0.03441,
+        1.61074,
+        0.09257
+      ],
+      "normal": [
+        0.2932,
+        -0.02309,
+        0.95577
+      ],
+      "cameraPreset": {
+        "position": [
+          0.1957,
+          1.623,
+          0.6182
+        ],
+        "target": [
+          0.0344,
+          1.6107,
+          0.0926
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "ST2": {
+      "position": [
+        0.039,
+        1.63139,
+        0.07188
+      ],
+      "normal": [
+        -0.49017,
+        0.78838,
+        0.37174
+      ],
+      "cameraPreset": {
+        "position": [
+          -0.2306,
+          2.09,
+          0.2763
+        ],
+        "target": [
+          0.039,
+          1.6314,
+          0.0719
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "ST4": {
+      "position": [
+        0.039,
+        1.5878,
+        0.09352
+      ],
+      "normal": [
+        0.42117,
+        0.30682,
+        0.85351
+      ],
+      "cameraPreset": {
+        "position": [
+          0.2706,
+          1.7816,
+          0.563
+        ],
+        "target": [
+          0.039,
+          1.5878,
+          0.0935
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "ST6": {
+      "position": [
+        0.06401,
+        1.58161,
+        0.03281
+      ],
+      "normal": [
+        0.80091,
+        -0.5284,
+        -0.28168
+      ],
+      "cameraPreset": {
+        "position": [
+          0.5045,
+          1.316,
+          -0.1221
+        ],
+        "target": [
+          0.064,
+          1.5816,
+          0.0328
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "ST7": {
+      "position": [
+        0.07341,
+        1.62451,
+        0.03582
+      ],
+      "normal": [
+        0.99348,
+        -0.04102,
+        0.10634
+      ],
+      "cameraPreset": {
+        "position": [
+          0.6198,
+          1.6269,
+          0.0943
+        ],
+        "target": [
+          0.0734,
+          1.6245,
+          0.0358
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "ST8": {
+      "position": [
+        0.05735,
+        1.7071,
+        0.06249
+      ],
+      "normal": [
+        0.64387,
+        0.50118,
+        0.57814
+      ],
+      "cameraPreset": {
+        "position": [
+          0.4115,
+          2.0077,
+          0.3805
+        ],
+        "target": [
+          0.0574,
+          1.7071,
+          0.0625
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "ST21": {
+      "position": [
+        0.05277,
+        1.22991,
+        0.1441
+      ],
+      "normal": [
+        0.29787,
+        0.00266,
+        0.9546
+      ],
+      "cameraPreset": {
+        "position": [
+          0.2464,
+          1.2566,
+          0.7646
+        ],
+        "target": [
+          0.0528,
+          1.2299,
+          0.1441
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "ST25": {
+      "position": [
+        0.05506,
+        1.13814,
+        0.12921
+      ],
+      "normal": [
+        0.24934,
+        -0.1204,
+        0.9609
+      ],
+      "cameraPreset": {
+        "position": [
+          0.2171,
+          1.0849,
+          0.7538
+        ],
+        "target": [
+          0.0551,
+          1.1381,
+          0.1292
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "ST32": {
+      "position": [
+        0.09636,
+        0.81007,
+        0.10307
+      ],
+      "normal": [
+        -0.14583,
+        -0.00056,
+        0.98931
+      ],
+      "cameraPreset": {
+        "position": [
+          0.0016,
+          0.8347,
+          0.7461
+        ],
+        "target": [
+          0.0964,
+          0.8101,
+          0.1031
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "ST34": {
+      "position": [
+        0.12389,
+        0.70684,
+        0.08229
+      ],
+      "normal": [
+        0.41568,
+        -0.21076,
+        0.88475
+      ],
+      "cameraPreset": {
+        "position": [
+          0.3941,
+          0.5948,
+          0.6574
+        ],
+        "target": [
+          0.1239,
+          0.7068,
+          0.0823
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "ST35": {
+      "position": [
+        0.12389,
+        0.61736,
+        0.06978
+      ],
+      "normal": [
+        0.54232,
+        -0.17248,
+        0.82228
+      ],
+      "cameraPreset": {
+        "position": [
+          0.4764,
+          0.5303,
+          0.6043
+        ],
+        "target": [
+          0.1239,
+          0.6174,
+          0.0698
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "ST36": {
+      "position": [
+        0.12618,
+        0.56001,
+        0.05607
+      ],
+      "normal": [
+        0.30319,
+        -0.18942,
+        0.93392
+      ],
+      "cameraPreset": {
+        "position": [
+          0.3233,
+          0.4619,
+          0.6631
+        ],
+        "target": [
+          0.1262,
+          0.56,
+          0.0561
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "ST37": {
+      "position": [
+        0.12389,
+        0.47512,
+        0.04642
+      ],
+      "normal": [
+        0.02773,
+        -0.04119,
+        0.99877
+      ],
+      "cameraPreset": {
+        "position": [
+          0.1419,
+          0.4733,
+          0.6956
+        ],
+        "target": [
+          0.1239,
+          0.4751,
+          0.0464
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "ST39": {
+      "position": [
+        0.12389,
+        0.38336,
+        0.0405
+      ],
+      "normal": [
+        0.11785,
+        -0.08346,
+        0.98952
+      ],
+      "cameraPreset": {
+        "position": [
+          0.2005,
+          0.3541,
+          0.6837
+        ],
+        "target": [
+          0.1239,
+          0.3834,
+          0.0405
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "ST40": {
+      "position": [
+        0.13994,
+        0.42236,
+        0.03831
+      ],
+      "normal": [
+        0.57527,
+        -0.05327,
+        0.81622
+      ],
+      "cameraPreset": {
+        "position": [
+          0.5139,
+          0.4127,
+          0.5689
+        ],
+        "target": [
+          0.1399,
+          0.4224,
+          0.0383
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "ST41": {
+      "position": [
+        0.10783,
+        0.10347,
+        0.06567
+      ],
+      "normal": [
+        0.44916,
+        0.54145,
+        0.71069
+      ],
+      "cameraPreset": {
+        "position": [
+          0.3998,
+          0.4804,
+          0.5276
+        ],
+        "target": [
+          0.1078,
+          0.1035,
+          0.0657
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "ST44": {
+      "position": [
+        0.10783,
+        0.02547,
+        0.17344
+      ],
+      "normal": [
+        0.50709,
+        0.16903,
+        0.84516
+      ],
+      "cameraPreset": {
+        "position": [
+          0.3867,
+          0.1434,
+          0.6383
+        ],
+        "target": [
+          0.1078,
+          0.0255,
+          0.1734
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "SP3": {
+      "position": [
+        0.07112,
+        0.02776,
+        0.0766
+      ],
+      "normal": [
+        0.55563,
+        0.62868,
+        0.54409
+      ],
+      "cameraPreset": {
+        "position": [
+          0.3767,
+          0.3985,
+          0.3758
+        ],
+        "target": [
+          0.0711,
+          0.0278,
+          0.0766
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "SP4": {
+      "position": [
+        0.06883,
+        0.03464,
+        0.07974
+      ],
+      "normal": [
+        0.94936,
+        0.21216,
+        0.23173
+      ],
+      "cameraPreset": {
+        "position": [
+          0.591,
+          0.1763,
+          0.2072
+        ],
+        "target": [
+          0.0688,
+          0.0346,
+          0.0797
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "SP5": {
+      "position": [
+        0.078,
+        0.10347,
+        0.03755
+      ],
+      "normal": [
+        -0.95063,
+        0.16248,
+        0.2644
+      ],
+      "cameraPreset": {
+        "position": [
+          -0.5399,
+          0.2341,
+          0.2094
+        ],
+        "target": [
+          0.078,
+          0.1035,
+          0.0376
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "SP6": {
+      "position": [
+        0.08492,
+        0.21129,
+        0.00229
+      ],
+      "normal": [
+        0.98463,
+        0.06288,
+        -0.16295
+      ],
+      "cameraPreset": {
+        "position": [
+          0.7249,
+          0.2772,
+          -0.1036
+        ],
+        "target": [
+          0.0849,
+          0.2113,
+          0.0023
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "SP8": {
+      "position": [
+        0.05945,
+        0.47512,
+        0.00459
+      ],
+      "normal": [
+        0.96525,
+        0.04584,
+        -0.25727
+      ],
+      "cameraPreset": {
+        "position": [
+          0.6869,
+          0.5299,
+          -0.1626
+        ],
+        "target": [
+          0.0594,
+          0.4751,
+          0.0046
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "SP9": {
+      "position": [
+        0.0545,
+        0.57836,
+        0.01147
+      ],
+      "normal": [
+        0.9557,
+        0.28823,
+        -0.05963
+      ],
+      "cameraPreset": {
+        "position": [
+          0.6757,
+          0.7907,
+          -0.0273
+        ],
+        "target": [
+          0.0545,
+          0.5784,
+          0.0115
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "SP10": {
+      "position": [
+        0.05965,
+        0.71372,
+        0.0861
+      ],
+      "normal": [
+        -0.24553,
+        -0.18956,
+        0.95067
+      ],
+      "cameraPreset": {
+        "position": [
+          -0.0999,
+          0.6155,
+          0.704
+        ],
+        "target": [
+          0.0596,
+          0.7137,
+          0.0861
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "SP15": {
+      "position": [
+        0.10094,
+        1.13814,
+        0.00279
+      ],
+      "normal": [
+        -0.48719,
+        -0.35314,
+        0.79871
+      ],
+      "cameraPreset": {
+        "position": [
+          -0.2157,
+          0.9336,
+          0.522
+        ],
+        "target": [
+          0.1009,
+          1.1381,
+          0.0028
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "SP21": {
+      "position": [
+        0.15019,
+        1.29873,
+        0.01606
+      ],
+      "normal": [
+        0.96047,
+        -0.2654,
+        0.084
+      ],
+      "cameraPreset": {
+        "position": [
+          0.7745,
+          1.1512,
+          0.0707
+        ],
+        "target": [
+          0.1502,
+          1.2987,
+          0.0161
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "HT1": {
+      "position": [
+        0.25624,
+        1.35609,
+        0.00459
+      ],
+      "normal": [
+        0.89489,
+        0.4404,
+        0.07218
+      ],
+      "cameraPreset": {
+        "position": [
+          0.8379,
+          1.6674,
+          0.0515
+        ],
+        "target": [
+          0.2562,
+          1.3561,
+          0.0046
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "HT3": {
+      "position": [
+        0.25894,
+        1.20009,
+        0.00918
+      ],
+      "normal": [
+        0.87127,
+        0.47936,
+        0.10532
+      ],
+      "cameraPreset": {
+        "position": [
+          0.8253,
+          1.5367,
+          0.0776
+        ],
+        "target": [
+          0.2589,
+          1.2001,
+          0.0092
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "HT5": {
+      "position": [
+        0.3533,
+        1.02802,
+        0.02895
+      ],
+      "normal": [
+        -0.08581,
+        -0.09011,
+        0.99223
+      ],
+      "cameraPreset": {
+        "position": [
+          0.2975,
+          0.9944,
+          0.6739
+        ],
+        "target": [
+          0.3533,
+          1.028,
+          0.029
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "HT7": {
+      "position": [
+        0.3923,
+        0.97296,
+        0.00786
+      ],
+      "normal": [
+        0.91823,
+        0.23513,
+        0.31871
+      ],
+      "cameraPreset": {
+        "position": [
+          0.9892,
+          1.1508,
+          0.215
+        ],
+        "target": [
+          0.3923,
+          0.973,
+          0.0079
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "HT8": {
+      "position": [
+        0.40836,
+        0.9179,
+        0.01917
+      ],
+      "normal": [
+        0.78256,
+        0.35662,
+        0.51032
+      ],
+      "cameraPreset": {
+        "position": [
+          0.8388,
+          1.139,
+          0.2998
+        ],
+        "target": [
+          0.4084,
+          0.9179,
+          0.0192
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "HT9": {
+      "position": [
+        0.41731,
+        0.86078,
+        0.0078
+      ],
+      "normal": [
+        0.98778,
+        -0.08067,
+        -0.13335
+      ],
+      "cameraPreset": {
+        "position": [
+          0.9606,
+          0.8414,
+          -0.0655
+        ],
+        "target": [
+          0.4173,
+          0.8608,
+          0.0078
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "SI1": {
+      "position": [
+        0.42351,
+        0.86674,
+        -0.01354
+      ],
+      "normal": [
+        0.72445,
+        -0.27384,
+        0.6326
+      ],
+      "cameraPreset": {
+        "position": [
+          0.822,
+          0.7411,
+          0.3344
+        ],
+        "target": [
+          0.4235,
+          0.8667,
+          -0.0135
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "SI3": {
+      "position": [
+        0.42213,
+        0.90299,
+        -0.00872
+      ],
+      "normal": [
+        0.8784,
+        0.46472,
+        -0.11158
+      ],
+      "cameraPreset": {
+        "position": [
+          0.9052,
+          1.1836,
+          -0.0701
+        ],
+        "target": [
+          0.4221,
+          0.903,
+          -0.0087
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "SI4": {
+      "position": [
+        0.40469,
+        0.9358,
+        -0.00826
+      ],
+      "normal": [
+        0.90069,
+        0.39423,
+        -0.18262
+      ],
+      "cameraPreset": {
+        "position": [
+          0.9001,
+          1.1776,
+          -0.1087
+        ],
+        "target": [
+          0.4047,
+          0.9358,
+          -0.0083
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "SI6": {
+      "position": [
+        0.38818,
+        0.99659,
+        -0.01239
+      ],
+      "normal": [
+        0.86799,
+        0.20571,
+        -0.45197
+      ],
+      "cameraPreset": {
+        "position": [
+          0.9524,
+          1.1553,
+          -0.3062
+        ],
+        "target": [
+          0.3882,
+          0.9966,
+          -0.0124
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "SI8": {
+      "position": [
+        0.26612,
+        1.20009,
+        -0.0112
+      ],
+      "normal": [
+        -0.68992,
+        -0.40238,
+        -0.60175
+      ],
+      "cameraPreset": {
+        "position": [
+          -0.1823,
+          0.9635,
+          -0.4023
+        ],
+        "target": [
+          0.2661,
+          1.2001,
+          -0.0112
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "SI9": {
+      "position": [
+        0.18583,
+        1.36297,
+        -0.04704
+      ],
+      "normal": [
+        -0.35241,
+        -0.26091,
+        -0.89874
+      ],
+      "cameraPreset": {
+        "position": [
+          -0.0432,
+          1.2184,
+          -0.6312
+        ],
+        "target": [
+          0.1858,
+          1.363,
+          -0.047
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "SI11": {
+      "position": [
+        0.11471,
+        1.34691,
+        -0.04901
+      ],
+      "normal": [
+        0.12942,
+        0.12383,
+        -0.98383
+      ],
+      "cameraPreset": {
+        "position": [
+          0.1988,
+          1.4524,
+          -0.6885
+        ],
+        "target": [
+          0.1147,
+          1.3469,
+          -0.049
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "SI19": {
+      "position": [
+        0.08259,
+        1.61763,
+        0.00467
+      ],
+      "normal": [
+        0.36085,
+        0.37725,
+        0.85292
+      ],
+      "cameraPreset": {
+        "position": [
+          0.2811,
+          1.8501,
+          0.4738
+        ],
+        "target": [
+          0.0826,
+          1.6176,
+          0.0047
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "BL2": {
+      "position": [
+        0.01835,
+        1.66122,
+        0.09591
+      ],
+      "normal": [
+        0.28168,
+        -0.37994,
+        0.88108
+      ],
+      "cameraPreset": {
+        "position": [
+          0.1733,
+          1.4772,
+          0.5805
+        ],
+        "target": [
+          0.0184,
+          1.6612,
+          0.0959
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "BL10": {
+      "position": [
+        0.03671,
+        1.53733,
+        -0.02403
+      ],
+      "normal": [
+        0.5674,
+        -0.15282,
+        -0.80914
+      ],
+      "cameraPreset": {
+        "position": [
+          0.3488,
+          1.4783,
+          -0.4691
+        ],
+        "target": [
+          0.0367,
+          1.5373,
+          -0.024
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "BL11": {
+      "position": [
+        0.05506,
+        1.43639,
+        -0.04528
+      ],
+      "normal": [
+        0.04116,
+        0.15777,
+        -0.98662
+      ],
+      "cameraPreset": {
+        "position": [
+          0.0818,
+          1.5639,
+          -0.6866
+        ],
+        "target": [
+          0.0551,
+          1.4364,
+          -0.0453
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "BL12": {
+      "position": [
+        0.05965,
+        1.40886,
+        -0.04604
+      ],
+      "normal": [
+        0.03542,
+        -0.09177,
+        -0.99515
+      ],
+      "cameraPreset": {
+        "position": [
+          0.0827,
+          1.3742,
+          -0.6929
+        ],
+        "target": [
+          0.0596,
+          1.4089,
+          -0.046
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "BL13": {
+      "position": [
+        0.06424,
+        1.38133,
+        -0.04545
+      ],
+      "normal": [
+        -0.43501,
+        0.13478,
+        -0.89028
+      ],
+      "cameraPreset": {
+        "position": [
+          -0.2185,
+          1.4939,
+          -0.6241
+        ],
+        "target": [
+          0.0642,
+          1.3813,
+          -0.0454
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "BL15": {
+      "position": [
+        0.06424,
+        1.33085,
+        -0.04253
+      ],
+      "normal": [
+        0.14433,
+        -0.10404,
+        -0.98405
+      ],
+      "cameraPreset": {
+        "position": [
+          0.158,
+          1.2882,
+          -0.6822
+        ],
+        "target": [
+          0.0642,
+          1.3309,
+          -0.0425
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "BL17": {
+      "position": [
+        0.06424,
+        1.28956,
+        -0.03439
+      ],
+      "normal": [
+        0.1196,
+        -0.28476,
+        -0.95111
+      ],
+      "cameraPreset": {
+        "position": [
+          0.142,
+          1.1295,
+          -0.6526
+        ],
+        "target": [
+          0.0642,
+          1.2896,
+          -0.0344
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "BL18": {
+      "position": [
+        0.06424,
+        1.24597,
+        -0.0223
+      ],
+      "normal": [
+        0.25073,
+        -0.27047,
+        -0.9295
+      ],
+      "cameraPreset": {
+        "position": [
+          0.2272,
+          1.0952,
+          -0.6265
+        ],
+        "target": [
+          0.0642,
+          1.246,
+          -0.0223
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "BL20": {
+      "position": [
+        0.06424,
+        1.1955,
+        -0.01217
+      ],
+      "normal": [
+        0.28655,
+        -0.11918,
+        -0.95062
+      ],
+      "cameraPreset": {
+        "position": [
+          0.2505,
+          1.143,
+          -0.6301
+        ],
+        "target": [
+          0.0642,
+          1.1955,
+          -0.0122
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "BL21": {
+      "position": [
+        0.06424,
+        1.17256,
+        -0.01095
+      ],
+      "normal": [
+        0.27512,
+        -0.01614,
+        -0.96128
+      ],
+      "cameraPreset": {
+        "position": [
+          0.2431,
+          1.1871,
+          -0.6358
+        ],
+        "target": [
+          0.0642,
+          1.1726,
+          -0.011
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "BL23": {
+      "position": [
+        0.06424,
+        1.13126,
+        -0.01757
+      ],
+      "normal": [
+        0.28827,
+        0.2012,
+        -0.93617
+      ],
+      "cameraPreset": {
+        "position": [
+          0.2516,
+          1.287,
+          -0.6261
+        ],
+        "target": [
+          0.0642,
+          1.1313,
+          -0.0176
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "BL25": {
+      "position": [
+        0.06424,
+        1.07849,
+        -0.03881
+      ],
+      "normal": [
+        0.0196,
+        0.41144,
+        -0.91123
+      ],
+      "cameraPreset": {
+        "position": [
+          0.077,
+          1.3709,
+          -0.6311
+        ],
+        "target": [
+          0.0642,
+          1.0785,
+          -0.0388
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "BL28": {
+      "position": [
+        0.06194,
+        1.00279,
+        -0.07661
+      ],
+      "normal": [
+        -0.08748,
+        0.31625,
+        -0.94463
+      ],
+      "cameraPreset": {
+        "position": [
+          0.0051,
+          1.2333,
+          -0.6906
+        ],
+        "target": [
+          0.0619,
+          1.0028,
+          -0.0766
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "BL32": {
+      "position": [
+        0.03671,
+        1.00279,
+        -0.07161
+      ],
+      "normal": [
+        -0.25875,
+        0.30687,
+        -0.91591
+      ],
+      "cameraPreset": {
+        "position": [
+          -0.1315,
+          1.2272,
+          -0.667
+        ],
+        "target": [
+          0.0367,
+          1.0028,
+          -0.0716
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "BL36": {
+      "position": [
+        0.0803,
+        0.89037,
+        -0.06947
+      ],
+      "normal": [
+        0.17123,
+        -0.5777,
+        -0.79809
+      ],
+      "cameraPreset": {
+        "position": [
+          0.1916,
+          0.5399,
+          -0.5882
+        ],
+        "target": [
+          0.0803,
+          0.8904,
+          -0.0695
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "BL37": {
+      "position": [
+        0.08947,
+        0.77107,
+        -0.04258
+      ],
+      "normal": [
+        0.05675,
+        -0.19176,
+        -0.9798
+      ],
+      "cameraPreset": {
+        "position": [
+          0.1264,
+          0.6714,
+          -0.6794
+        ],
+        "target": [
+          0.0895,
+          0.7711,
+          -0.0426
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "BL40": {
+      "position": [
+        0.10324,
+        0.62883,
+        -0.0335
+      ],
+      "normal": [
+        0.00672,
+        0.16329,
+        -0.98656
+      ],
+      "cameraPreset": {
+        "position": [
+          0.1076,
+          0.76,
+          -0.6748
+        ],
+        "target": [
+          0.1032,
+          0.6288,
+          -0.0335
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "BL57": {
+      "position": [
+        0.10553,
+        0.404,
+        -0.05598
+      ],
+      "normal": [
+        0.08614,
+        -0.08222,
+        -0.99288
+      ],
+      "cameraPreset": {
+        "position": [
+          0.1615,
+          0.3756,
+          -0.7014
+        ],
+        "target": [
+          0.1055,
+          0.404,
+          -0.056
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "BL60": {
+      "position": [
+        0.13536,
+        0.11264,
+        -0.02303
+      ],
+      "normal": [
+        0.81412,
+        0.04135,
+        -0.57923
+      ],
+      "cameraPreset": {
+        "position": [
+          0.6645,
+          0.1645,
+          -0.3995
+        ],
+        "target": [
+          0.1354,
+          0.1126,
+          -0.023
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "BL62": {
+      "position": [
+        0.14628,
+        0.07823,
+        0.00459
+      ],
+      "normal": [
+        0.97738,
+        -0.17428,
+        0.11982
+      ],
+      "cameraPreset": {
+        "position": [
+          0.7816,
+          -0.0101,
+          0.0825
+        ],
+        "target": [
+          0.1463,
+          0.0782,
+          0.0046
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "BL67": {
+      "position": [
+        0.14224,
+        0.01399,
+        0.11857
+      ],
+      "normal": [
+        0.3268,
+        -0.19016,
+        0.92576
+      ],
+      "cameraPreset": {
+        "position": [
+          0.322,
+          -0.0656,
+          0.6277
+        ],
+        "target": [
+          0.1422,
+          0.014,
+          0.1186
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "KI1": {
+      "position": [
+        0.10324,
+        0.0051,
+        0.09636
+      ],
+      "normal": [
+        0.1915,
+        -0.98008,
+        -0.05268
+      ],
+      "cameraPreset": {
+        "position": [
+          0.2028,
+          -0.4795,
+          0.069
+        ],
+        "target": [
+          0.1032,
+          0.0051,
+          0.0964
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "KI2": {
+      "position": [
+        0.06653,
+        0.03694,
+        0.08704
+      ],
+      "normal": [
+        0.94936,
+        0.21216,
+        0.23173
+      ],
+      "cameraPreset": {
+        "position": [
+          0.5887,
+          0.1786,
+          0.2145
+        ],
+        "target": [
+          0.0665,
+          0.0369,
+          0.087
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "KI3": {
+      "position": [
+        0.08476,
+        0.10806,
+        -0.01377
+      ],
+      "normal": [
+        0.87972,
+        -0.14491,
+        0.45288
+      ],
+      "cameraPreset": {
+        "position": [
+          0.6566,
+          0.0389,
+          0.2806
+        ],
+        "target": [
+          0.0848,
+          0.1081,
+          -0.0138
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "KI6": {
+      "position": [
+        0.07827,
+        0.07823,
+        0.00229
+      ],
+      "normal": [
+        0.99638,
+        -0.04946,
+        0.06911
+      ],
+      "cameraPreset": {
+        "position": [
+          0.7259,
+          0.0711,
+          0.0472
+        ],
+        "target": [
+          0.0783,
+          0.0782,
+          0.0023
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "KI7": {
+      "position": [
+        0.08913,
+        0.18376,
+        -0.01606
+      ],
+      "normal": [
+        0.78723,
+        0.10437,
+        0.60776
+      ],
+      "cameraPreset": {
+        "position": [
+          0.6008,
+          0.2766,
+          0.379
+        ],
+        "target": [
+          0.0891,
+          0.1838,
+          -0.0161
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "KI10": {
+      "position": [
+        0.06424,
+        0.62883,
+        -0.01604
+      ],
+      "normal": [
+        -0.82882,
+        0.04811,
+        -0.55745
+      ],
+      "cameraPreset": {
+        "position": [
+          -0.4745,
+          0.6851,
+          -0.3784
+        ],
+        "target": [
+          0.0642,
+          0.6288,
+          -0.016
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "KI16": {
+      "position": [
+        0.02065,
+        1.13814,
+        0.13435
+      ],
+      "normal": [
+        0.06918,
+        -0.12502,
+        0.98974
+      ],
+      "cameraPreset": {
+        "position": [
+          0.0656,
+          1.0819,
+          0.7777
+        ],
+        "target": [
+          0.0206,
+          1.1381,
+          0.1343
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "KI27": {
+      "position": [
+        0.05735,
+        1.42491,
+        0.08054
+      ],
+      "normal": [
+        -0.12348,
+        0.49024,
+        0.8628
+      ],
+      "cameraPreset": {
+        "position": [
+          -0.0229,
+          1.7686,
+          0.6414
+        ],
+        "target": [
+          0.0574,
+          1.4249,
+          0.0805
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "PC1": {
+      "position": [
+        0.13306,
+        1.34232,
+        0.09238
+      ],
+      "normal": [
+        0.84276,
+        -0.00776,
+        0.53824
+      ],
+      "cameraPreset": {
+        "position": [
+          0.6809,
+          1.3623,
+          0.4422
+        ],
+        "target": [
+          0.1331,
+          1.3423,
+          0.0924
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "PC3": {
+      "position": [
+        0.28218,
+        1.20697,
+        0.04529
+      ],
+      "normal": [
+        -0.28441,
+        -0.23417,
+        0.92966
+      ],
+      "cameraPreset": {
+        "position": [
+          0.0973,
+          1.0798,
+          0.6496
+        ],
+        "target": [
+          0.2822,
+          1.207,
+          0.0453
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "PC4": {
+      "position": [
+        0.33036,
+        1.09685,
+        0.0355
+      ],
+      "normal": [
+        -0.07143,
+        -0.2361,
+        0.9691
+      ],
+      "cameraPreset": {
+        "position": [
+          0.2839,
+          0.9684,
+          0.6654
+        ],
+        "target": [
+          0.3304,
+          1.0968,
+          0.0355
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "PC5": {
+      "position": [
+        0.35101,
+        1.05096,
+        0.03055
+      ],
+      "normal": [
+        0.09205,
+        -0.0348,
+        0.99515
+      ],
+      "cameraPreset": {
+        "position": [
+          0.4108,
+          1.0533,
+          0.6774
+        ],
+        "target": [
+          0.351,
+          1.051,
+          0.0305
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "PC6": {
+      "position": [
+        0.36019,
+        1.02573,
+        0.0287
+      ],
+      "normal": [
+        0.21825,
+        -0.0341,
+        0.9753
+      ],
+      "cameraPreset": {
+        "position": [
+          0.502,
+          1.0286,
+          0.6626
+        ],
+        "target": [
+          0.3602,
+          1.0257,
+          0.0287
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "PC7": {
+      "position": [
+        0.38083,
+        0.97526,
+        0.02204
+      ],
+      "normal": [
+        0.62003,
+        0.09465,
+        0.77885
+      ],
+      "cameraPreset": {
+        "position": [
+          0.7839,
+          1.0618,
+          0.5283
+        ],
+        "target": [
+          0.3808,
+          0.9753,
+          0.022
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "PC8": {
+      "position": [
+        0.3946,
+        0.92249,
+        0.03548
+      ],
+      "normal": [
+        0.65563,
+        0.39541,
+        0.64327
+      ],
+      "cameraPreset": {
+        "position": [
+          0.7552,
+          1.165,
+          0.3893
+        ],
+        "target": [
+          0.3946,
+          0.9225,
+          0.0355
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "PC9": {
+      "position": [
+        0.40538,
+        0.84563,
+        0.01055
+      ],
+      "normal": [
+        -0.38597,
+        -0.90155,
+        0.19554
+      ],
+      "cameraPreset": {
+        "position": [
+          0.1931,
+          0.3748,
+          0.1181
+        ],
+        "target": [
+          0.4054,
+          0.8456,
+          0.0106
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "TE3": {
+      "position": [
+        0.40836,
+        0.91331,
+        -0.02925
+      ],
+      "normal": [
+        0.48791,
+        0.40181,
+        -0.77491
+      ],
+      "cameraPreset": {
+        "position": [
+          0.6767,
+          1.1593,
+          -0.4554
+        ],
+        "target": [
+          0.4084,
+          0.9133,
+          -0.0292
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "TE4": {
+      "position": [
+        0.38313,
+        0.97755,
+        -0.02023
+      ],
+      "normal": [
+        0.3809,
+        0.0945,
+        -0.91978
+      ],
+      "cameraPreset": {
+        "position": [
+          0.6307,
+          1.064,
+          -0.6181
+        ],
+        "target": [
+          0.3831,
+          0.9775,
+          -0.0202
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "TE5": {
+      "position": [
+        0.36019,
+        1.03261,
+        -0.02523
+      ],
+      "normal": [
+        -0.19293,
+        -0.18888,
+        -0.96286
+      ],
+      "cameraPreset": {
+        "position": [
+          0.2348,
+          0.9348,
+          -0.6511
+        ],
+        "target": [
+          0.3602,
+          1.0326,
+          -0.0252
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "TE6": {
+      "position": [
+        0.34872,
+        1.06243,
+        -0.02785
+      ],
+      "normal": [
+        -0.20547,
+        -0.09499,
+        -0.97404
+      ],
+      "cameraPreset": {
+        "position": [
+          0.2152,
+          1.0257,
+          -0.661
+        ],
+        "target": [
+          0.3487,
+          1.0624,
+          -0.0278
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "TE10": {
+      "position": [
+        0.28907,
+        1.2322,
+        -0.02095
+      ],
+      "normal": [
+        0.33518,
+        0.04993,
+        -0.94083
+      ],
+      "cameraPreset": {
+        "position": [
+          0.5069,
+          1.2897,
+          -0.6325
+        ],
+        "target": [
+          0.2891,
+          1.2322,
+          -0.021
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "TE14": {
+      "position": [
+        0.19501,
+        1.41574,
+        -0.04252
+      ],
+      "normal": [
+        0.22045,
+        0.30496,
+        -0.9265
+      ],
+      "cameraPreset": {
+        "position": [
+          0.3383,
+          1.639,
+          -0.6447
+        ],
+        "target": [
+          0.195,
+          1.4157,
+          -0.0425
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "TE17": {
+      "position": [
+        0.05301,
+        1.58321,
+        -0.01147
+      ],
+      "normal": [
+        0.91546,
+        -0.33455,
+        -0.22364
+      ],
+      "cameraPreset": {
+        "position": [
+          0.5565,
+          1.4242,
+          -0.1345
+        ],
+        "target": [
+          0.053,
+          1.5832,
+          -0.0115
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "TE21": {
+      "position": [
+        0.08259,
+        1.64057,
+        0.00868
+      ],
+      "normal": [
+        0.52451,
+        0.37557,
+        0.76409
+      ],
+      "cameraPreset": {
+        "position": [
+          0.3711,
+          1.8721,
+          0.4289
+        ],
+        "target": [
+          0.0826,
+          1.6406,
+          0.0087
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "TE23": {
+      "position": [
+        0.06424,
+        1.66351,
+        0.06487
+      ],
+      "normal": [
+        0.90384,
+        0.0518,
+        0.42473
+      ],
+      "cameraPreset": {
+        "position": [
+          0.5613,
+          1.717,
+          0.2985
+        ],
+        "target": [
+          0.0642,
+          1.6635,
+          0.0649
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "GB1": {
+      "position": [
+        0.06424,
+        1.64286,
+        0.06824
+      ],
+      "normal": [
+        0.88581,
+        0.01784,
+        0.46371
+      ],
+      "cameraPreset": {
+        "position": [
+          0.5514,
+          1.6777,
+          0.3233
+        ],
+        "target": [
+          0.0642,
+          1.6429,
+          0.0682
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "GB2": {
+      "position": [
+        0.07318,
+        1.60661,
+        0.02615
+      ],
+      "normal": [
+        0.9791,
+        -0.13538,
+        0.15179
+      ],
+      "cameraPreset": {
+        "position": [
+          0.6117,
+          1.5572,
+          0.1096
+        ],
+        "target": [
+          0.0732,
+          1.6066,
+          0.0262
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "GB8": {
+      "position": [
+        0.07858,
+        1.69104,
+        0.00229
+      ],
+      "normal": [
+        0.99679,
+        0.07945,
+        0.00963
+      ],
+      "cameraPreset": {
+        "position": [
+          0.6268,
+          1.7597,
+          0.0076
+        ],
+        "target": [
+          0.0786,
+          1.691,
+          0.0023
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "GB14": {
+      "position": [
+        0.039,
+        1.68645,
+        0.08806
+      ],
+      "normal": [
+        0.54254,
+        0.34756,
+        0.76476
+      ],
+      "cameraPreset": {
+        "position": [
+          0.3374,
+          1.9026,
+          0.5087
+        ],
+        "target": [
+          0.039,
+          1.6865,
+          0.0881
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "GB20": {
+      "position": [
+        0.04405,
+        1.55477,
+        -0.02317
+      ],
+      "normal": [
+        0.80226,
+        -0.16089,
+        -0.57489
+      ],
+      "cameraPreset": {
+        "position": [
+          0.4853,
+          1.4913,
+          -0.3394
+        ],
+        "target": [
+          0.044,
+          1.5548,
+          -0.0232
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "GB21": {
+      "position": [
+        0.12159,
+        1.43868,
+        -0.03825
+      ],
+      "normal": [
+        0.08511,
+        0.31653,
+        -0.94476
+      ],
+      "cameraPreset": {
+        "position": [
+          0.1769,
+          1.6694,
+          -0.6523
+        ],
+        "target": [
+          0.1216,
+          1.4387,
+          -0.0382
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "GB24": {
+      "position": [
+        0.10783,
+        1.27809,
+        -0.01918
+      ],
+      "normal": [
+        -0.30823,
+        0.36035,
+        0.88042
+      ],
+      "cameraPreset": {
+        "position": [
+          -0.0925,
+          1.5373,
+          0.5531
+        ],
+        "target": [
+          0.1078,
+          1.2781,
+          -0.0192
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "GB26": {
+      "position": [
+        0.10389,
+        1.13814,
+        0.00459
+      ],
+      "normal": [
+        0.48719,
+        0.35314,
+        -0.79871
+      ],
+      "cameraPreset": {
+        "position": [
+          0.4206,
+          1.3927,
+          -0.5146
+        ],
+        "target": [
+          0.1039,
+          1.1381,
+          0.0046
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "GB30": {
+      "position": [
+        0.13077,
+        0.95231,
+        -0.06705
+      ],
+      "normal": [
+        0.61525,
+        -0.12257,
+        -0.77874
+      ],
+      "cameraPreset": {
+        "position": [
+          0.5307,
+          0.8976,
+          -0.5732
+        ],
+        "target": [
+          0.1308,
+          0.9523,
+          -0.0671
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "GB31": {
+      "position": [
+        0.14866,
+        0.80319,
+        0
+      ],
+      "normal": [
+        0.91894,
+        -0.02521,
+        -0.39359
+      ],
+      "cameraPreset": {
+        "position": [
+          0.746,
+          0.8118,
+          -0.2558
+        ],
+        "target": [
+          0.1487,
+          0.8032,
+          0
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "GB34": {
+      "position": [
+        0.15996,
+        0.57607,
+        0.00918
+      ],
+      "normal": [
+        0.95054,
+        0.18765,
+        0.24749
+      ],
+      "cameraPreset": {
+        "position": [
+          0.7778,
+          0.723,
+          0.17
+        ],
+        "target": [
+          0.16,
+          0.5761,
+          0.0092
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "GB37": {
+      "position": [
+        0.15189,
+        0.27094,
+        0.00459
+      ],
+      "normal": [
+        0.99581,
+        -0.0901,
+        -0.01562
+      ],
+      "cameraPreset": {
+        "position": [
+          0.7992,
+          0.2374,
+          -0.0056
+        ],
+        "target": [
+          0.1519,
+          0.2709,
+          0.0046
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "GB39": {
+      "position": [
+        0.14597,
+        0.209,
+        0.00229
+      ],
+      "normal": [
+        0.99532,
+        -0.09537,
+        -0.01552
+      ],
+      "cameraPreset": {
+        "position": [
+          0.7929,
+          0.172,
+          -0.0078
+        ],
+        "target": [
+          0.146,
+          0.209,
+          0.0023
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "GB40": {
+      "position": [
+        0.13765,
+        0.092,
+        0.04055
+      ],
+      "normal": [
+        0.85683,
+        0.26147,
+        0.44438
+      ],
+      "cameraPreset": {
+        "position": [
+          0.6946,
+          0.2869,
+          0.3294
+        ],
+        "target": [
+          0.1377,
+          0.092,
+          0.0405
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "GB41": {
+      "position": [
+        0.13077,
+        0.03464,
+        0.13731
+      ],
+      "normal": [
+        -0.83985,
+        0.32421,
+        0.43536
+      ],
+      "cameraPreset": {
+        "position": [
+          -0.3311,
+          0.238,
+          0.3768
+        ],
+        "target": [
+          0.1308,
+          0.0346,
+          0.1373
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "LR2": {
+      "position": [
+        0.08718,
+        0.02317,
+        0.17415
+      ],
+      "normal": [
+        0.36908,
+        0.30641,
+        0.87744
+      ],
+      "cameraPreset": {
+        "position": [
+          0.2902,
+          0.2167,
+          0.6567
+        ],
+        "target": [
+          0.0872,
+          0.0232,
+          0.1742
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "LR3": {
+      "position": [
+        0.09636,
+        0.02317,
+        0.16883
+      ],
+      "normal": [
+        -0.89269,
+        -0.01469,
+        0.45043
+      ],
+      "cameraPreset": {
+        "position": [
+          -0.4839,
+          0.0386,
+          0.4616
+        ],
+        "target": [
+          0.0964,
+          0.0232,
+          0.1688
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "LR5": {
+      "position": [
+        0.08303,
+        0.28471,
+        0.00918
+      ],
+      "normal": [
+        0.94811,
+        0.05255,
+        -0.31357
+      ],
+      "cameraPreset": {
+        "position": [
+          0.6993,
+          0.3439,
+          -0.1946
+        ],
+        "target": [
+          0.083,
+          0.2847,
+          0.0092
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "LR8": {
+      "position": [
+        0.05976,
+        0.63113,
+        -0.00918
+      ],
+      "normal": [
+        0.82882,
+        -0.04811,
+        0.55745
+      ],
+      "cameraPreset": {
+        "position": [
+          0.5985,
+          0.6249,
+          0.3532
+        ],
+        "target": [
+          0.0598,
+          0.6311,
+          -0.0092
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "LR13": {
+      "position": [
+        0.117,
+        1.20238,
+        0.03383
+      ],
+      "normal": [
+        -0.85227,
+        0.18671,
+        0.48864
+      ],
+      "cameraPreset": {
+        "position": [
+          -0.437,
+          1.3487,
+          0.3514
+        ],
+        "target": [
+          0.117,
+          1.2024,
+          0.0338
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "LR14": {
+      "position": [
+        0.09865,
+        1.30791,
+        0.1278
+      ],
+      "normal": [
+        0.34957,
+        0.38751,
+        0.85302
+      ],
+      "cameraPreset": {
+        "position": [
+          0.3259,
+          1.5848,
+          0.6823
+        ],
+        "target": [
+          0.0986,
+          1.3079,
+          0.1278
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "CV3": {
+      "position": [
+        0,
+        1.01196,
+        0.13237
+      ],
+      "normal": [
+        -0.04456,
+        -0.05611,
+        0.99743
+      ],
+      "cameraPreset": {
+        "position": [
+          -0.029,
+          1.0005,
+          0.7807
+        ],
+        "target": [
+          0,
+          1.012,
+          0.1324
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "CV4": {
+      "position": [
+        0,
+        1.03949,
+        0.13215
+      ],
+      "normal": [
+        -0.00443,
+        0.06029,
+        0.99817
+      ],
+      "cameraPreset": {
+        "position": [
+          -0.0029,
+          1.1037,
+          0.781
+        ],
+        "target": [
+          0,
+          1.0395,
+          0.1321
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "CV6": {
+      "position": [
+        0,
+        1.09226,
+        0.12639
+      ],
+      "normal": [
+        0.53088,
+        -0.32963,
+        0.78071
+      ],
+      "cameraPreset": {
+        "position": [
+          0.3451,
+          0.903,
+          0.6338
+        ],
+        "target": [
+          0,
+          1.0923,
+          0.1264
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "CV8": {
+      "position": [
+        0,
+        1.13814,
+        0.13317
+      ],
+      "normal": [
+        0.10237,
+        -0.13147,
+        0.98602
+      ],
+      "cameraPreset": {
+        "position": [
+          0.0665,
+          1.0777,
+          0.7741
+        ],
+        "target": [
+          0,
+          1.1381,
+          0.1332
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "CV9": {
+      "position": [
+        0,
+        1.16567,
+        0.13755
+      ],
+      "normal": [
+        0.0513,
+        -0.18502,
+        0.9814
+      ],
+      "cameraPreset": {
+        "position": [
+          0.0333,
+          1.0704,
+          0.7755
+        ],
+        "target": [
+          0,
+          1.1657,
+          0.1375
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "CV10": {
+      "position": [
+        0,
+        1.18632,
+        0.14142
+      ],
+      "normal": [
+        0.06214,
+        -0.18174,
+        0.98138
+      ],
+      "cameraPreset": {
+        "position": [
+          0.0404,
+          1.0932,
+          0.7793
+        ],
+        "target": [
+          0,
+          1.1863,
+          0.1414
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "CV12": {
+      "position": [
+        0,
+        1.22991,
+        0.14752
+      ],
+      "normal": [
+        0.03151,
+        0.07475,
+        0.9967
+      ],
+      "cameraPreset": {
+        "position": [
+          0.0205,
+          1.3035,
+          0.7954
+        ],
+        "target": [
+          0,
+          1.2299,
+          0.1475
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "CV13": {
+      "position": [
+        0,
+        1.25285,
+        0.14413
+      ],
+      "normal": [
+        -0.0208,
+        0.28295,
+        0.95891
+      ],
+      "cameraPreset": {
+        "position": [
+          -0.0135,
+          1.4618,
+          0.7674
+        ],
+        "target": [
+          0,
+          1.2529,
+          0.1441
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "CV14": {
+      "position": [
+        0,
+        1.27579,
+        0.13655
+      ],
+      "normal": [
+        -0.03632,
+        0.3686,
+        0.92888
+      ],
+      "cameraPreset": {
+        "position": [
+          -0.0236,
+          1.5404,
+          0.7403
+        ],
+        "target": [
+          0,
+          1.2758,
+          0.1366
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "CV17": {
+      "position": [
+        0,
+        1.36068,
+        0.10231
+      ],
+      "normal": [
+        0.10273,
+        0.35411,
+        0.92954
+      ],
+      "cameraPreset": {
+        "position": [
+          0.0668,
+          1.6159,
+          0.7065
+        ],
+        "target": [
+          0,
+          1.3607,
+          0.1023
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "CV22": {
+      "position": [
+        0,
+        1.46621,
+        0.06393
+      ],
+      "normal": [
+        -0.04656,
+        0.02103,
+        0.99869
+      ],
+      "cameraPreset": {
+        "position": [
+          -0.0256,
+          1.5028,
+          0.6132
+        ],
+        "target": [
+          0,
+          1.4662,
+          0.0639
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "CV24": {
+      "position": [
+        0,
+        1.56486,
+        0.11335
+      ],
+      "normal": [
+        -0.25015,
+        0.08041,
+        0.96486
+      ],
+      "cameraPreset": {
+        "position": [
+          -0.1376,
+          1.6341,
+          0.644
+        ],
+        "target": [
+          0,
+          1.5649,
+          0.1134
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "GV3": {
+      "position": [
+        0,
+        1.07849,
+        -0.03979
+      ],
+      "normal": [
+        0.06953,
+        0.31102,
+        -0.94786
+      ],
+      "cameraPreset": {
+        "position": [
+          0.0452,
+          1.3057,
+          -0.6559
+        ],
+        "target": [
+          0,
+          1.0785,
+          -0.0398
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "GV4": {
+      "position": [
+        0,
+        1.13126,
+        -0.02297
+      ],
+      "normal": [
+        0.24153,
+        0.13723,
+        -0.96064
+      ],
+      "cameraPreset": {
+        "position": [
+          0.157,
+          1.2455,
+          -0.6474
+        ],
+        "target": [
+          0,
+          1.1313,
+          -0.023
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "GV9": {
+      "position": [
+        0,
+        1.28956,
+        -0.03319
+      ],
+      "normal": [
+        0.1039,
+        -0.24482,
+        -0.96399
+      ],
+      "cameraPreset": {
+        "position": [
+          0.0675,
+          1.1554,
+          -0.6598
+        ],
+        "target": [
+          0,
+          1.2896,
+          -0.0332
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "GV12": {
+      "position": [
+        0,
+        1.38133,
+        -0.04602
+      ],
+      "normal": [
+        0.11143,
+        -0.0777,
+        -0.99073
+      ],
+      "cameraPreset": {
+        "position": [
+          0.0724,
+          1.3558,
+          -0.69
+        ],
+        "target": [
+          0,
+          1.3813,
+          -0.046
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "GV14": {
+      "position": [
+        0,
+        1.46392,
+        -0.03402
+      ],
+      "normal": [
+        0.08145,
+        0.32207,
+        -0.94321
+      ],
+      "cameraPreset": {
+        "position": [
+          0.0529,
+          1.6983,
+          -0.6471
+        ],
+        "target": [
+          0,
+          1.4639,
+          -0.034
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "GV16": {
+      "position": [
+        0,
+        1.55339,
+        -0.02875
+      ],
+      "normal": [
+        0.1196,
+        -0.31396,
+        -0.94187
+      ],
+      "cameraPreset": {
+        "position": [
+          0.0658,
+          1.4057,
+          -0.5468
+        ],
+        "target": [
+          0,
+          1.5534,
+          -0.0288
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "GV20": {
+      "position": [
+        0,
+        1.74885,
+        -0.01009
+      ],
+      "normal": [
+        0,
+        0.97862,
+        -0.20568
+      ],
+      "cameraPreset": {
+        "position": [
+          0,
+          2.3121,
+          -0.1232
+        ],
+        "target": [
+          0,
+          1.7489,
+          -0.0101
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "GV23": {
+      "position": [
+        0,
+        1.72545,
+        0.07732
+      ],
+      "normal": [
+        -0.09641,
+        0.63961,
+        0.76263
+      ],
+      "cameraPreset": {
+        "position": [
+          -0.053,
+          2.1022,
+          0.4968
+        ],
+        "target": [
+          0,
+          1.7255,
+          0.0773
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "GV24": {
+      "position": [
+        0,
+        1.71169,
+        0.08815
+      ],
+      "normal": [
+        -0.07313,
+        0.59839,
+        0.79786
+      ],
+      "cameraPreset": {
+        "position": [
+          -0.0402,
+          2.0658,
+          0.527
+        ],
+        "target": [
+          0,
+          1.7117,
+          0.0882
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    },
+    "GV26": {
+      "position": [
+        0,
+        1.59468,
+        0.09388
+      ],
+      "normal": [
+        0.34703,
+        0.7829,
+        0.51638
+      ],
+      "cameraPreset": {
+        "position": [
+          0.1909,
+          2.0503,
+          0.3779
+        ],
+        "target": [
+          0,
+          1.5947,
+          0.0939
+        ]
+      },
+      "audit": {
+        "status": "draft_imported",
+        "standard": "GB/T 12346-2021",
+        "source": "aicuc/3d-acupoint-atlas",
+        "verifiedAt": null
+      }
+    }
+  }
 }

@@ -1,0 +1,222 @@
+[
+  {
+    "code": "LU1",
+    "standard": "GB/T 12346-2021",
+    "name": "中府",
+    "pinyin": "Zhongfu",
+    "meridianCode": "LU",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["募穴-肺募", "交会穴-手足太阴"],
+    "gbLocation": "在胸部，横平第1肋间隙，锁骨下窝外侧，前正中线旁开6寸。",
+    "quickLocation": "正坐或仰卧，先取锁骨外端下方凹陷处的云门穴，直下1寸（平第1肋间隙），距前正中线6寸处取穴。",
+    "etymology": {
+      "meaning": "中，指中焦脾胃之气；府，聚也。手太阴肺经起于中焦，肺之经气汇聚于此，且为肺之募穴，故名中府。",
+      "origin": "《素问·离合真邪论》"
+    },
+    "clinical": {
+      "functions": "宣肺理气，止咳平喘，清泻肺热",
+      "indications": ["咳嗽", "气喘", "胸满痛", "肩背痛"],
+      "operation": "向外斜刺或平刺0.5～0.8寸，不可向内深刺，以免伤及肺脏引起气胸。"
+    }
+  },
+  {
+    "code": "LU2",
+    "standard": "GB/T 12346-2021",
+    "name": "云门",
+    "pinyin": "Yunmen",
+    "meridianCode": "LU",
+    "textbookScope": "extended",
+    "specialCategory": [],
+    "gbLocation": "在胸部，锁骨下窝凹陷中，肩胛骨喙突内缘，前正中线旁开6寸。",
+    "quickLocation": "正坐，手叉腰，锁骨外端下缘出现的三角形凹陷正中，前正中线旁开6寸处。",
+    "etymology": {
+      "meaning": "云，指肺气如雾露云烟；门，门户也。本穴为手太阴肺经脉气出于胸部的门户，故名云门。",
+      "origin": "《素问·水热穴论》"
+    },
+    "clinical": {
+      "functions": "宣肺止咳，化痰散结，通调气机",
+      "indications": ["咳嗽", "气喘", "胸痛", "肩背痛", "烦满"],
+      "operation": "向外斜刺0.5～0.8寸，切勿向内深刺，以免伤及肺脏导致气胸。"
+    }
+  },
+  {
+    "code": "LU3",
+    "standard": "GB/T 12346-2021",
+    "name": "天府",
+    "pinyin": "Tianfu",
+    "meridianCode": "LU",
+    "textbookScope": "extended",
+    "specialCategory": [],
+    "gbLocation": "在臂前区，腋前纹头下3寸，肱二头肌桡侧缘处。",
+    "quickLocation": "臂向前平举，俯头以鼻尖点触上臂内侧处；或于腋前纹头与尺泽连线上1/3与下2/3交点，肱二头肌桡侧沟中。",
+    "etymology": {
+      "meaning": "天，指上部；府，聚也。肺居上焦为五脏华盖，穴居上臂内侧，肺气聚会于此，故名天府。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "宣肺平喘，清热凉血，消肿散结",
+      "indications": ["气喘", "鼻衄", "瘿气", "上臂内侧痛"],
+      "operation": "直刺0.5～1寸。《针灸甲乙经》载禁灸，临床以针刺为主。"
+    }
+  },
+  {
+    "code": "LU4",
+    "standard": "GB/T 12346-2021",
+    "name": "侠白",
+    "pinyin": "Xiabai",
+    "meridianCode": "LU",
+    "textbookScope": "extended",
+    "specialCategory": [],
+    "gbLocation": "在臂前区，腋前纹头下4寸，肱二头肌桡侧缘处。",
+    "quickLocation": "于天府穴直下1寸，或尺泽穴直上5寸，肱二头肌桡侧沟中取穴。",
+    "etymology": {
+      "meaning": "侠，通夹，相傍之意；白，西方金之色，应肺。穴居上臂内侧，上臂下垂时夹于胸旁，故名侠白。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "宣肺理气，宽胸和胃，通络止痛",
+      "indications": ["咳嗽", "气喘", "干呕", "烦满", "上臂前外侧痛"],
+      "operation": "直刺0.5～1寸；可灸。"
+    }
+  },
+  {
+    "code": "LU5",
+    "standard": "GB/T 12346-2021",
+    "name": "尺泽",
+    "pinyin": "Chize",
+    "meridianCode": "LU",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-合穴"],
+    "gbLocation": "在肘前区，肘横纹上，肱二头肌腱桡侧缘凹陷中。",
+    "quickLocation": "微屈肘，掌心向上，在肘横纹中摸到粗大的肱二头肌腱，于其桡侧（拇指侧）凹陷处取穴。",
+    "etymology": {
+      "meaning": "尺，指前臂尺部；泽，沼泽水聚之处。本穴为手太阴肺经之合穴，属水，脉气至此如水入泽，故名尺泽。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "清宣肺气，泻火降逆，舒筋活络",
+      "indications": ["咳嗽", "气喘", "咳血", "咽喉肿痛", "急性吐泻", "小儿惊风", "肘臂挛痛"],
+      "operation": "直刺0.8～1.2寸，或点刺出血。"
+    }
+  },
+  {
+    "code": "LU6",
+    "standard": "GB/T 12346-2021",
+    "name": "孔最",
+    "pinyin": "Kongzui",
+    "meridianCode": "LU",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["郄穴"],
+    "gbLocation": "在前臂前区，腕掌侧远端横纹上7寸，尺泽（LU5）与太渊（LU9）连线上。",
+    "quickLocation": "伸臂仰掌，先定尺泽与太渊连线中点（腕横纹上6寸），再向上量1寸处取穴。",
+    "etymology": {
+      "meaning": "孔，孔隙；最，聚也、极也。本穴为手太阴肺经郄穴，气血深聚于此孔隙之最，善开腠理、止血平喘，故名孔最。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "清热止血，润肺理气，解表退热",
+      "indications": ["咳血", "咳嗽", "气喘", "咽喉肿痛", "热病无汗", "痔血", "肘臂挛痛"],
+      "operation": "直刺0.5～1寸；可灸。"
+    }
+  },
+  {
+    "code": "LU7",
+    "standard": "GB/T 12346-2021",
+    "name": "列缺",
+    "pinyin": "Lieque",
+    "meridianCode": "LU",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["络穴", "八脉交会穴-通任脉", "四总穴"],
+    "gbLocation": "在前臂，腕掌侧远端横纹上1.5寸，拇短伸肌腱与拇长展肌腱之间，桡骨茎突上方。",
+    "quickLocation": "两手虎口自然平直交叉，一手食指按在另一手桡骨茎突上，食指尖到达之凹陷处即是。",
+    "etymology": {
+      "meaning": "列，分解、裂开；缺，器破、缺口。本穴为肺经络穴，别走手阳明经，又位于桡骨茎突上方裂隙凹陷处，故名列缺。",
+      "origin": "《灵枢·经脉》"
+    },
+    "clinical": {
+      "functions": "宣肺解表，通经活络，通调任脉",
+      "indications": ["外感头痛", "项强", "咳嗽", "气喘", "咽喉肿痛", "口眼歪斜", "齿痛", "手腕痛"],
+      "operation": "向上或向下斜刺0.5～0.8寸；可灸。"
+    }
+  },
+  {
+    "code": "LU8",
+    "standard": "GB/T 12346-2021",
+    "name": "经渠",
+    "pinyin": "Jingqu",
+    "meridianCode": "LU",
+    "textbookScope": "extended",
+    "specialCategory": ["五输穴-经穴"],
+    "gbLocation": "在前臂前区，腕掌侧远端横纹上1寸，桡骨茎突与桡动脉之间。",
+    "quickLocation": "仰掌，腕掌侧远端横纹上1寸，桡骨茎突内侧缘与桡动脉搏动处之间的凹陷中。",
+    "etymology": {
+      "meaning": "经，动而不居、经穴；渠，水渠沟渎。本穴为手太阴肺经五输穴之经穴，经气流行经过如渠水通畅，故名经渠。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "宣肺降逆，止咳平喘",
+      "indications": ["咳嗽", "气喘", "胸痛", "咽喉肿痛", "手腕痛"],
+      "operation": "避开桡动脉，直刺0.3～0.5寸。《针灸大成》载禁灸。"
+    }
+  },
+  {
+    "code": "LU9",
+    "standard": "GB/T 12346-2021",
+    "name": "太渊",
+    "pinyin": "Taiyuan",
+    "meridianCode": "LU",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-输穴", "原穴", "八会穴-脉会"],
+    "gbLocation": "在腕前区，桡骨茎突与舟状骨之间，拇长展肌腱尺侧凹陷中。",
+    "quickLocation": "掌心向上，腕掌侧远端横纹桡侧，桡动脉搏动处。",
+    "etymology": {
+      "meaning": "太，大也；渊，深潭也。该穴为手太阴肺经原穴，脉气深大，故名。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "理肺止咳，通调血脉",
+      "indications": ["咳嗽", "气喘", "无脉症", "胸痛", "咽喉肿痛", "腕臂痛"],
+      "operation": "避开桡动脉，直刺0.3～0.5寸。"
+    }
+  },
+  {
+    "code": "LU10",
+    "standard": "GB/T 12346-2021",
+    "name": "鱼际",
+    "pinyin": "Yuji",
+    "meridianCode": "LU",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-荥穴"],
+    "gbLocation": "在手外侧，第1掌骨桡侧中点赤白肉际处。",
+    "quickLocation": "仰掌，在第1掌指关节后，第1掌骨中点，掌心与掌背交界线（赤白肉际）处取穴。",
+    "etymology": {
+      "meaning": "鱼，指拇指根部肌肉丰隆形如鱼腹；际，边际也。穴居大鱼际边缘赤白肉际处，故名鱼际。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "清肺泻火，利咽止咳，清宣郁热",
+      "indications": ["咳嗽", "咳血", "咽干", "咽喉肿痛", "失音", "小儿疳积", "掌中热"],
+      "operation": "直刺0.5～0.8寸；治小儿疳积可用割治法。"
+    }
+  },
+  {
+    "code": "LU11",
+    "standard": "GB/T 12346-2021",
+    "name": "少商",
+    "pinyin": "Shaoshang",
+    "meridianCode": "LU",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-井穴"],
+    "gbLocation": "在手指，拇指末节桡侧，指甲根角侧上方0.1寸（指寸）。",
+    "quickLocation": "伸拇指，沿拇指指甲底部与桡侧缘各作一直线，两线交点外上方约0.1寸处。",
+    "etymology": {
+      "meaning": "少，微小、初始；商，五音之一，属金应肺。本穴为手太阴肺经井穴，脉气初出微小而属金，故名少商。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "清肺利咽，开窍醒神，泻热消肿",
+      "indications": ["咽喉肿痛", "鼻衄", "高热", "昏迷", "癫狂", "指肿麻木"],
+      "operation": "浅刺0.1寸，或用三棱针点刺出血。"
+    }
+  }
+]

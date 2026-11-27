@@ -18,6 +18,10 @@ export type Vec3Tuple = [number, number, number];
 
 export type AuditStatus = 'draft_imported' | 'gb_verified';
 
+export type ViewPreset = 'front' | 'back' | 'left' | 'right' | 'reset';
+
+export type DisplaySide = 'right' | 'left' | 'both';
+
 export interface AcupointEtymology {
   meaning: string;
   origin: string;
@@ -70,7 +74,29 @@ export interface Coordinates3DFile {
 export interface MeridianMeta {
   code: MeridianCode;
   name: string;
+  shortName: string;
   englishName: string;
   color: string;
   acupointCount: number;
+  bilateral: boolean;
+  element: string;
+  shichen: string;
+  route: string;
+}
+
+export interface AtlasBundle {
+  meridians: MeridianMeta[];
+  acupoints: Acupoint[];
+  coordinates: Coordinates3DFile;
+}
+
+export interface ProjectedLabel {
+  code: string;
+  name: string;
+  meridianCode: MeridianCode;
+  color: string;
+  x: number;
+  y: number;
+  isSelected: boolean;
+  auditStatus: AuditStatus;
 }

@@ -17,8 +17,10 @@ and documentation:
 3. Upstream Third-Party Assets (`public/models/` and draft coordinates)
    The 3D human body model and initial draft acupoint coordinates are derived
    from `aicuc/3d-acupoint-atlas` (https://github.com/aicuc/3d-acupoint-atlas),
-   licensed under the MIT License.
+   licensed under the MIT License (with underlying adapted MakeHuman hm08 base
+   mesh dedicated to CC0 1.0 Universal).
    See: licenses/UPSTREAM-AICUC-MIT.txt
+        licenses/UPSTREAM-HUMAN-MODEL-CC0.txt
 
 When redistributing or adapting this project, you must preserve all applicable
 copyright notices and license texts above.
