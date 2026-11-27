@@ -9,7 +9,8 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
-    "validate:data": "node scripts/validate_data.mjs"
+    "validate:data": "node scripts/validate_data.mjs",
+    "import:upstream": "node scripts/import_upstream.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",
