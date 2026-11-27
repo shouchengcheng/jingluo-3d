@@ -1,0 +1,16 @@
+[
+  { "code": "LU", "name": "手太阴肺经", "englishName": "Lung Meridian of Hand-Taiyin", "color": "#38bdf8", "acupointCount": 11 },
+  { "code": "LI", "name": "手阳明大肠经", "englishName": "Large Intestine Meridian of Hand-Yangming", "color": "#fb923c", "acupointCount": 20 },
+  { "code": "ST", "name": "足阳明胃经", "englishName": "Stomach Meridian of Foot-Yangming", "color": "#facc15", "acupointCount": 45 },
+  { "code": "SP", "name": "足太阴脾经", "englishName": "Spleen Meridian of Foot-Taiyin", "color": "#f59e0b", "acupointCount": 21 },
+  { "code": "HT", "name": "手少阴心经", "englishName": "Heart Meridian of Hand-Shaoyin", "color": "#f43f5e", "acupointCount": 9 },
+  { "code": "SI", "name": "手太阳小肠经", "englishName": "Small Intestine Meridian of Hand-Taiyang", "color": "#fb7185", "acupointCount": 19 },
+  { "code": "BL", "name": "足太阳膀胱经", "englishName": "Bladder Meridian of Foot-Taiyang", "color": "#3b82f6", "acupointCount": 67 },
+  { "code": "KI", "name": "足少阴肾经", "englishName": "Kidney Meridian of Foot-Shaoyin", "color": "#6366f1", "acupointCount": 27 },
+  { "code": "PC", "name": "手厥阴心包经", "englishName": "Pericardium Meridian of Hand-Jueyin", "color": "#ec4899", "acupointCount": 9 },
+  { "code": "TE", "name": "手少阳三焦经", "englishName": "Triple Energizer Meridian of Hand-Shaoyang", "color": "#a855f7", "acupointCount": 23 },
+  { "code": "GB", "name": "足少阳胆经", "englishName": "Gallbladder Meridian of Foot-Shaoyang", "color": "#22c55e", "acupointCount": 44 },
+  { "code": "LR", "name": "足厥阴肝经", "englishName": "Liver Meridian of Foot-Jueyin", "color": "#10b981", "acupointCount": 14 },
+  { "code": "CV", "name": "任脉", "englishName": "Conception Vessel", "color": "#14b8a6", "acupointCount": 24 },
+  { "code": "GV", "name": "督脉", "englishName": "Governor Vessel", "color": "#ef4444", "acupointCount": 28 }
+]

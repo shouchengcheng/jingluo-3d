@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://jingluo-3d.local/schemas/acupoint.schema.json",
+  "title": "GB/T 12346-2021 Acupoint Dataset",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "code",
+      "standard",
+      "name",
+      "pinyin",
+      "meridianCode",
+      "textbookScope",
+      "specialCategory",
+      "gbLocation",
+      "quickLocation",
+      "etymology",
+      "clinical"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "code": {
+        "type": "string",
+        "pattern": "^(LU|LI|ST|SP|HT|SI|BL|KI|PC|TE|GB|LR|CV|GV)[0-9]{1,2}$"
+      },
+      "standard": {
+        "type": "string",
+        "const": "GB/T 12346-2021"
+      },
+      "name": {
+        "type": "string",
+        "minLength": 1
+      },
+      "pinyin": {
+        "type": "string",
+        "minLength": 1
+      },
+      "meridianCode": {
+        "type": "string",
+        "enum": ["LU", "LI", "ST", "SP", "HT", "SI", "BL", "KI", "PC", "TE", "GB", "LR", "CV", "GV"]
+      },
+      "textbookScope": {
+        "type": "string",
+        "enum": ["undergraduate_core", "extended"]
+      },
+      "specialCategory": {
+        "type": "array",
+        "items": { "type": "string" }
+      },
+      "gbLocation": {
+        "type": "string",
+        "minLength": 1
+      },
+      "quickLocation": {
+        "type": "string",
+        "minLength": 1
+      },
+      "etymology": {
+        "type": "object",
+        "required": ["meaning", "origin"],
+        "additionalProperties": false,
+        "properties": {
+          "meaning": { "type": "string", "minLength": 1 },
+          "origin": { "type": "string", "minLength": 1 }
+        }
+      },
+      "clinical": {
+        "type": "object",
+        "required": ["functions", "indications", "operation"],
+        "additionalProperties": false,
+        "properties": {
+          "functions": { "type": "string", "minLength": 1 },
+          "indications": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "operation": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

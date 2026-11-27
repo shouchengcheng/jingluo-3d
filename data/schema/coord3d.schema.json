@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://jingluo-3d.local/schemas/coord3d.schema.json",
+  "title": "3D Acupoint Coordinates and Audit Status",
+  "type": "object",
+  "required": ["modelId", "points"],
+  "additionalProperties": false,
+  "properties": {
+    "modelId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "points": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["position", "normal", "cameraPreset", "audit"],
+        "additionalProperties": false,
+        "properties": {
+          "position": {
+            "$ref": "#/definitions/vec3"
+          },
+          "normal": {
+            "$ref": "#/definitions/vec3"
+          },
+          "cameraPreset": {
+            "type": "object",
+            "required": ["position", "target"],
+            "additionalProperties": false,
+            "properties": {
+              "position": { "$ref": "#/definitions/vec3" },
+              "target": { "$ref": "#/definitions/vec3" }
+            }
+          },
+          "audit": {
+            "type": "object",
+            "required": ["status", "standard", "source", "verifiedAt"],
+            "additionalProperties": false,
+            "properties": {
+              "status": {
+                "type": "string",
+                "enum": ["draft_imported", "gb_verified"]
+              },
+              "standard": {
+                "type": "string",
+                "const": "GB/T 12346-2021"
+              },
+              "source": {
+                "type": "string",
+                "minLength": 1
+              },
+              "verifiedAt": {
+                "type": ["string", "null"],
+                "format": "date-time"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "vec3": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": { "type": "number" }
+    }
+  }
+}
