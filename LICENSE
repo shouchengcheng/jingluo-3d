@@ -1,0 +1,24 @@
+Dual License Notice — jingluo-3d
+================================
+
+This repository is distributed under a Dual License model separating software
+source code from curated Traditional Chinese Medicine (TCM) educational data
+and documentation:
+
+1. Source Code (`src/`, `scripts/`, build & CI configuration)
+   Licensed under the MIT License.
+   See: licenses/LICENSE-CODE-MIT
+
+2. Curated Data & Documentation (`data/`, `docs/`)
+   Licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+   International License (CC BY-NC-SA 4.0).
+   See: licenses/LICENSE-DATA-CC-BY-NC-SA-4.0
+
+3. Upstream Third-Party Assets (`public/models/` and draft coordinates)
+   The 3D human body model and initial draft acupoint coordinates are derived
+   from `aicuc/3d-acupoint-atlas` (https://github.com/aicuc/3d-acupoint-atlas),
+   licensed under the MIT License.
+   See: licenses/UPSTREAM-AICUC-MIT.txt
+
+When redistributing or adapting this project, you must preserve all applicable
+copyright notices and license texts above.
