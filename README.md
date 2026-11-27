@@ -68,24 +68,29 @@ jingluo-3d/
 ## 分期路线图
 
 * ✅ **Phase 1 (MVP)**：已完成 3D 引擎骨架、上游模型与初稿坐标导入、开发态 3D 复核工具及**手太阴肺经（11 穴）**完整教学闭环。
-* ✅ **Phase 2 (核心教学版)**：已覆盖本科《针灸学》十四经脉全部 **151 个核心三维穴位**（`LU / LI / ST / SP / HT / SI / BL / KI / PC / TE / GB / LR / CV / GV`）的 GB/T 12346-2021 标准文本录入、拼音首字母多维检索、随机抽考盲测与青玉/肤色/铜人材质主题切换（支持通过内置复核台持续校准 3D 坐标）。
-* ⏳ **Phase 3 (全量与增强版)**：补全十四经脉全部 361 穴三维打点与教学文本、推进 Draco 模型压缩及单文件离线 HTML 打包方案。
+* ✅ **Phase 2 (核心教学版)**：已覆盖本科《针灸学》十四经脉全部 **151 个核心三维穴位**（`LU / LI / ST / SP / HT / SI / BL / KI / PC / TE / GB / LR / CV / GV`）的 GB/T 12346-2021 标准文本录入、全量法向贴肤校验、连续贴皮循行路径（含膀胱经背部一/二侧线与大肠经人中对侧交会）、10 组经典临床配穴、骨度分寸三维体表骨性标志、双向教学盲测、GPU `InstancedMesh` 合批渲染与 URL 深链课堂分享。
+* ✅ **离线课堂单文件交付**：支持通过 `npm run build:offline` 一键构建内嵌 `.glb` 模型与全量国标数据的零依赖单文件 HTML（`dist-offline/jingluo-3d-offline.html`），双击 `file://` 即可在无外网多媒体教室运行。
+* ⏳ **Phase 3 (全量扩展)**：持续补全十四经脉剩余非重点穴位三维打点与 Draco 模型进一步体积压缩。
 
 ---
 
-## 本地开发与校验
+## 本地开发、测试与离线打包
 
 ```bash
 # 安装依赖
 npm install
 
-# 启动本地开发服务器（含 DEV 模式 3D 坐标复核工具）
+# 启动本地开发服务器（含 DEV 模式 3D 坐标一键写入复核台）
 npm run dev
 
-# 提交前完整自检
+# 提交前完整自检（类型检查 + JSON Schema/三维法向几何校验 + 单元测试 + 生产构建）
 npm run typecheck
-node scripts/validate_data.mjs
+npm run validate:data
+npm test
 npm run build
+
+# 构建无网络教室单文件离线版（输出至 dist-offline/jingluo-3d-offline.html）
+npm run build:offline
 ```
 
 ---

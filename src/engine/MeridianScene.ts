@@ -59,6 +59,7 @@ export const REGION_PRESETS: Record<
 };
 
 interface MarkerInstance {
+  instanceIndex: number;
   code: string;
   name: string;
   meridianCode: MeridianCode;
@@ -70,8 +71,20 @@ interface MarkerInstance {
   auditStatus: AuditStatus;
   surfacePos: THREE.Vector3;
   worldNormal: THREE.Vector3;
-  visualMesh: THREE.Mesh<THREE.BufferGeometry, THREE.MeshBasicMaterial>;
+  worldPos: THREE.Vector3;
+  visible: boolean;
   pickVisible: boolean;
+}
+
+interface ArrowInstance {
+  instanceIndex: number;
+  meridianCode: MeridianCode;
+  bilateral: boolean;
+  side: 1 | -1;
+  position: THREE.Vector3;
+  quaternion: THREE.Quaternion;
+  color: THREE.Color;
+  visible: boolean;
 }
 
 interface MeridianTubeInstance {
@@ -79,8 +92,6 @@ interface MeridianTubeInstance {
   bilateral: boolean;
   side: 1 | -1;
   mesh: THREE.Mesh<THREE.TubeGeometry, THREE.MeshBasicMaterial>;
-  arrows: THREE.Mesh<THREE.ConeGeometry, THREE.MeshBasicMaterial>[];
-  arrowMat: THREE.MeshBasicMaterial;
   curve: THREE.CatmullRomCurve3;
   baseColor: THREE.Color;
   highlightColor: THREE.Color;
@@ -155,12 +166,18 @@ export class MeridianScene {
   private pedestalInner!: THREE.Mesh<THREE.RingGeometry, THREE.MeshBasicMaterial>;
 
   private readonly sharedVisualSphere = new THREE.SphereGeometry(0.0042, 16, 12);
+  private readonly sharedMarkerMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
   /** Dark back-face halo so markers read clearly on every body material (UI audit 2.6) */
   private readonly sharedOutlineMaterial = new THREE.MeshBasicMaterial({
     color: 0x16110c,
     side: THREE.BackSide,
   });
   private readonly sharedArrowCone = new THREE.ConeGeometry(0.0021, 0.0062, 10);
+  private readonly sharedArrowMaterial = new THREE.MeshBasicMaterial({
+    color: 0xffffff,
+    transparent: true,
+    opacity: 0.9,
+  });
   private readonly sharedLandmarkGeo = new THREE.OctahedronGeometry(0.0052, 0);
   private readonly sharedLandmarkMat = new THREE.MeshBasicMaterial({
     color: 0xf1c35a,
@@ -174,6 +191,10 @@ export class MeridianScene {
   private wireframeMeshes: THREE.Mesh<THREE.BufferGeometry, THREE.MeshBasicMaterial>[] = [];
 
   private markers: MarkerInstance[] = [];
+  private markerInstancedMesh: THREE.InstancedMesh<THREE.BufferGeometry, THREE.MeshBasicMaterial> | null = null;
+  private outlineInstancedMesh: THREE.InstancedMesh<THREE.BufferGeometry, THREE.MeshBasicMaterial> | null = null;
+  private arrows: ArrowInstance[] = [];
+  private arrowInstancedMesh: THREE.InstancedMesh<THREE.ConeGeometry, THREE.MeshBasicMaterial> | null = null;
   private tubes: MeridianTubeInstance[] = [];
   private qiParticles: QiParticleInstance[] = [];
 
@@ -195,6 +216,10 @@ export class MeridianScene {
   private readonly tmpProj = new THREE.Vector3();
   private readonly tmpToCam = new THREE.Vector3();
   private readonly tmpColor = new THREE.Color();
+  private readonly tmpScale = new THREE.Vector3();
+  private readonly tmpMatrix = new THREE.Matrix4();
+  private readonly zeroMatrix = new THREE.Matrix4().makeScale(0, 0, 0);
+  private readonly identityQuat = new THREE.Quaternion();
   private readonly yAxis = new THREE.Vector3(0, 1, 0);
   private readonly zAxis = new THREE.Vector3(0, 0, 1);
 
@@ -255,7 +280,7 @@ export class MeridianScene {
           code: m.code,
           side: m.side,
           bilateral: m.bilateral,
-          position: m.visualMesh.position,
+          position: m.worldPos,
           normal: m.worldNormal,
           visible: m.pickVisible,
         })),
@@ -662,17 +687,29 @@ export class MeridianScene {
   }
 
   private clearDynamicGroups(): void {
-    for (const m of this.markers) {
-      m.visualMesh.material.dispose();
-      this.markerGroup.remove(m.visualMesh);
+    if (this.markerInstancedMesh) {
+      this.markerGroup.remove(this.markerInstancedMesh);
+      this.markerInstancedMesh.dispose();
+      this.markerInstancedMesh = null;
+    }
+    if (this.outlineInstancedMesh) {
+      this.markerGroup.remove(this.outlineInstancedMesh);
+      this.outlineInstancedMesh.dispose();
+      this.outlineInstancedMesh = null;
     }
     this.markers = [];
+
+    if (this.arrowInstancedMesh) {
+      this.tubeGroup.remove(this.arrowInstancedMesh);
+      this.arrowInstancedMesh.dispose();
+      this.arrowInstancedMesh = null;
+    }
+    this.arrows = [];
 
     for (const t of this.tubes) {
       t.mesh.geometry.dispose();
       t.mesh.material.dispose();
-      t.arrowMat.dispose();
-      this.tubeGroup.remove(t.mesh, ...t.arrows);
+      this.tubeGroup.remove(t.mesh);
     }
     this.tubes = [];
 
@@ -710,7 +747,7 @@ export class MeridianScene {
       endpointCodes.add(list[list.length - 1]);
     }
 
-    // 1. Build acupoint markers with 0.0015m normal offset + dark outline halo
+    // 1. Collect acupoint marker descriptors, then back them with 2 GPU InstancedMeshes (Audit 4.1)
     for (const [code, coord] of Object.entries(state.coordinates.points) as [
       string,
       AcupointCoordinate3D,
@@ -736,20 +773,10 @@ export class MeridianScene {
           coord.normal[2],
         ).normalize();
 
-        const markerWorldPos = surfacePos
-          .clone()
-          .addScaledVector(worldNormal, MARKER_NORMAL_OFFSET);
-
-        const visualMat = new THREE.MeshBasicMaterial({ color: meta.color });
-        const visualMesh = new THREE.Mesh(this.sharedVisualSphere, visualMat);
-        visualMesh.position.copy(markerWorldPos);
-        const outline = new THREE.Mesh(this.sharedVisualSphere, this.sharedOutlineMaterial);
-        outline.scale.setScalar(1.55);
-        visualMesh.add(outline);
-
-        this.markerGroup.add(visualMesh);
+        const worldPos = surfacePos.clone().addScaledVector(worldNormal, MARKER_NORMAL_OFFSET);
 
         this.markers.push({
+          instanceIndex: this.markers.length,
           code,
           name: acupoint?.name ?? code,
           meridianCode: prefix,
@@ -761,13 +788,38 @@ export class MeridianScene {
           auditStatus: coord.audit.status,
           surfacePos,
           worldNormal,
-          visualMesh,
+          worldPos,
+          visible: true,
           pickVisible: true,
         });
       }
     }
 
-    // 2. Build continuous skin-hugging Meridian TubeGeometry per branch from meridianPaths
+    if (this.markers.length > 0) {
+      this.markerInstancedMesh = new THREE.InstancedMesh(
+        this.sharedVisualSphere,
+        this.sharedMarkerMaterial,
+        this.markers.length,
+      );
+      this.markerInstancedMesh.frustumCulled = false;
+
+      this.outlineInstancedMesh = new THREE.InstancedMesh(
+        this.sharedVisualSphere,
+        this.sharedOutlineMaterial,
+        this.markers.length,
+      );
+      this.outlineInstancedMesh.frustumCulled = false;
+
+      for (const m of this.markers) {
+        this.tmpMatrix.makeTranslation(m.worldPos.x, m.worldPos.y, m.worldPos.z);
+        this.markerInstancedMesh.setMatrixAt(m.instanceIndex, this.tmpMatrix);
+        this.outlineInstancedMesh.setMatrixAt(m.instanceIndex, this.tmpMatrix);
+        this.markerInstancedMesh.setColorAt(m.instanceIndex, this.tmpColor.set(m.meridianColor));
+      }
+      this.markerGroup.add(this.outlineInstancedMesh, this.markerInstancedMesh);
+    }
+
+    // 2. Build continuous skin-hugging Meridian TubeGeometry per branch + collect flow arrows
     for (const meta of state.meridians) {
       const branches = state.meridianPaths?.meridians?.[meta.code] ?? [];
       const baseColor = new THREE.Color(meta.color);
@@ -805,21 +857,23 @@ export class MeridianScene {
           const tubeMesh = new THREE.Mesh(tubeGeo, tubeMat);
           this.tubeGroup.add(tubeMesh);
 
-          // Place directional arrowheads every ~16 cm along the continuous branch
           const arrowCount = Math.max(1, Math.min(8, Math.round(arcLength / 0.16)));
-          const arrowMat = new THREE.MeshBasicMaterial({
-            color: highlightColor,
-            transparent: true,
-            opacity: 0.9,
-          });
-          const arrows: THREE.Mesh<THREE.ConeGeometry, THREE.MeshBasicMaterial>[] = [];
           for (let a = 0; a < arrowCount; a++) {
             const u = (a + 0.5) / arrowCount;
-            const arrow = new THREE.Mesh(this.sharedArrowCone, arrowMat);
-            arrow.position.copy(curve.getPointAt(u));
-            arrow.quaternion.setFromUnitVectors(this.yAxis, curve.getTangentAt(u).normalize());
-            this.tubeGroup.add(arrow);
-            arrows.push(arrow);
+            const quat = new THREE.Quaternion().setFromUnitVectors(
+              this.yAxis,
+              curve.getTangentAt(u).normalize(),
+            );
+            this.arrows.push({
+              instanceIndex: this.arrows.length,
+              meridianCode: meta.code,
+              bilateral: br.bilateral,
+              side,
+              position: curve.getPointAt(u),
+              quaternion: quat,
+              color: highlightColor.clone(),
+              visible: true,
+            });
           }
 
           this.tubes.push({
@@ -827,8 +881,6 @@ export class MeridianScene {
             bilateral: br.bilateral,
             side,
             mesh: tubeMesh,
-            arrows,
-            arrowMat,
             curve,
             baseColor,
             highlightColor,
@@ -867,6 +919,19 @@ export class MeridianScene {
       }
     }
 
+    if (this.arrows.length > 0) {
+      this.arrowInstancedMesh = new THREE.InstancedMesh(
+        this.sharedArrowCone,
+        this.sharedArrowMaterial,
+        this.arrows.length,
+      );
+      this.arrowInstancedMesh.frustumCulled = false;
+      for (const arr of this.arrows) {
+        this.arrowInstancedMesh.setColorAt(arr.instanceIndex, arr.color);
+      }
+      this.tubeGroup.add(this.arrowInstancedMesh);
+    }
+
     this.syncVisibilityAndColors(state);
     this.rebuildQuizFeedback(state);
   }
@@ -894,7 +959,7 @@ export class MeridianScene {
         : matchesAcupointQuery(acupoint, m.code, state.searchQuery, state.specialFilter);
 
       const isVisible = meridianVisible && sideVisible && filterVisible && !locatePending;
-      m.visualMesh.visible = isVisible;
+      m.visible = isVisible;
       m.pickVisible = isVisible;
     }
 
@@ -912,8 +977,13 @@ export class MeridianScene {
         t.mesh.material.color.copy(isActiveMeridian ? t.highlightColor : t.baseColor);
         t.mesh.material.opacity = filtering ? 0.18 : isActiveMeridian ? 0.68 : 0.36;
       }
-      const arrowVis = t.mesh.visible && !filtering && (fewMeridians || isActiveMeridian);
-      for (const arr of t.arrows) arr.visible = arrowVis;
+    }
+
+    for (const arr of this.arrows) {
+      const meridianVisible = visibleSet.has(arr.meridianCode);
+      const sideVisible = this.isSideAllowed(arr.bilateral, arr.side, state);
+      const isActiveMeridian = arr.meridianCode === selectedPrefix;
+      arr.visible = meridianVisible && sideVisible && !filtering && (fewMeridians || isActiveMeridian);
     }
 
     for (const p of this.qiParticles) {
@@ -1003,17 +1073,17 @@ export class MeridianScene {
     });
 
     for (const m of orderedMarkers) {
-      if (!m.visualMesh.visible) continue;
+      if (!m.visible) continue;
       if (m.bilateral && m.side !== state.activeSide) continue;
 
-      this.tmpProj.copy(m.visualMesh.position).project(this.camera);
+      this.tmpProj.copy(m.worldPos).project(this.camera);
       if (this.tmpProj.z < -1 || this.tmpProj.z > 1) continue;
 
       const sx = (this.tmpProj.x * 0.5 + 0.5) * width;
       const sy = (-this.tmpProj.y * 0.5 + 0.5) * height;
       if (sx < 24 || sx > width - 24 || sy < 44 || sy > height - 44) continue;
 
-      this.tmpToCam.copy(this.camera.position).sub(m.visualMesh.position);
+      this.tmpToCam.copy(this.camera.position).sub(m.worldPos);
       if (this.tmpToCam.dot(m.worldNormal) < 0.05) continue;
 
       const isSelected = m.code === state.selectedAcupointId;
@@ -1106,7 +1176,6 @@ export class MeridianScene {
     if (this.disposed) return;
     this.rafId = window.requestAnimationFrame(this.animate);
 
-    // Audit 4.1: Pause WebGL work completely when browser tab is hidden
     if (typeof document !== 'undefined' && document.hidden) return;
 
     const state = useAtlasStore.getState();
@@ -1118,7 +1187,6 @@ export class MeridianScene {
       this.appliedBottomInset !== state.viewportBottomInset ||
       nowMs - this.lastWakeMs < 1100;
 
-    // Power-saving idle throttle (~10 FPS) when flow animation is off and user is not interacting
     if (!isActive && nowMs - this.lastRenderMs < 100) {
       return;
     }
@@ -1138,57 +1206,75 @@ export class MeridianScene {
       state.selectedAcupointId && !(state.isQuizMode && state.quizKind === 'locate' && !state.quizQuestion?.answer),
     );
 
-    for (const m of this.markers) {
-      if (!m.visualMesh.visible) continue;
-      const isSameCode = m.code === state.selectedAcupointId;
-      const isSelected = isSameCode && (!m.bilateral || m.side === state.activeSide);
-      const isMirror = isSameCode && !isSelected;
-      const isRxPartner = Boolean(rxSet?.has(m.code)) && !isSelected;
-      const isHovered = m.code === this.hoveredCode || m.code === listHover;
-      if (isSelected) selectedMarker = m;
+    if (this.markerInstancedMesh && this.outlineInstancedMesh) {
+      for (const m of this.markers) {
+        if (!m.visible) {
+          this.markerInstancedMesh.setMatrixAt(m.instanceIndex, this.zeroMatrix);
+          this.outlineInstancedMesh.setMatrixAt(m.instanceIndex, this.zeroMatrix);
+          continue;
+        }
+        const isSameCode = m.code === state.selectedAcupointId;
+        const isSelected = isSameCode && (!m.bilateral || m.side === state.activeSide);
+        const isMirror = isSameCode && !isSelected;
+        const isRxPartner = Boolean(rxSet?.has(m.code)) && !isSelected;
+        const isHovered = m.code === this.hoveredCode || m.code === listHover;
+        if (isSelected) selectedMarker = m;
 
-      const camDist = this.camera.position.distanceTo(m.visualMesh.position);
-      const distScale = THREE.MathUtils.clamp(camDist / 2.35, 0.28, 1.0);
+        const camDist = this.camera.position.distanceTo(m.worldPos);
+        const distScale = THREE.MathUtils.clamp(camDist / 2.35, 0.28, 1.0);
 
-      const stateScale = isSelected
-        ? 1.16 + 0.08 * Math.sin(nowMs * 0.006)
-        : m.code === listHover
-          ? 1.3 + 0.15 * Math.sin(nowMs * 0.012)
-          : isHovered
-            ? 1.22
-            : isRxPartner
-              ? 1.18 + 0.05 * Math.sin(nowMs * 0.005)
-              : isMirror
-                ? 1.08
-                : m.isEndpoint
-                  ? 1.15
-                  : 1.0;
-      m.visualMesh.scale.setScalar(distScale * stateScale);
+        const stateScale = isSelected
+          ? 1.16 + 0.08 * Math.sin(nowMs * 0.006)
+          : m.code === listHover
+            ? 1.3 + 0.15 * Math.sin(nowMs * 0.012)
+            : isHovered
+              ? 1.22
+              : isRxPartner
+                ? 1.18 + 0.05 * Math.sin(nowMs * 0.005)
+                : isMirror
+                  ? 1.08
+                  : m.isEndpoint
+                    ? 1.15
+                    : 1.0;
 
-      if (isSelected) {
-        m.visualMesh.material.color.setHex(SELECTED_COLOR);
-      } else if (isHovered) {
-        m.visualMesh.material.color.setHex(HOVER_COLOR);
-      } else if (import.meta.env.DEV && state.auditMode) {
-        m.visualMesh.material.color.setHex(
-          m.auditStatus === 'gb_verified' ? 0x10b981 : 0xf59e0b,
-        );
-      } else if (isRxPartner) {
-        m.visualMesh.material.color.setHex(PRESCRIPTION_COLOR);
-      } else if (isMirror) {
-        this.tmpColor.set(m.meridianColor).lerp(new THREE.Color(SELECTED_COLOR), 0.45);
-        m.visualMesh.material.color.copy(this.tmpColor);
-      } else {
-        m.visualMesh.material.color.set(m.meridianColor);
+        const s = distScale * stateScale;
+        this.tmpScale.setScalar(s);
+        this.tmpMatrix.compose(m.worldPos, this.identityQuat, this.tmpScale);
+        this.markerInstancedMesh.setMatrixAt(m.instanceIndex, this.tmpMatrix);
+
+        this.tmpScale.setScalar(s * 1.55);
+        this.tmpMatrix.compose(m.worldPos, this.identityQuat, this.tmpScale);
+        this.outlineInstancedMesh.setMatrixAt(m.instanceIndex, this.tmpMatrix);
+
+        if (isSelected) {
+          this.tmpColor.setHex(SELECTED_COLOR);
+        } else if (isHovered) {
+          this.tmpColor.setHex(HOVER_COLOR);
+        } else if (import.meta.env.DEV && state.auditMode) {
+          this.tmpColor.setHex(m.auditStatus === 'gb_verified' ? 0x10b981 : 0xf59e0b);
+        } else if (isRxPartner) {
+          this.tmpColor.setHex(PRESCRIPTION_COLOR);
+        } else if (isMirror) {
+          this.tmpColor.set(m.meridianColor).lerp(new THREE.Color(SELECTED_COLOR), 0.45);
+        } else {
+          this.tmpColor.set(m.meridianColor);
+        }
+        this.markerInstancedMesh.setColorAt(m.instanceIndex, this.tmpColor);
+      }
+
+      this.markerInstancedMesh.instanceMatrix.needsUpdate = true;
+      this.outlineInstancedMesh.instanceMatrix.needsUpdate = true;
+      if (this.markerInstancedMesh.instanceColor) {
+        this.markerInstancedMesh.instanceColor.needsUpdate = true;
       }
     }
 
-    if (selectedMarker && selectedMarker.visualMesh.visible && isSelectedVisible) {
-      const selDist = this.camera.position.distanceTo(selectedMarker.visualMesh.position);
+    if (selectedMarker && selectedMarker.visible && isSelectedVisible) {
+      const selDist = this.camera.position.distanceTo(selectedMarker.worldPos);
       const reticleDistScale = THREE.MathUtils.clamp(selDist / 2.35, 0.32, 1.0);
 
       this.reticleGroup.visible = true;
-      this.reticleGroup.position.copy(selectedMarker.visualMesh.position);
+      this.reticleGroup.position.copy(selectedMarker.worldPos);
       this.reticleGroup.quaternion.setFromUnitVectors(this.zAxis, selectedMarker.worldNormal);
       this.reticleGroup.scale.setScalar(reticleDistScale);
 
@@ -1201,18 +1287,23 @@ export class MeridianScene {
       this.reticleGroup.visible = false;
     }
 
-    for (const t of this.tubes) {
-      for (const arr of t.arrows) {
-        if (!arr.visible) continue;
+    if (this.arrowInstancedMesh) {
+      for (const arr of this.arrows) {
+        if (!arr.visible) {
+          this.arrowInstancedMesh.setMatrixAt(arr.instanceIndex, this.zeroMatrix);
+          continue;
+        }
         const aDist = this.camera.position.distanceTo(arr.position);
-        arr.scale.setScalar(THREE.MathUtils.clamp(aDist / 2.35, 0.3, 1.0));
+        this.tmpScale.setScalar(THREE.MathUtils.clamp(aDist / 2.35, 0.3, 1.0));
+        this.tmpMatrix.compose(arr.position, arr.quaternion, this.tmpScale);
+        this.arrowInstancedMesh.setMatrixAt(arr.instanceIndex, this.tmpMatrix);
       }
+      this.arrowInstancedMesh.instanceMatrix.needsUpdate = true;
     }
 
     if (state.flowAnimation) {
       for (const qp of this.qiParticles) {
         if (!qp.sprite.visible) continue;
-        // Uniform physical speed (~0.13 m/s) along branches of any length
         const speed = 0.00013 / Math.max(qp.arcLength, 0.18);
         const t = (nowMs * speed + qp.offset) % 1;
         qp.sprite.position.copy(qp.curve.getPointAt(t));
@@ -1261,8 +1352,10 @@ export class MeridianScene {
     this.clearDynamicGroups();
     this.rebuildQuizFeedback({ ...useAtlasStore.getState(), isQuizMode: false });
     this.sharedVisualSphere.dispose();
+    this.sharedMarkerMaterial.dispose();
     this.sharedOutlineMaterial.dispose();
     this.sharedArrowCone.dispose();
+    this.sharedArrowMaterial.dispose();
     this.sharedLandmarkGeo.dispose();
     this.sharedLandmarkMat.dispose();
     this.glowTexture?.dispose();

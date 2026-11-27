@@ -35,8 +35,14 @@ jobs:
       - name: TypeScript typecheck
         run: npm run typecheck
 
-      - name: Validate TCM data schemas
-        run: node scripts/validate_data.mjs
+      - name: Validate TCM data schemas & 3D geometry
+        run: npm run validate:data
+
+      - name: Run automated unit & integrity tests
+        run: npm test
+
+      - name: Build single-file offline classroom HTML
+        run: npm run build:offline
 
       - name: Build production bundle
         env:
