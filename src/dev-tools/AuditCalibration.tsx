@@ -17,10 +17,13 @@ export function AuditCalibration() {
   const setSurfacePickArmed = useAtlasStore((s) => s.setSurfacePickArmed);
   const captureCurrentCamera = useAtlasStore((s) => s.captureCurrentCameraForSelected);
   const setCoordinateVerified = useAtlasStore((s) => s.setCoordinateVerified);
+  const verifyAndAdvanceNext = useAtlasStore((s) => s.verifyAndAdvanceNext);
+  const markCoordinatesSaved = useAtlasStore((s) => s.markCoordinatesSaved);
   const resetCoordinate = useAtlasStore((s) => s.resetCoordinate);
   const resetAllCoordinates = useAtlasStore((s) => s.resetAllCoordinates);
 
-  const [toast, setToast] = useState<string | null>(null);
+  const [toast, setToast] = useState<{ msg: string; isError?: boolean } | null>(null);
+  const [saving, setSaving] = useState(false);
 
   const stats = useMemo(() => {
     if (!coordinates) return { total: 0, verified: 0, luVerified: 0, luTotal: 0 };
@@ -47,9 +50,37 @@ export function AuditCalibration() {
 
   const selectedCoord = selectedId ? coordinates?.points[selectedId] : undefined;
 
-  const notify = (msg: string) => {
-    setToast(msg);
-    window.setTimeout(() => setToast(null), 2400);
+  const notify = (msg: string, isError = false) => {
+    setToast({ msg, isError });
+    window.setTimeout(() => setToast(null), 2800);
+  };
+
+  const handleSaveToRepo = async () => {
+    if (!coordinates || saving) return;
+    setSaving(true);
+    try {
+      const res = await fetch('/__dev/save-coordinates', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(coordinates),
+      });
+      const data = (await res.json()) as {
+        ok?: boolean;
+        verified?: number;
+        total?: number;
+        error?: string;
+      };
+      if (!res.ok || !data.ok) {
+        notify(data.error ?? `保存失败 (HTTP ${res.status})`, true);
+        return;
+      }
+      markCoordinatesSaved();
+      notify(`已写入 data/coordinates-3d.json（已核 ${data.verified}/${data.total}）`);
+    } catch (err) {
+      notify(`请求失败: ${err instanceof Error ? err.message : String(err)}`, true);
+    } finally {
+      setSaving(false);
+    }
   };
 
   const handleExportJson = () => {
@@ -62,14 +93,13 @@ export function AuditCalibration() {
     a.download = 'coordinates-3d.json';
     a.click();
     URL.revokeObjectURL(url);
-    notify('已下载更新后的 coordinates-3d.json');
+    notify('已下载 coordinates-3d.json');
   };
 
   const handleCopyJson = async () => {
     if (!coordinates) return;
-    const jsonText = `${JSON.stringify(coordinates, null, 2)}\n`;
-    await navigator.clipboard.writeText(jsonText);
-    notify('完整 coordinates-3d.json 已复制到剪贴板');
+    await navigator.clipboard.writeText(`${JSON.stringify(coordinates, null, 2)}\n`);
+    notify('已复制完整 JSON 至剪贴板');
   };
 
   if (!auditMode) {
@@ -87,7 +117,7 @@ export function AuditCalibration() {
   const isVerified = selectedCoord?.audit.status === 'gb_verified';
 
   return (
-    <div className="glass fixed top-14 right-4 z-40 w-[340px] max-w-[calc(100vw-2rem)] rounded-xl p-4 text-xs text-fg">
+    <div className="glass fixed top-14 right-4 z-40 w-[356px] max-w-[calc(100vw-2rem)] rounded-xl p-4 text-xs text-fg">
       <div className="flex items-center justify-between border-b border-line pb-2.5">
         <div className="flex items-center gap-2">
           <span className="h-2 w-2 rounded-full bg-gold" />
@@ -103,14 +133,13 @@ export function AuditCalibration() {
       </div>
 
       {/* Legend & Stats */}
-      <div className="mt-2.5 flex items-center justify-between text-[11px] text-slate-400">
+      <div className="mt-2.5 flex items-center justify-between text-[11px] text-fg-muted">
         <span className="flex items-center gap-1.5">
-          <i className="inline-block h-2 w-2 rounded-full bg-amber-500" /> 初稿待核 (
+          <i className="inline-block h-2 w-2 rounded-full bg-warn" /> 初稿待核 (
           {stats.total - stats.verified})
         </span>
         <span className="flex items-center gap-1.5">
-          <i className="inline-block h-2 w-2 rounded-full bg-emerald-500" /> 国标已核 (
-          {stats.verified})
+          <i className="inline-block h-2 w-2 rounded-full bg-ok" /> 国标已核 ({stats.verified})
         </span>
         <span>
           肺经 {stats.luVerified}/{stats.luTotal}
@@ -118,27 +147,27 @@ export function AuditCalibration() {
       </div>
 
       {/* Current Selected Point Calibration */}
-      <div className="mt-3 space-y-2.5 rounded-lg border border-slate-800 bg-slate-900/80 p-3">
+      <div className="mt-3 space-y-2.5 rounded-lg border border-line bg-surface-2/75 p-3">
         <div className="flex items-center justify-between">
-          <span className="font-semibold text-white">
-            当前选中：{selectedId ?? '未选择'}{' '}
+          <span className="font-semibold text-fg">
+            当前：{selectedId ?? '未选择'}{' '}
             {selectedAcupoint ? `· ${selectedAcupoint.name}` : ''}
           </span>
           {selectedId && dirtyCodes.includes(selectedId) && (
-            <span className="rounded bg-sky-500/20 px-1.5 py-0.5 text-[10px] text-sky-300">
-              已修改
+            <span className="rounded bg-accent/20 px-1.5 py-0.5 text-[10px] font-medium text-accent-fg">
+              未保存
             </span>
           )}
         </div>
 
         {selectedAcupoint && (
-          <p className="line-clamp-2 text-[11px] leading-relaxed text-slate-400">
+          <p className="line-clamp-2 text-[11px] leading-relaxed text-fg-muted">
             国标：{selectedAcupoint.gbLocation}
           </p>
         )}
 
         {selectedCoord && (
-          <div className="grid grid-cols-2 gap-1.5 rounded bg-slate-950/90 p-2 font-mono text-[10px] text-slate-300">
+          <div className="grid grid-cols-2 gap-1.5 rounded bg-surface p-2 font-mono text-[10px] text-fg-muted">
             <div>pos: [{selectedCoord.position.map((n) => n.toFixed(3)).join(', ')}]</div>
             <div>nrm: [{selectedCoord.normal.map((n) => n.toFixed(2)).join(', ')}]</div>
           </div>
@@ -151,12 +180,12 @@ export function AuditCalibration() {
             onClick={() => setSurfacePickArmed(!surfacePickArmed)}
             className={`col-span-2 rounded-lg border px-3 py-2 font-medium transition ${
               surfacePickArmed
-                ? 'border-rose-400 bg-rose-500/25 text-rose-200'
-                : 'border-amber-500/50 bg-amber-500/15 text-amber-200 hover:bg-amber-500/25'
+                ? 'border-danger bg-danger/20 text-danger-fg'
+                : 'border-gold/55 bg-gold/15 text-gold-fg hover:bg-gold/25'
             }`}
           >
             {surfacePickArmed
-              ? '● 表面拾取已激活：请直接点击 3D 人体模型新位置'
+              ? '● 表面拾取中：直接点击人体模型标准解剖位置'
               : '开启 3D 表面重打点（捕获坐标 + 法线）'}
           </button>
 
@@ -168,7 +197,7 @@ export function AuditCalibration() {
                 notify(`已更新 ${selectedId} 最佳相机视角`);
               }
             }}
-            className="rounded-lg border border-slate-700 bg-slate-800 px-2.5 py-1.5 text-slate-200 hover:bg-slate-700 disabled:opacity-40"
+            className="rounded-lg border border-line-strong bg-surface px-2.5 py-1.5 text-fg hover:bg-surface-3 disabled:opacity-40"
           >
             保存当前视角
           </button>
@@ -187,11 +216,24 @@ export function AuditCalibration() {
             }}
             className={`rounded-lg border px-2.5 py-1.5 font-medium transition disabled:opacity-40 ${
               isVerified
-                ? 'border-emerald-500/50 bg-emerald-500/20 text-emerald-200'
-                : 'border-slate-700 bg-slate-800 text-slate-200 hover:border-emerald-500/50'
+                ? 'border-ok/60 bg-ok/20 text-ok-fg'
+                : 'border-line-strong bg-surface text-fg hover:border-ok/60'
             }`}
           >
             {isVerified ? '✓ 已核 (点击撤销)' : '标记为国标已核'}
+          </button>
+
+          <button
+            type="button"
+            disabled={!selectedId || !selectedCoord}
+            onClick={() => {
+              const prev = selectedId;
+              const next = verifyAndAdvanceNext();
+              notify(next ? `${prev} 已核，已跳至下一待核穴 ${next}` : `${prev} 已核，全部复核完成！`);
+            }}
+            className="col-span-2 rounded-lg border border-azure/55 bg-azure/18 px-3 py-1.5 font-semibold text-azure-fg hover:bg-azure/28 disabled:opacity-40"
+          >
+            ✓ 核准此穴并跳至下一待核穴 →
           </button>
         </div>
 
@@ -202,46 +244,63 @@ export function AuditCalibration() {
               resetCoordinate(selectedId);
               notify(`已还原 ${selectedId} 初始坐标`);
             }}
-            className="w-full text-center text-[11px] text-slate-400 hover:text-slate-200"
+            className="w-full text-center text-[11px] text-fg-subtle hover:text-fg"
           >
-            还原此穴本次修改
+            还原此穴未落盘改动
           </button>
         )}
       </div>
 
-      {/* Export Bar */}
-      <div className="mt-3 flex items-center justify-between gap-2">
+      {/* Persistence & Export Bar */}
+      <div className="mt-3 space-y-1.5">
         <button
           type="button"
-          onClick={handleExportJson}
-          className="flex-1 rounded-lg bg-sky-500 px-3 py-1.5 font-semibold text-slate-950 hover:bg-sky-400"
+          disabled={saving}
+          onClick={() => void handleSaveToRepo()}
+          className="w-full rounded-lg bg-accent px-3 py-2 font-semibold text-white transition hover:opacity-90 disabled:opacity-50"
         >
-          导出 JSON ({dirtyCodes.length} 处改动)
+          {saving
+            ? '正在校验并写入仓库...'
+            : `写入仓库并校验 (${dirtyCodes.length} 处未保存改动)`}
         </button>
-        <button
-          type="button"
-          onClick={() => void handleCopyJson()}
-          className="rounded-lg border border-slate-700 bg-slate-900 px-2.5 py-1.5 text-slate-200 hover:bg-slate-800"
-        >
-          复制
-        </button>
-        {dirtyCodes.length > 0 && (
+
+        <div className="flex items-center justify-between gap-2">
           <button
             type="button"
-            onClick={() => {
-              resetAllCoordinates();
-              notify('已重置全部未导出改动');
-            }}
-            className="rounded-lg border border-slate-800 px-2 py-1.5 text-slate-400 hover:text-rose-300"
+            onClick={handleExportJson}
+            className="flex-1 rounded-lg border border-line-strong bg-surface-2 px-2.5 py-1 text-fg-muted hover:text-fg"
           >
-            重置
+            下载 JSON
           </button>
-        )}
+          <button
+            type="button"
+            onClick={() => void handleCopyJson()}
+            className="rounded-lg border border-line-strong bg-surface-2 px-2.5 py-1 text-fg-muted hover:text-fg"
+          >
+            复制
+          </button>
+          {dirtyCodes.length > 0 && (
+            <button
+              type="button"
+              onClick={() => {
+                resetAllCoordinates();
+                notify('已重置全部未落盘改动');
+              }}
+              className="rounded-lg border border-line px-2 py-1 text-fg-subtle hover:text-danger-fg"
+            >
+              重置
+            </button>
+          )}
+        </div>
       </div>
 
       {toast && (
-        <div className="mt-2 rounded bg-emerald-500/20 px-2.5 py-1 text-center text-[11px] text-emerald-300">
-          {toast}
+        <div
+          className={`mt-2 rounded-lg px-2.5 py-1.5 text-center text-[11px] font-medium ${
+            toast.isError ? 'bg-danger/20 text-danger-fg' : 'bg-ok/20 text-ok-fg'
+          }`}
+        >
+          {toast.msg}
         </div>
       )}
     </div>

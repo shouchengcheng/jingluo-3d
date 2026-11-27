@@ -18,7 +18,7 @@ import type {
   Vec3Tuple,
   ViewPreset,
 } from '../types/atlas';
-import { isBilateralCode, meridianOf, parseOrder } from '../utils/acupointMeta';
+import { isBilateralCode, meridianOf, parseOrder, sortByFlow } from '../utils/acupointMeta';
 import { matchesAcupointQuery } from '../utils/searchMatch';
 import {
   LOCATE_TOLERANCE_CM,
@@ -79,6 +79,7 @@ export interface AtlasState {
   selectedAcupointId: string | null;
   activeSide: 1 | -1;
   visibleMeridians: MeridianCode[];
+  preFilterMeridians: MeridianCode[] | null;
   multiCompare: boolean;
   searchQuery: string;
   specialFilter: string | null;
@@ -176,6 +177,8 @@ export interface AtlasState {
   applySurfaceCalibration: (code: string, payload: SurfaceCalibrationPayload) => void;
   captureCurrentCameraForSelected: () => boolean;
   setCoordinateVerified: (code: string, verified: boolean) => void;
+  verifyAndAdvanceNext: () => string | null;
+  markCoordinatesSaved: () => void;
   resetCoordinate: (code: string) => void;
   resetAllCoordinates: () => void;
 }
@@ -219,6 +222,7 @@ export const useAtlasStore = create<AtlasState>((set, get) => ({
   selectedAcupointId: 'LU9',
   activeSide: 1,
   visibleMeridians: ['LU'],
+  preFilterMeridians: null,
   multiCompare: false,
   searchQuery: '',
   specialFilter: null,
@@ -317,6 +321,7 @@ export const useAtlasStore = create<AtlasState>((set, get) => ({
       if (additive || state.multiCompare) {
         const exists = state.visibleMeridians.includes(code);
         return {
+          preFilterMeridians: null,
           visibleMeridians: exists
             ? state.visibleMeridians.filter((m) => m !== code)
             : [...state.visibleMeridians, code],
@@ -325,6 +330,7 @@ export const useAtlasStore = create<AtlasState>((set, get) => ({
       const selectedStillVisible =
         state.selectedAcupointId && meridianOf(state.selectedAcupointId) === code;
       return {
+        preFilterMeridians: null,
         visibleMeridians: [code],
         selectedAcupointId: selectedStillVisible ? state.selectedAcupointId : null,
       };
@@ -334,25 +340,47 @@ export const useAtlasStore = create<AtlasState>((set, get) => ({
     set((state) => {
       const exists = state.visibleMeridians.includes(code);
       return {
+        preFilterMeridians: null,
         visibleMeridians: exists
           ? state.visibleMeridians.filter((m) => m !== code)
           : [...state.visibleMeridians, code],
       };
     }),
 
-  setVisibleMeridians: (codes) => set({ visibleMeridians: codes }),
+  setVisibleMeridians: (codes) => set({ visibleMeridians: codes, preFilterMeridians: null }),
   setMultiCompare: (multiCompare) => set({ multiCompare }),
-  setSearchQuery: (searchQuery) => set({ searchQuery }),
+  setSearchQuery: (searchQuery) =>
+    set((state) => {
+      const emptyNow = searchQuery.trim().length === 0 && !state.specialFilter;
+      if (emptyNow && state.preFilterMeridians) {
+        return {
+          searchQuery,
+          visibleMeridians: state.preFilterMeridians,
+          preFilterMeridians: null,
+        };
+      }
+      return { searchQuery };
+    }),
   setSpecialFilter: (specialFilter) =>
     set((state) => {
-      if (!specialFilter) return { specialFilter };
-      // Reveal every meridian that contains matches so 3D markers and list stay consistent
+      if (!specialFilter) {
+        if (!state.searchQuery.trim() && state.preFilterMeridians) {
+          return {
+            specialFilter: null,
+            visibleMeridians: state.preFilterMeridians,
+            preFilterMeridians: null,
+          };
+        }
+        return { specialFilter: null };
+      }
+      const saved = state.preFilterMeridians ?? [...state.visibleMeridians];
       const hits = new Set<MeridianCode>();
       for (const a of state.acupoints) {
         if (a.specialCategory.some((c) => c.includes(specialFilter))) hits.add(a.meridianCode);
       }
       return {
         specialFilter,
+        preFilterMeridians: saved,
         visibleMeridians: hits.size > 0 ? [...hits] : state.visibleMeridians,
       };
     }),
@@ -361,6 +389,15 @@ export const useAtlasStore = create<AtlasState>((set, get) => ({
     set((state) => {
       const q = indication ?? '';
       const special = category ?? null;
+      if (!q.trim() && !special) {
+        return {
+          searchQuery: '',
+          specialFilter: null,
+          visibleMeridians: state.preFilterMeridians ?? state.visibleMeridians,
+          preFilterMeridians: null,
+        };
+      }
+      const saved = state.preFilterMeridians ?? [...state.visibleMeridians];
       const hits = new Set<MeridianCode>();
       for (const a of state.acupoints) {
         if (matchesAcupointQuery(a, a.code, q, special)) hits.add(a.meridianCode);
@@ -368,11 +405,18 @@ export const useAtlasStore = create<AtlasState>((set, get) => ({
       return {
         searchQuery: q,
         specialFilter: special,
+        preFilterMeridians: saved,
         visibleMeridians: hits.size > 0 ? [...hits] : state.visibleMeridians,
       };
     }),
 
-  clearFilters: () => set({ searchQuery: '', specialFilter: null }),
+  clearFilters: () =>
+    set((state) => ({
+      searchQuery: '',
+      specialFilter: null,
+      visibleMeridians: state.preFilterMeridians ?? state.visibleMeridians,
+      preFilterMeridians: null,
+    })),
   setListHoverCode: (listHoverCode) => set({ listHoverCode }),
 
   // ---------------------------------------------------------------- Quiz
@@ -682,6 +726,32 @@ export const useAtlasStore = create<AtlasState>((set, get) => ({
         dirtyCoordinateCodes: dirty,
       };
     }),
+
+  verifyAndAdvanceNext: () => {
+    const state = get();
+    const current = state.selectedAcupointId;
+    if (!current || !state.coordinates) return null;
+    state.setCoordinateVerified(current, true);
+
+    const updated = get();
+    const ordered = [...updated.acupoints].sort(sortByFlow);
+    const curIdx = ordered.findIndex((a) => a.code === current);
+    const rotated = curIdx >= 0 ? [...ordered.slice(curIdx + 1), ...ordered.slice(0, curIdx)] : ordered;
+    const nextDraft = rotated.find(
+      (a) => updated.coordinates?.points[a.code]?.audit.status !== 'gb_verified',
+    );
+    if (nextDraft) {
+      updated.selectAcupoint(nextDraft.code, { focus: 'full' });
+      return nextDraft.code;
+    }
+    return null;
+  },
+
+  markCoordinatesSaved: () =>
+    set((state) => ({
+      initialCoordinatesSnapshot: state.coordinates ? structuredClone(state.coordinates) : null,
+      dirtyCoordinateCodes: [],
+    })),
 
   resetCoordinate: (code) =>
     set((state) => {

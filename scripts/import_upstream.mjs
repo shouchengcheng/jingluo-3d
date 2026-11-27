@@ -3,6 +3,7 @@ import path from 'node:path';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import * as THREE from 'three';
+import { loadHumanSkinMesh, projectAnatomicalPoint } from './repair_coordinates.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '..');
@@ -367,18 +368,7 @@ async function main() {
     `[import_upstream] Wrote ${path.relative(rootDir, modelOutPath)} (${(glbBuffer.byteLength / 1024).toFixed(1)} KB, height=${TARGET_HUMAN_HEIGHT_METERS}m)`,
   );
 
-  // Build raycast mesh for skin surface projection (use skin indices only so eyes don't interfere)
-  const skinOnlyGeometry = new THREE.BufferGeometry();
-  skinOnlyGeometry.setAttribute('position', normMeshData.geometry.attributes.position);
-  skinOnlyGeometry.setAttribute('normal', normMeshData.geometry.attributes.normal);
-  skinOnlyGeometry.setIndex(
-    new THREE.BufferAttribute(normMeshData.indices.slice(0, normMeshData.skinIndexCount), 1),
-  );
-  const skinMesh = new THREE.Mesh(
-    skinOnlyGeometry,
-    new THREE.MeshBasicMaterial({ side: THREE.DoubleSide }),
-  );
-  skinMesh.updateMatrixWorld(true);
+  const { geometry: skinOnlyGeometry, frontMesh, doubleMesh } = loadHumanSkinMesh(modelOutPath);
   const raycaster = new THREE.Raycaster();
 
   // Preserve any existing gb_verified coordinates (AGENTS.md Rule 3.3)
@@ -394,17 +384,13 @@ async function main() {
     upstreamEntries.push({
       code: item.code,
       rawPos: item.pos,
-      region: item.region,
-      view: undefined,
     });
   }
   for (const row of extraPoints) {
-    const [code, , , region, x, y, z, , view] = row;
+    const [code, , , , x, y, z] = row;
     upstreamEntries.push({
       code,
       rawPos: [x, y, z],
-      region,
-      view,
     });
   }
 
@@ -422,15 +408,18 @@ async function main() {
       continue;
     }
 
-    const projected = projectPointToMesh({
-      mesh: skinMesh,
+    const rawTarget = new THREE.Vector3(
+      entry.rawPos[0] * normMeshData.scale,
+      (entry.rawPos[1] - normMeshData.minY) * normMeshData.scale,
+      entry.rawPos[2] * normMeshData.scale,
+    );
+    const projected = projectAnatomicalPoint({
       geometry: skinOnlyGeometry,
+      frontMesh,
+      doubleMesh,
       raycaster,
-      rawPos: entry.rawPos,
-      region: entry.region,
-      view: entry.view,
-      minY: normMeshData.minY,
-      scale: normMeshData.scale,
+      code: entry.code,
+      rawTarget,
     });
 
     nextPoints[entry.code] = {
@@ -445,26 +434,22 @@ async function main() {
     importedCount += 1;
   }
 
-  // Deterministic LU4 (侠白) draft surface projection from upstream LU3 (天府, 3 cun) and LU5 (尺泽, 9 cun):
-  // GB/T 12346-2021 places LU4 at 4 cun below the anterior axillary fold (1/6 of the 6-cun segment from LU3 to LU5).
   const lu3Raw = upstreamEntries.find((e) => e.code === 'LU3')?.rawPos;
   const lu5Raw = upstreamEntries.find((e) => e.code === 'LU5')?.rawPos;
   if (lu3Raw && lu5Raw && existingPoints.LU4?.audit?.status !== 'gb_verified') {
     const t = 1 / 6;
-    const lu4Raw = [
-      lu3Raw[0] + (lu5Raw[0] - lu3Raw[0]) * t,
-      lu3Raw[1] + (lu5Raw[1] - lu3Raw[1]) * t,
-      lu3Raw[2] + (lu5Raw[2] - lu3Raw[2]) * t,
-    ];
-    const projectedLu4 = projectPointToMesh({
-      mesh: skinMesh,
+    const lu4Raw = new THREE.Vector3(
+      (lu3Raw[0] + (lu5Raw[0] - lu3Raw[0]) * t) * normMeshData.scale,
+      (lu3Raw[1] + (lu5Raw[1] - lu3Raw[1]) * t - normMeshData.minY) * normMeshData.scale,
+      (lu3Raw[2] + (lu5Raw[2] - lu3Raw[2]) * t) * normMeshData.scale,
+    );
+    const projectedLu4 = projectAnatomicalPoint({
       geometry: skinOnlyGeometry,
+      frontMesh,
+      doubleMesh,
       raycaster,
-      rawPos: lu4Raw,
-      region: '上肢',
-      view: undefined,
-      minY: normMeshData.minY,
-      scale: normMeshData.scale,
+      code: 'LU4',
+      rawTarget: lu4Raw,
     });
     nextPoints.LU4 = {
       ...projectedLu4,
