@@ -9,6 +9,8 @@ import type {
   FocusMode,
   MeridianCode,
   MeridianMeta,
+  MeridianPathsFile,
+  Prescription,
   QuizKind,
   QuizQuestion,
   QuizScope,
@@ -20,6 +22,7 @@ import type {
 } from '../types/atlas';
 import { isBilateralCode, meridianOf, parseOrder, sortByFlow } from '../utils/acupointMeta';
 import { matchesAcupointQuery } from '../utils/searchMatch';
+import { buildDeepLinkUrl, parseUrlDeepLink, syncUrlReplaceState } from '../utils/urlSync';
 import {
   LOCATE_TOLERANCE_CM,
   buildQuizPool,
@@ -74,12 +77,15 @@ export interface AtlasState {
   meridians: MeridianMeta[];
   acupoints: Acupoint[];
   coordinates: Coordinates3DFile | null;
+  meridianPaths: MeridianPathsFile | null;
+  prescriptions: Prescription[];
   initialCoordinatesSnapshot: Coordinates3DFile | null;
 
   selectedAcupointId: string | null;
   activeSide: 1 | -1;
   visibleMeridians: MeridianCode[];
   preFilterMeridians: MeridianCode[] | null;
+  activePrescriptionId: string | null;
   multiCompare: boolean;
   searchQuery: string;
   specialFilter: string | null;
@@ -106,6 +112,7 @@ export interface AtlasState {
   wireframeOverlay: boolean;
   flowAnimation: boolean;
   showLabels: boolean;
+  showLandmarks: boolean;
   /** Pixels of the canvas covered by the mobile bottom sheet; engine shifts the view centre upward. */
   viewportBottomInset: number;
 
@@ -124,6 +131,8 @@ export interface AtlasState {
     meridians: MeridianMeta[];
     acupoints: Acupoint[];
     coordinates: Coordinates3DFile;
+    meridianPaths: MeridianPathsFile;
+    prescriptions: Prescription[];
   }) => void;
   setLoadError: (err: string | null) => void;
   selectAcupoint: (
@@ -135,6 +144,7 @@ export interface AtlasState {
   selectMeridian: (code: MeridianCode, additive?: boolean) => void;
   toggleMeridian: (code: MeridianCode) => void;
   setVisibleMeridians: (codes: MeridianCode[]) => void;
+  selectPrescription: (id: string | null) => void;
   setMultiCompare: (enabled: boolean) => void;
   setSearchQuery: (query: string) => void;
   setSpecialFilter: (category: string | null) => void;
@@ -165,6 +175,7 @@ export interface AtlasState {
   setWireframeOverlay: (enabled: boolean) => void;
   setFlowAnimation: (enabled: boolean) => void;
   setShowLabels: (enabled: boolean) => void;
+  setShowLandmarks: (enabled: boolean) => void;
   setViewportBottomInset: (px: number) => void;
   requestViewPreset: (preset: ViewPreset) => void;
   requestRegionPreset: (preset: RegionPreset) => void;
@@ -217,12 +228,15 @@ export const useAtlasStore = create<AtlasState>((set, get) => ({
   meridians: [],
   acupoints: [],
   coordinates: null,
+  meridianPaths: null,
+  prescriptions: [],
   initialCoordinatesSnapshot: null,
 
   selectedAcupointId: 'LU9',
   activeSide: 1,
   visibleMeridians: ['LU'],
   preFilterMeridians: null,
+  activePrescriptionId: null,
   multiCompare: false,
   searchQuery: '',
   specialFilter: null,
@@ -247,6 +261,7 @@ export const useAtlasStore = create<AtlasState>((set, get) => ({
   wireframeOverlay: false,
   flowAnimation: true,
   showLabels: true,
+  showLandmarks: false,
   viewportBottomInset: 0,
 
   viewRequest: null,
@@ -258,18 +273,55 @@ export const useAtlasStore = create<AtlasState>((set, get) => ({
   dirtyCoordinateCodes: [],
   liveCameraGetter: null,
 
-  setAtlasBundle: ({ meridians, acupoints, coordinates }) =>
-    set({
+  setAtlasBundle: ({ meridians, acupoints, coordinates, meridianPaths, prescriptions }) => {
+    const deep = typeof window !== 'undefined' ? parseUrlDeepLink() : {};
+    const validCodes = new Set(acupoints.map((a) => a.code));
+    const matchedRx = deep.prescriptionId
+      ? prescriptions.find((p) => p.id === deep.prescriptionId) ?? null
+      : null;
+
+    let selectedId = acupoints.some((a) => a.code === 'LU9')
+      ? 'LU9'
+      : (acupoints[0]?.code ?? null);
+    if (deep.point && validCodes.has(deep.point)) {
+      selectedId = deep.point;
+    } else if (matchedRx && matchedRx.points[0]) {
+      selectedId = matchedRx.points[0];
+    }
+
+    let visibleMeridians: MeridianCode[] = deep.meridians ?? ['LU'];
+    if (matchedRx) {
+      visibleMeridians = [...new Set(matchedRx.points.map((c) => meridianOf(c)))];
+    } else if (selectedId && !visibleMeridians.includes(meridianOf(selectedId))) {
+      visibleMeridians = [...visibleMeridians, meridianOf(selectedId)];
+    }
+
+    set((state) => ({
       isLoading: false,
       loadError: null,
       meridians,
       acupoints,
       coordinates: structuredClone(coordinates),
+      meridianPaths,
+      prescriptions,
       initialCoordinatesSnapshot: structuredClone(coordinates),
-      selectedAcupointId: acupoints.some((a) => a.code === 'LU9')
-        ? 'LU9'
-        : (acupoints[0]?.code ?? null),
-    }),
+      selectedAcupointId: selectedId,
+      activeSide: deep.side ?? state.activeSide,
+      uiTheme: deep.theme ?? state.uiTheme,
+      visibleMeridians,
+      activePrescriptionId: matchedRx?.id ?? null,
+      focusRequest: deep.point
+        ? { mode: 'full', nonce: state.focusRequest.nonce + 1 }
+        : state.focusRequest,
+      viewRequest: matchedRx && !deep.point
+        ? { preset: matchedRx.view, nonce: (state.viewRequest?.nonce ?? 0) + 1 }
+        : state.viewRequest,
+    }));
+
+    if (deep.quiz) {
+      get().setQuizMode(true);
+    }
+  },
 
   setLoadError: (err) => set({ isLoading: false, loadError: err }),
 
@@ -322,6 +374,7 @@ export const useAtlasStore = create<AtlasState>((set, get) => ({
         const exists = state.visibleMeridians.includes(code);
         return {
           preFilterMeridians: null,
+          activePrescriptionId: null,
           visibleMeridians: exists
             ? state.visibleMeridians.filter((m) => m !== code)
             : [...state.visibleMeridians, code],
@@ -331,6 +384,7 @@ export const useAtlasStore = create<AtlasState>((set, get) => ({
         state.selectedAcupointId && meridianOf(state.selectedAcupointId) === code;
       return {
         preFilterMeridians: null,
+        activePrescriptionId: null,
         visibleMeridians: [code],
         selectedAcupointId: selectedStillVisible ? state.selectedAcupointId : null,
       };
@@ -341,13 +395,39 @@ export const useAtlasStore = create<AtlasState>((set, get) => ({
       const exists = state.visibleMeridians.includes(code);
       return {
         preFilterMeridians: null,
+        activePrescriptionId: null,
         visibleMeridians: exists
           ? state.visibleMeridians.filter((m) => m !== code)
           : [...state.visibleMeridians, code],
       };
     }),
 
-  setVisibleMeridians: (codes) => set({ visibleMeridians: codes, preFilterMeridians: null }),
+  setVisibleMeridians: (codes) =>
+    set({ visibleMeridians: codes, preFilterMeridians: null, activePrescriptionId: null }),
+
+  selectPrescription: (id) =>
+    set((state) => {
+      if (!id) {
+        return {
+          activePrescriptionId: null,
+          visibleMeridians: state.preFilterMeridians ?? state.visibleMeridians,
+          preFilterMeridians: null,
+        };
+      }
+      const rx = state.prescriptions.find((p) => p.id === id);
+      if (!rx) return state;
+      const saved = state.preFilterMeridians ?? [...state.visibleMeridians];
+      const rxMeridians = [...new Set(rx.points.map((c) => meridianOf(c)))];
+      return {
+        activePrescriptionId: rx.id,
+        preFilterMeridians: saved,
+        searchQuery: '',
+        specialFilter: null,
+        visibleMeridians: rxMeridians,
+        selectedAcupointId: rx.points[0] ?? state.selectedAcupointId,
+        viewRequest: { preset: rx.view, nonce: (state.viewRequest?.nonce ?? 0) + 1 },
+      };
+    }),
   setMultiCompare: (multiCompare) => set({ multiCompare }),
   setSearchQuery: (searchQuery) =>
     set((state) => {
@@ -610,6 +690,7 @@ export const useAtlasStore = create<AtlasState>((set, get) => ({
   setWireframeOverlay: (wireframeOverlay) => set({ wireframeOverlay }),
   setFlowAnimation: (flowAnimation) => set({ flowAnimation }),
   setShowLabels: (showLabels) => set({ showLabels }),
+  setShowLandmarks: (showLandmarks) => set({ showLandmarks }),
   setViewportBottomInset: (px) =>
     set((state) =>
       Math.abs(state.viewportBottomInset - px) < 1 ? state : { viewportBottomInset: px },
@@ -781,3 +862,29 @@ export const useAtlasStore = create<AtlasState>((set, get) => ({
       };
     }),
 }));
+
+if (typeof window !== 'undefined') {
+  useAtlasStore.subscribe((state, prev) => {
+    if (state.isLoading) return;
+    if (
+      state.selectedAcupointId !== prev.selectedAcupointId ||
+      state.visibleMeridians !== prev.visibleMeridians ||
+      state.activeSide !== prev.activeSide ||
+      state.uiTheme !== prev.uiTheme ||
+      state.activePrescriptionId !== prev.activePrescriptionId ||
+      state.isQuizMode !== prev.isQuizMode ||
+      prev.isLoading
+    ) {
+      syncUrlReplaceState(
+        buildDeepLinkUrl({
+          selectedAcupointId: state.selectedAcupointId,
+          visibleMeridians: state.visibleMeridians,
+          activeSide: state.activeSide,
+          uiTheme: state.uiTheme,
+          activePrescriptionId: state.activePrescriptionId,
+          isQuizMode: state.isQuizMode,
+        }),
+      );
+    }
+  });
+}

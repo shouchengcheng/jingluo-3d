@@ -130,6 +130,10 @@ export class RaycasterPicker {
     }
   }
 
+  public isFlying(): boolean {
+    return this.flight !== null;
+  }
+
   public getCurrentCanonicalCameraPreset(activeSide: 1 | -1): CameraPreset {
     const camCanonical = new THREE.Vector3(
       this.camera.position.x * activeSide,

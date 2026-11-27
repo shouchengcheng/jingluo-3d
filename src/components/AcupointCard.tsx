@@ -3,6 +3,7 @@ import { LOCATE_TOLERANCE_CM } from '../store/quizLogic';
 import { QUIZ_REVEAL_TOKEN, useAtlasStore } from '../store/useAtlasStore';
 import { categoryBase, isBilateralCode, parseOrder } from '../utils/acupointMeta';
 import { extractSafetyNotice } from '../utils/safety';
+import { buildDeepLinkUrl } from '../utils/urlSync';
 import type { Acupoint } from '../types/atlas';
 
 type CardTab = 'location' | 'etymology' | 'indications' | 'operation' | 'all';
@@ -18,12 +19,17 @@ const CARD_TABS: { key: CardTab; label: string }[] = [
 export function AcupointCard() {
   const [tab, setTab] = useState<CardTab>('all');
   const [typedGuess, setTypedGuess] = useState('');
+  const [linkCopied, setLinkCopied] = useState(false);
 
   const selectedId = useAtlasStore((s) => s.selectedAcupointId);
   const activeSide = useAtlasStore((s) => s.activeSide);
+  const visibleMeridians = useAtlasStore((s) => s.visibleMeridians);
+  const uiTheme = useAtlasStore((s) => s.uiTheme);
   const acupoints = useAtlasStore((s) => s.acupoints);
   const meridians = useAtlasStore((s) => s.meridians);
   const coordinates = useAtlasStore((s) => s.coordinates);
+  const prescriptions = useAtlasStore((s) => s.prescriptions);
+  const activePrescriptionId = useAtlasStore((s) => s.activePrescriptionId);
   const specialFilter = useAtlasStore((s) => s.specialFilter);
   const searchQuery = useAtlasStore((s) => s.searchQuery);
   const recentIds = useAtlasStore((s) => s.recentIds);
@@ -34,6 +40,7 @@ export function AcupointCard() {
   const quizQuestion = useAtlasStore((s) => s.quizQuestion);
 
   const selectAcupoint = useAtlasStore((s) => s.selectAcupoint);
+  const selectPrescription = useAtlasStore((s) => s.selectPrescription);
   const flipActiveSide = useAtlasStore((s) => s.flipActiveSide);
   const requestFocusSelected = useAtlasStore((s) => s.requestFocusSelected);
   const applyTagFilter = useAtlasStore((s) => s.applyTagFilter);
@@ -41,6 +48,25 @@ export function AcupointCard() {
   const answerQuizTyped = useAtlasStore((s) => s.answerQuizTyped);
   const revealQuizAnswer = useAtlasStore((s) => s.revealQuizAnswer);
   const nextQuizQuestion = useAtlasStore((s) => s.nextQuizQuestion);
+
+  const activePrescription = useMemo(
+    () => prescriptions.find((p) => p.id === activePrescriptionId) ?? null,
+    [prescriptions, activePrescriptionId],
+  );
+
+  const handleCopyDeepLink = async () => {
+    const url = buildDeepLinkUrl({
+      selectedAcupointId: selectedId,
+      visibleMeridians,
+      activeSide,
+      uiTheme,
+      activePrescriptionId,
+      isQuizMode,
+    });
+    await navigator.clipboard.writeText(url);
+    setLinkCopied(true);
+    window.setTimeout(() => setLinkCopied(false), 1800);
+  };
 
   const acupointMap = useMemo(
     () => new Map<string, Acupoint>(acupoints.map((a) => [a.code, a])),
@@ -422,16 +448,69 @@ export function AcupointCard() {
             </h2>
           </div>
 
-          <button
-            type="button"
-            onClick={() => requestFocusSelected('full')}
-            disabled={!coord}
-            title="平滑飞至该穴位最佳观察角度 (快捷键 F)"
-            className="tap shrink-0 rounded-lg border border-accent/50 bg-accent/15 px-3 py-1.5 text-xs font-semibold text-accent-fg transition hover:bg-accent/25 disabled:opacity-40"
-          >
-            聚焦视角
-          </button>
+          <div className="flex shrink-0 items-center gap-1.5">
+            <button
+              type="button"
+              onClick={() => void handleCopyDeepLink()}
+              title="复制当前穴位/配穴教学链接（可直接粘贴至课件 PPT）"
+              className="tap rounded-lg border border-line-strong bg-surface-2 px-2.5 py-1.5 text-xs font-medium text-fg-muted transition hover:text-fg"
+            >
+              {linkCopied ? '已复制✓' : '分享链接'}
+            </button>
+            <button
+              type="button"
+              onClick={() => requestFocusSelected('full')}
+              disabled={!coord}
+              title="平滑飞至该穴位最佳观察角度 (快捷键 F)"
+              className="tap rounded-lg border border-accent/50 bg-accent/15 px-3 py-1.5 text-xs font-semibold text-accent-fg transition hover:bg-accent/25 disabled:opacity-40"
+            >
+              聚焦视角
+            </button>
+          </div>
         </div>
+
+        {/* Active Clinical Point-Pairing Prescription Banner (Audit 3.3) */}
+        {activePrescription && !isQuizMode && (
+          <div className="space-y-2 rounded-xl border border-azure/45 bg-azure/10 p-3 text-xs">
+            <div className="flex items-center justify-between gap-2">
+              <span className="font-semibold text-azure-fg">
+                配穴演示：{activePrescription.name}
+              </span>
+              <button
+                type="button"
+                onClick={() => selectPrescription(null)}
+                className="text-[11px] text-fg-subtle hover:text-fg"
+              >
+                退出配穴 ✕
+              </button>
+            </div>
+            <div className="flex flex-wrap gap-1.5">
+              {activePrescription.points.map((code) => {
+                const pt = acupointMap.get(code);
+                const isCur = code === acupoint.code;
+                return (
+                  <button
+                    key={code}
+                    type="button"
+                    onClick={() => selectAcupoint(code, { focus: 'full' })}
+                    className={`rounded-md border px-2 py-0.5 text-xs font-medium transition ${
+                      isCur
+                        ? 'border-accent bg-accent/20 text-accent-fg'
+                        : 'border-gold/45 bg-gold/12 text-gold-fg hover:border-gold'
+                    }`}
+                  >
+                    {pt?.name ?? code} ({code})
+                  </button>
+                );
+              })}
+            </div>
+            <p className="leading-relaxed text-fg">{activePrescription.rationale}</p>
+            <div className="text-[11px] text-fg-muted">
+              <span className="text-fg-subtle">协同主治：</span>
+              {activePrescription.indications}
+            </div>
+          </div>
+        )}
 
         {/* Clickable Special Category Tags (UI audit 6.3) */}
         {acupoint.specialCategory.length > 0 && (

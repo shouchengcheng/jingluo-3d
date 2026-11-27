@@ -150,10 +150,34 @@ export interface MeridianMeta {
   route: string;
 }
 
+export interface MeridianPathBranch {
+  id: string;
+  bilateral: boolean;
+  points: Vec3Tuple[];
+  normals: Vec3Tuple[];
+}
+
+export interface MeridianPathsFile {
+  modelId: string;
+  meridians: Record<MeridianCode, MeridianPathBranch[]>;
+}
+
+export interface Prescription {
+  id: string;
+  name: string;
+  category: string;
+  points: string[];
+  indications: string;
+  rationale: string;
+  view: ViewPreset;
+}
+
 export interface AtlasBundle {
   meridians: MeridianMeta[];
   acupoints: Acupoint[];
   coordinates: Coordinates3DFile;
+  meridianPaths: MeridianPathsFile;
+  prescriptions: Prescription[];
 }
 
 export interface ProjectedLabel {

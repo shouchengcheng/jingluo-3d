@@ -1,0 +1,92 @@
+[
+  {
+    "id": "siguan",
+    "name": "开四关（合谷 + 太冲）",
+    "category": "上下配穴 · 调气和血",
+    "points": ["LI4", "LR3"],
+    "indications": "头痛眩晕、郁证胁痛、抽搐痉挛、痛经闭经及诸痛证",
+    "rationale": "合谷属手阳明原穴主气而偏升散，太冲属足厥阴原穴主血而偏潜降。一阳一阴、一气一血、一升一降，相配开通周身气机郁滞。",
+    "view": "front"
+  },
+  {
+    "id": "bamai-lieque-zhaohai",
+    "name": "列缺 + 照海",
+    "category": "八脉交会配穴 · 肺系咽胸",
+    "points": ["LU7", "KI6"],
+    "indications": "咽喉肿痛、梅核气、久咳气喘、阴虚内热失眠",
+    "rationale": "列缺通任脉，照海通阴跷脉，二脉交会于肺系、咽喉、胸膈，金水相生、滋阴利咽宣肺。",
+    "view": "front"
+  },
+  {
+    "id": "bamai-neiguan-gongsun",
+    "name": "内关 + 公孙",
+    "category": "八脉交会配穴 · 胃心胸证",
+    "points": ["PC6", "SP4"],
+    "indications": "胃痛呕吐、痞满呃逆、心悸胸痹、心胸烦闷",
+    "rationale": "公孙通冲脉，内关通阴维脉，二脉合于胃、心、胸，宽胸理气、和胃降逆，为临床治疗胃心胸病症第一要方。",
+    "view": "front"
+  },
+  {
+    "id": "bamai-houxi-shenmai",
+    "name": "后溪 + 申脉",
+    "category": "八脉交会配穴 · 颈项肩背目内眦",
+    "points": ["SI3", "BL62"],
+    "indications": "颈椎病项强、肩背疼痛、落枕、目赤肿痛、癫狂痫",
+    "rationale": "后溪通督脉，申脉通阳跷脉，二脉循行交会于目内眦、颈项、耳、肩，通调太阳督脉经气。",
+    "view": "back"
+  },
+  {
+    "id": "bamai-waiguan-zulinqi",
+    "name": "外关 + 足临泣",
+    "category": "八脉交会配穴 · 耳目少阳胁肋",
+    "points": ["TE5", "GB41"],
+    "indications": "偏头痛、耳鸣耳聋、目外眦痛、胁肋胀痛、外感少阳证",
+    "rationale": "外关通阳维脉，足临泣通带脉，二脉合于目锐眦、耳后、颊、颈、肩，疏利少阳枢机。",
+    "view": "right"
+  },
+  {
+    "id": "shumu-lung",
+    "name": "中府 + 肺俞",
+    "category": "俞募配穴 · 脏腑前后相配",
+    "points": ["LU1", "BL13"],
+    "indications": "外感或内伤咳嗽、哮喘、胸满气逆、肺痨潮热",
+    "rationale": "中府为肺之募穴居前胸属阴，肺俞为肺之背俞穴居后背属阳；前后呼应、阴阳相引，宣肃肺气之力倍增。",
+    "view": "right"
+  },
+  {
+    "id": "shumu-stomach",
+    "name": "中脘 + 胃俞 + 足三里",
+    "category": "俞募合配穴 · 脾胃中焦主方",
+    "points": ["CV12", "BL21", "ST36"],
+    "indications": "急慢性胃脘痛、腹胀纳呆、消化不良、呕吐泄泻",
+    "rationale": "胃募中脘配胃之背俞穴胃俞，再合胃之下合穴足三里（合治内腑），标本兼顾，调补中焦脾胃。",
+    "view": "front"
+  },
+  {
+    "id": "yuanluo-lu-li",
+    "name": "太渊 + 偏历（主客原络配穴）",
+    "category": "表里原络配穴 · 肺与大肠相表里",
+    "points": ["LU9", "LI6"],
+    "indications": "久咳气喘伴外感鼻塞、咽痛、水肿小便不利",
+    "rationale": "肺病为主取本经原穴太渊培补肺气，客以表里大肠经络穴偏历疏风通络，体现脏腑表里同治。",
+    "view": "right"
+  },
+  {
+    "id": "qingre-tuire",
+    "name": "大椎 + 曲池 + 合谷",
+    "category": "临床经验方 · 疏风清热退热",
+    "points": ["GV14", "LI11", "LI4"],
+    "indications": "外感发热、风热感冒、高热烦渴、咽喉肿痛、瘾疹瘙痒",
+    "rationale": "大椎总督诸阳以泄阳分邪热，配多气多血之手阳明合穴曲池、原穴合谷，共奏解表发汗、清泄邪热之功。",
+    "view": "back"
+  },
+  {
+    "id": "peiyuan-guben",
+    "name": "关元 + 足三里 + 三阴交",
+    "category": "扶正保健要方 · 先后天同补",
+    "points": ["CV4", "ST36", "SP6"],
+    "indications": "元气虚损、畏寒肢冷、神疲乏力、月经不调、脾肾两虚诸证",
+    "rationale": "关元培补先天肾元，足三里温补后天脾胃阳气，三阴交统调足三阴精血，先后天互资、气血阴阳并调。",
+    "view": "front"
+  }
+]

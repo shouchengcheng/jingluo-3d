@@ -3,6 +3,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { assetLoader } from './AssetLoader';
 import { RaycasterPicker, type PickableMarkerMeta } from './RaycasterPicker';
 import { useAtlasStore, type AtlasState } from '../store/useAtlasStore';
+import { ANATOMICAL_LANDMARKS } from '../components/CunReferenceModal';
 import { matchesAcupointQuery } from '../utils/searchMatch';
 import type {
   Acupoint,
@@ -26,6 +27,7 @@ const MARKER_NORMAL_OFFSET = 0.0015;
 const TUBE_NORMAL_OFFSET = 0.0024;
 
 const SELECTED_COLOR = 0xe2553a; // 朱砂 cinnabar
+const PRESCRIPTION_COLOR = 0xf1c35a; // 配穴金黄
 const HOVER_COLOR = 0xffffff;
 
 const SCENE_BG: Record<UiTheme, number> = {
@@ -74,9 +76,11 @@ interface MarkerInstance {
 
 interface MeridianTubeInstance {
   meridianCode: MeridianCode;
+  bilateral: boolean;
   side: 1 | -1;
   mesh: THREE.Mesh<THREE.TubeGeometry, THREE.MeshBasicMaterial>;
-  arrow: THREE.Mesh<THREE.ConeGeometry, THREE.MeshBasicMaterial>;
+  arrows: THREE.Mesh<THREE.ConeGeometry, THREE.MeshBasicMaterial>[];
+  arrowMat: THREE.MeshBasicMaterial;
   curve: THREE.CatmullRomCurve3;
   baseColor: THREE.Color;
   highlightColor: THREE.Color;
@@ -84,8 +88,10 @@ interface MeridianTubeInstance {
 
 interface QiParticleInstance {
   meridianCode: MeridianCode;
+  bilateral: boolean;
   side: 1 | -1;
   curve: THREE.CatmullRomCurve3;
+  arcLength: number;
   offset: number;
   sprite: THREE.Sprite;
   trails: THREE.Sprite[];
@@ -105,7 +111,17 @@ function parsePointNumber(code: string): number {
 }
 
 function hasActiveFilter(state: AtlasState): boolean {
-  return state.searchQuery.trim().length > 0 || Boolean(state.specialFilter);
+  return (
+    state.searchQuery.trim().length > 0 ||
+    Boolean(state.specialFilter) ||
+    Boolean(state.activePrescriptionId)
+  );
+}
+
+function activePrescriptionSet(state: AtlasState): Set<string> | null {
+  if (!state.activePrescriptionId) return null;
+  const rx = state.prescriptions.find((p) => p.id === state.activePrescriptionId);
+  return rx ? new Set(rx.points) : null;
 }
 
 function isQuizLocatePending(state: AtlasState): boolean {
@@ -130,6 +146,7 @@ export class MeridianScene {
   private readonly tubeGroup = new THREE.Group();
   private readonly particleGroup = new THREE.Group();
   private readonly reticleGroup = new THREE.Group();
+  private readonly landmarkGroup = new THREE.Group();
   private readonly quizGroup = new THREE.Group();
   private innerReticle!: THREE.Mesh<THREE.RingGeometry, THREE.MeshBasicMaterial>;
   private outerReticle!: THREE.Mesh<THREE.RingGeometry, THREE.MeshBasicMaterial>;
@@ -144,6 +161,12 @@ export class MeridianScene {
     side: THREE.BackSide,
   });
   private readonly sharedArrowCone = new THREE.ConeGeometry(0.0021, 0.0062, 10);
+  private readonly sharedLandmarkGeo = new THREE.OctahedronGeometry(0.0052, 0);
+  private readonly sharedLandmarkMat = new THREE.MeshBasicMaterial({
+    color: 0xf1c35a,
+    transparent: true,
+    opacity: 0.9,
+  });
   private glowTexture: THREE.CanvasTexture | null = null;
 
   private skinMeshes: THREE.Mesh[] = [];
@@ -155,6 +178,10 @@ export class MeridianScene {
   private qiParticles: QiParticleInstance[] = [];
 
   private hoveredCode: string | null = null;
+  private isOrbiting = false;
+  private lastWakeMs = performance.now();
+  private lastRenderMs = 0;
+  private lastFrameMs = 0;
   private lastViewNonce = 0;
   private lastRegionNonce = 0;
   private lastFocusNonce = 0;
@@ -205,16 +232,19 @@ export class MeridianScene {
     this.controls.maxPolarAngle = Math.PI - 0.05;
     this.controls.target.set(0, 0.9, 0);
     this.controls.update();
+    this.controls.addEventListener('change', this.wakeRenderLoop);
 
     this.glowTexture = this.createRadialGlowTexture();
     this.setupLightsAndPedestal();
     this.setupSelectionReticle();
+    this.setupAnatomicalLandmarks();
     this.applyUiTheme(useAtlasStore.getState().uiTheme);
 
     this.scene.add(
       this.tubeGroup,
       this.particleGroup,
       this.markerGroup,
+      this.landmarkGroup,
       this.reticleGroup,
       this.quizGroup,
     );
@@ -245,12 +275,12 @@ export class MeridianScene {
         const next = hit?.code ?? null;
         const changed = next !== this.hoveredCode;
         this.hoveredCode = next;
+        if (changed) this.wakeRenderLoop();
         if (hit || changed) this.options.onHoverChange?.(hit);
       },
       onSelectAcupoint: (code, side, gesture) => {
         const s = useAtlasStore.getState();
-        if (s.isQuizMode) return; // quiz answers come from the quiz panel, not marker clicks
-        // UI audit 4.2: single click selects (pan only when already zoomed close); double = full focus
+        if (s.isQuizMode) return;
         s.selectAcupoint(code, { focus: gesture === 'double' ? 'full' : 'pan', side });
       },
       onAmbiguousPick: (candidates, x, y) => {
@@ -266,6 +296,8 @@ export class MeridianScene {
         useAtlasStore.getState().answerQuizLocate(point);
       },
       onInteractionChange: (active) => {
+        this.isOrbiting = active;
+        this.wakeRenderLoop();
         this.options.onInteractionChange?.(active);
       },
     });
@@ -278,14 +310,20 @@ export class MeridianScene {
     this.resizeObserver = new ResizeObserver(this.handleResize);
     this.resizeObserver.observe(this.container);
     window.addEventListener('resize', this.handleResize);
+    document.addEventListener('visibilitychange', this.wakeRenderLoop);
 
     this.unsubscribeStore = useAtlasStore.subscribe((state, prevState) => {
+      this.wakeRenderLoop();
       this.onStoreChanged(state, prevState);
     });
 
     void this.initializeAssets();
     this.animate(performance.now());
   }
+
+  private readonly wakeRenderLoop = (): void => {
+    this.lastWakeMs = performance.now();
+  };
 
   private createRadialGlowTexture(): THREE.CanvasTexture {
     const canvas = document.createElement('canvas');
@@ -322,7 +360,6 @@ export class MeridianScene {
     backFill.position.set(-1.5, 1.2, -2.2);
     this.scene.add(backFill);
 
-    // Subtle anatomical standing ring pedestal at y = 0
     this.pedestalOuter = new THREE.Mesh(
       new THREE.RingGeometry(0.38, 0.395, 72),
       new THREE.MeshBasicMaterial({
@@ -348,6 +385,21 @@ export class MeridianScene {
     this.pedestalInner.rotation.x = -Math.PI / 2;
     this.pedestalInner.position.y = 0.001;
     this.scene.add(this.pedestalInner);
+  }
+
+  private setupAnatomicalLandmarks(): void {
+    for (const lm of ANATOMICAL_LANDMARKS) {
+      const sides: (1 | -1)[] = lm.bilateral ? [1, -1] : [1];
+      for (const s of sides) {
+        const pin = new THREE.Mesh(this.sharedLandmarkGeo, this.sharedLandmarkMat);
+        pin.position.set(lm.position[0] * s, lm.position[1], lm.position[2]);
+        const outline = new THREE.Mesh(this.sharedLandmarkGeo, this.sharedOutlineMaterial);
+        outline.scale.setScalar(1.4);
+        pin.add(outline);
+        this.landmarkGroup.add(pin);
+      }
+    }
+    this.landmarkGroup.visible = useAtlasStore.getState().showLandmarks;
   }
 
   private applyUiTheme(theme: UiTheme): void {
@@ -463,6 +515,7 @@ export class MeridianScene {
 
       useAtlasStore.getState().setAtlasBundle(bundle);
       this.rebuildAcupointsAndMeridians(useAtlasStore.getState());
+      this.wakeRenderLoop();
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
       useAtlasStore.getState().setLoadError(msg);
@@ -529,8 +582,13 @@ export class MeridianScene {
       }
     }
 
+    if (state.showLandmarks !== prevState.showLandmarks) {
+      this.landmarkGroup.visible = state.showLandmarks;
+    }
+
     if (
       state.coordinates !== prevState.coordinates ||
+      state.meridianPaths !== prevState.meridianPaths ||
       state.meridians !== prevState.meridians ||
       state.acupoints !== prevState.acupoints
     ) {
@@ -575,11 +633,6 @@ export class MeridianScene {
     this.picker.flyTo({ position: def.camera, target: def.target }, side, 680);
   }
 
-  /**
-   * UI audit 4.2 — 'full': fly to stored cameraPreset; 'pan': if already zoomed at least as close as
-   * the preset (and the point faces the camera), glide the orbit target to the point keeping the
-   * current distance/angle, otherwise do nothing; 'auto': pan when close, else full fly-to.
-   */
   private focusSelectedAcupoint(state: AtlasState, mode: FocusMode): void {
     if (!state.selectedAcupointId || !state.coordinates) return;
     const coord = state.coordinates.points[state.selectedAcupointId];
@@ -609,7 +662,6 @@ export class MeridianScene {
   }
 
   private clearDynamicGroups(): void {
-    // AGENTS.md Rule 4.1: Explicitly dispose materials and geometries to prevent WebGL memory leaks
     for (const m of this.markers) {
       m.visualMesh.material.dispose();
       this.markerGroup.remove(m.visualMesh);
@@ -619,8 +671,8 @@ export class MeridianScene {
     for (const t of this.tubes) {
       t.mesh.geometry.dispose();
       t.mesh.material.dispose();
-      t.arrow.material.dispose();
-      this.tubeGroup.remove(t.mesh, t.arrow);
+      t.arrowMat.dispose();
+      this.tubeGroup.remove(t.mesh, ...t.arrows);
     }
     this.tubes = [];
 
@@ -644,7 +696,6 @@ export class MeridianScene {
     );
     const acupointMap = new Map<string, Acupoint>(state.acupoints.map((a) => [a.code, a]));
 
-    // Meridian start / end points (起止穴) get a slightly larger marker (UI audit 4.4)
     const endpointCodes = new Set<string>();
     const byMeridian = new Map<string, string[]>();
     for (const code of Object.keys(state.coordinates.points)) {
@@ -659,7 +710,7 @@ export class MeridianScene {
       endpointCodes.add(list[list.length - 1]);
     }
 
-    // 1. Build markers with 0.0015m normal offset + dark outline halo
+    // 1. Build acupoint markers with 0.0015m normal offset + dark outline halo
     for (const [code, coord] of Object.entries(state.coordinates.points) as [
       string,
       AcupointCoordinate3D,
@@ -716,82 +767,36 @@ export class MeridianScene {
       }
     }
 
-    // 2. Build anti-clipping skin-hugging Meridian TubeGeometry + direction arrows + Qi flow particles
+    // 2. Build continuous skin-hugging Meridian TubeGeometry per branch from meridianPaths
     for (const meta of state.meridians) {
-      const sides: (1 | -1)[] = meta.bilateral ? [1, -1] : [1];
-      for (const side of sides) {
-        const orderedMarkers = this.markers
-          .filter((m) => m.meridianCode === meta.code && m.side === side)
-          .sort((a, b) => a.order - b.order);
+      const branches = state.meridianPaths?.meridians?.[meta.code] ?? [];
+      const baseColor = new THREE.Color(meta.color);
+      const highlightColor = baseColor.clone().lerp(new THREE.Color(0xffffff), 0.35);
 
-        const byCode = new Map(orderedMarkers.map((m) => [m.code, m]));
-        const segmentPairs: [MarkerInstance, MarkerInstance][] = [];
-        for (let i = 1; i < orderedMarkers.length; i++) {
-          const prev = orderedMarkers[i - 1];
-          const curr = orderedMarkers[i];
-          // ST40 (丰隆) is the lateral Luo-connecting branch off the main anterior tibial line (ST37->ST39->ST41)
-          if (prev.code === 'ST39' && curr.code === 'ST40') continue;
-          if (prev.code === 'ST40' && curr.code === 'ST41') continue;
-          segmentPairs.push([prev, curr]);
-        }
-        if (meta.code === 'ST') {
-          const st37 = byCode.get('ST37');
-          const st39 = byCode.get('ST39');
-          const st40 = byCode.get('ST40');
-          const st41 = byCode.get('ST41');
-          if (st39 && st41) segmentPairs.push([st39, st41]);
-          if (st37 && st40) segmentPairs.push([st37, st40]);
-        }
+      for (const br of branches) {
+        if (br.points.length < 2) continue;
+        const sides: (1 | -1)[] = br.bilateral ? [1, -1] : [1];
 
-        for (let i = 0; i < segmentPairs.length; i++) {
-          const [a, b] = segmentPairs[i];
-          const dist = a.surfacePos.distanceTo(b.surfacePos);
-          const normalDot = a.worldNormal.dot(b.worldNormal);
-
-          // Avoid connecting distant non-adjacent gaps across torso/limbs on partially modeled meridians
-          if (dist > 0.34 || normalDot < -0.15) continue;
-
-          const controlPoints: THREE.Vector3[] = [
-            a.surfacePos.clone().addScaledVector(a.worldNormal, TUBE_NORMAL_OFFSET),
-          ];
-
-          const subSteps = dist < 0.045 ? 2 : dist < 0.12 ? 3 : 5;
-          for (let s = 1; s < subSteps; s++) {
-            const t = s / subSteps;
-            const lerped = a.surfacePos.clone().lerp(b.surfacePos, t);
-            const interpNormal = a.worldNormal.clone().lerp(b.worldNormal, t).normalize();
-
-            // Raycast onto exact continuous mesh triangle face along -interpNormal
-            let projectedPt: THREE.Vector3 | null = null;
-            if (this.skinMeshes.length > 0) {
-              const rayOrigin = lerped.clone().addScaledVector(interpNormal, 0.05);
-              this.occlusionRaycaster.set(rayOrigin, interpNormal.clone().negate());
-              const hit = this.occlusionRaycaster.intersectObjects(this.skinMeshes, false)[0];
-              if (hit && hit.distance < 0.1) {
-                projectedPt = hit.point.clone().addScaledVector(interpNormal, TUBE_NORMAL_OFFSET);
-              }
-            }
-
-            const candidate =
-              projectedPt ?? lerped.addScaledVector(interpNormal, TUBE_NORMAL_OFFSET);
-            const prevPt = controlPoints[controlPoints.length - 1];
-            if (prevPt && candidate.distanceTo(prevPt) > 0.003) {
-              controlPoints.push(candidate);
+        for (const side of sides) {
+          const controlPoints: THREE.Vector3[] = [];
+          for (let i = 0; i < br.points.length; i++) {
+            const p = br.points[i];
+            const n = br.normals[i] ?? [0, 0, 1];
+            const worldP = new THREE.Vector3(p[0] * side, p[1], p[2]);
+            const worldN = new THREE.Vector3(n[0] * side, n[1], n[2]).normalize();
+            const lifted = worldP.addScaledVector(worldN, TUBE_NORMAL_OFFSET);
+            const prev = controlPoints[controlPoints.length - 1];
+            if (!prev || prev.distanceTo(lifted) > 0.003) {
+              controlPoints.push(lifted);
             }
           }
-
-          const endPt = b.surfacePos.clone().addScaledVector(b.worldNormal, TUBE_NORMAL_OFFSET);
-          if (controlPoints[controlPoints.length - 1].distanceTo(endPt) < 0.003 && controlPoints.length > 1) {
-            controlPoints[controlPoints.length - 1] = endPt;
-          } else {
-            controlPoints.push(endPt);
-          }
+          if (controlPoints.length < 2) continue;
 
           const curve = new THREE.CatmullRomCurve3(controlPoints, false, 'centripetal', 0.5);
-          const baseColor = new THREE.Color(meta.color);
-          const highlightColor = baseColor.clone().lerp(new THREE.Color(0xffffff), 0.35);
+          const arcLength = Math.max(curve.getLength(), 0.04);
+          const tubularSegments = Math.min(220, Math.max(20, Math.round(arcLength / 0.012)));
 
-          const tubeGeo = new THREE.TubeGeometry(curve, 18, 0.00095, 6, false);
+          const tubeGeo = new THREE.TubeGeometry(curve, tubularSegments, 0.00095, 6, false);
           const tubeMat = new THREE.MeshBasicMaterial({
             color: baseColor,
             transparent: true,
@@ -800,52 +805,63 @@ export class MeridianScene {
           const tubeMesh = new THREE.Mesh(tubeGeo, tubeMat);
           this.tubeGroup.add(tubeMesh);
 
-          // Flow-direction arrowhead at segment midpoint; acupoint numbering follows circulation direction
+          // Place directional arrowheads every ~16 cm along the continuous branch
+          const arrowCount = Math.max(1, Math.min(8, Math.round(arcLength / 0.16)));
           const arrowMat = new THREE.MeshBasicMaterial({
             color: highlightColor,
             transparent: true,
             opacity: 0.9,
           });
-          const arrow = new THREE.Mesh(this.sharedArrowCone, arrowMat);
-          const mid = curve.getPointAt(0.5);
-          const tangent = curve.getTangentAt(0.5).normalize();
-          arrow.position.copy(mid);
-          arrow.quaternion.setFromUnitVectors(this.yAxis, tangent);
-          this.tubeGroup.add(arrow);
+          const arrows: THREE.Mesh<THREE.ConeGeometry, THREE.MeshBasicMaterial>[] = [];
+          for (let a = 0; a < arrowCount; a++) {
+            const u = (a + 0.5) / arrowCount;
+            const arrow = new THREE.Mesh(this.sharedArrowCone, arrowMat);
+            arrow.position.copy(curve.getPointAt(u));
+            arrow.quaternion.setFromUnitVectors(this.yAxis, curve.getTangentAt(u).normalize());
+            this.tubeGroup.add(arrow);
+            arrows.push(arrow);
+          }
 
           this.tubes.push({
             meridianCode: meta.code,
+            bilateral: br.bilateral,
             side,
             mesh: tubeMesh,
-            arrow,
+            arrows,
+            arrowMat,
             curve,
             baseColor,
             highlightColor,
           });
 
           if (this.glowTexture) {
-            const makeSprite = (opacity: number): THREE.Sprite => {
-              const spMat = new THREE.SpriteMaterial({
-                map: this.glowTexture,
-                color: highlightColor,
-                transparent: true,
-                opacity,
-                depthWrite: false,
-                blending: THREE.AdditiveBlending,
+            const particleCount = Math.max(1, Math.min(6, Math.round(arcLength / 0.18)));
+            for (let pIdx = 0; pIdx < particleCount; pIdx++) {
+              const makeSprite = (opacity: number): THREE.Sprite => {
+                const spMat = new THREE.SpriteMaterial({
+                  map: this.glowTexture,
+                  color: highlightColor,
+                  transparent: true,
+                  opacity,
+                  depthWrite: false,
+                  blending: THREE.AdditiveBlending,
+                });
+                const sp = new THREE.Sprite(spMat);
+                sp.scale.set(0.0085, 0.0085, 1);
+                this.particleGroup.add(sp);
+                return sp;
+              };
+              this.qiParticles.push({
+                meridianCode: meta.code,
+                bilateral: br.bilateral,
+                side,
+                curve,
+                arcLength,
+                offset: pIdx / particleCount,
+                sprite: makeSprite(0.85),
+                trails: [makeSprite(0.42), makeSprite(0.2)],
               });
-              const sp = new THREE.Sprite(spMat);
-              sp.scale.set(0.0085, 0.0085, 1);
-              this.particleGroup.add(sp);
-              return sp;
-            };
-            this.qiParticles.push({
-              meridianCode: meta.code,
-              side,
-              curve,
-              offset: (i * 0.23) % 1,
-              sprite: makeSprite(0.85),
-              trails: [makeSprite(0.42), makeSprite(0.2)],
-            });
+            }
           }
         }
       }
@@ -867,12 +883,15 @@ export class MeridianScene {
     const acupointMap = new Map<string, Acupoint>(state.acupoints.map((a) => [a.code, a]));
     const locatePending = isQuizLocatePending(state);
     const filtering = hasActiveFilter(state);
+    const rxSet = activePrescriptionSet(state);
 
     for (const m of this.markers) {
       const acupoint = acupointMap.get(m.code);
       const meridianVisible = visibleSet.has(m.meridianCode);
       const sideVisible = this.isSideAllowed(m.bilateral, m.side, state);
-      const filterVisible = matchesAcupointQuery(acupoint, m.code, state.searchQuery, state.specialFilter);
+      const filterVisible = rxSet
+        ? rxSet.has(m.code)
+        : matchesAcupointQuery(acupoint, m.code, state.searchQuery, state.specialFilter);
 
       const isVisible = meridianVisible && sideVisible && filterVisible && !locatePending;
       m.visualMesh.visible = isVisible;
@@ -886,35 +905,26 @@ export class MeridianScene {
 
     for (const t of this.tubes) {
       const meridianVisible = visibleSet.has(t.meridianCode);
-      const sideVisible = this.isSideAllowed(
-        t.meridianCode !== 'CV' && t.meridianCode !== 'GV',
-        t.side,
-        state,
-      );
+      const sideVisible = this.isSideAllowed(t.bilateral, t.side, state);
       t.mesh.visible = meridianVisible && sideVisible;
       const isActiveMeridian = t.meridianCode === selectedPrefix;
       if (t.mesh.visible) {
         t.mesh.material.color.copy(isActiveMeridian ? t.highlightColor : t.baseColor);
-        // UI audit 4.5: dim full-length routes while a search / special filter narrows the markers
-        t.mesh.material.opacity = filtering ? 0.14 : isActiveMeridian ? 0.68 : 0.34;
+        t.mesh.material.opacity = filtering ? 0.18 : isActiveMeridian ? 0.68 : 0.36;
       }
-      t.arrow.visible = t.mesh.visible && !filtering && (fewMeridians || isActiveMeridian);
+      const arrowVis = t.mesh.visible && !filtering && (fewMeridians || isActiveMeridian);
+      for (const arr of t.arrows) arr.visible = arrowVis;
     }
 
     for (const p of this.qiParticles) {
       const meridianVisible = visibleSet.has(p.meridianCode);
-      const sideVisible = this.isSideAllowed(
-        p.meridianCode !== 'CV' && p.meridianCode !== 'GV',
-        p.side,
-        state,
-      );
+      const sideVisible = this.isSideAllowed(p.bilateral, p.side, state);
       const vis = state.flowAnimation && meridianVisible && sideVisible && !filtering;
       p.sprite.visible = vis;
       for (const tr of p.trails) tr.visible = vis;
     }
   }
 
-  /** Quiz "看名找穴" feedback: user click dot + dashed connector to the correct point. */
   private rebuildQuizFeedback(state: AtlasState): void {
     for (const child of [...this.quizGroup.children]) {
       this.quizGroup.remove(child);
@@ -959,7 +969,6 @@ export class MeridianScene {
     if (nowMs - this.lastLabelEmitMs < 65) return;
     this.lastLabelEmitMs = nowMs;
 
-    // Camera azimuth for the orientation gizmo (UI audit 4.6)
     if (this.options.onCameraAzimuth) {
       const dx = this.camera.position.x - this.controls.target.x;
       const dz = this.camera.position.z - this.controls.target.z;
@@ -972,7 +981,6 @@ export class MeridianScene {
 
     if (!this.options.onLabelsUpdate) return;
 
-    // PRD 4.4: Hide all floating acupoint labels when Quiz Mode is active or labels disabled
     if (state.isQuizMode || !state.showLabels) {
       this.options.onLabelsUpdate([]);
       return;
@@ -982,21 +990,20 @@ export class MeridianScene {
     const height = this.renderer.domElement.clientHeight;
     if (width <= 0 || height <= 0) return;
 
-    // Project torso center to decide clean left/right outward label direction
     this.tmpProj.set(0, 1.0, 0).project(this.camera);
     const bodyScreenCenterX = (this.tmpProj.x * 0.5 + 0.5) * width;
 
+    const rxSet = activePrescriptionSet(state);
     const rawCandidates: ProjectedLabel[] = [];
     const orderedMarkers = [...this.markers].sort((a, b) => {
-      const aSel = a.code === state.selectedAcupointId ? 1 : 0;
-      const bSel = b.code === state.selectedAcupointId ? 1 : 0;
-      if (bSel !== aSel) return bSel - aSel;
+      const aPri = a.code === state.selectedAcupointId ? 2 : rxSet?.has(a.code) ? 1 : 0;
+      const bPri = b.code === state.selectedAcupointId ? 2 : rxSet?.has(b.code) ? 1 : 0;
+      if (bPri !== aPri) return bPri - aPri;
       return a.order - b.order;
     });
 
     for (const m of orderedMarkers) {
       if (!m.visualMesh.visible) continue;
-      // Show label on activeSide only for bilateral points to avoid clutter
       if (m.bilateral && m.side !== state.activeSide) continue;
 
       this.tmpProj.copy(m.visualMesh.position).project(this.camera);
@@ -1006,20 +1013,19 @@ export class MeridianScene {
       const sy = (-this.tmpProj.y * 0.5 + 0.5) * height;
       if (sx < 24 || sx > width - 24 || sy < 44 || sy > height - 44) continue;
 
-      // Backface culling via surface normal
       this.tmpToCam.copy(this.camera.position).sub(m.visualMesh.position);
       if (this.tmpToCam.dot(m.worldNormal) < 0.05) continue;
 
       const isSelected = m.code === state.selectedAcupointId;
-      if (!isSelected && rawCandidates.length >= 11) continue;
+      const isPriority = isSelected || Boolean(rxSet?.has(m.code));
+      if (!isPriority && rawCandidates.length >= 11) continue;
       if (
-        !isSelected &&
+        !isPriority &&
         rawCandidates.some((c) => Math.hypot(c.x - sx, c.y - sy) < 22)
       ) {
         continue;
       }
 
-      // Mesh occlusion check
       if (this.skinMeshes.length > 0) {
         const distToCam = this.tmpToCam.length();
         this.occlusionRaycaster.set(
@@ -1030,7 +1036,6 @@ export class MeridianScene {
         if (hit && hit.distance < distToCam - 0.012) continue;
       }
 
-      // Place label outward away from body midline so acupoints & meridian paths stay unobstructed
       const placeRightOfDot = sx >= bodyScreenCenterX - 8;
       const align: 'left' | 'right' =
         sx > width - 135 ? 'right' : sx < 135 ? 'left' : placeRightOfDot ? 'left' : 'right';
@@ -1049,7 +1054,6 @@ export class MeridianScene {
       });
     }
 
-    // Resolve vertical overlaps independently per side
     const minGap = 26;
     for (const sideAlign of ['left', 'right'] as const) {
       const group = rawCandidates
@@ -1065,12 +1069,6 @@ export class MeridianScene {
     this.options.onLabelsUpdate(rawCandidates);
   }
 
-  /**
-   * UI audit 8.2: when the mobile bottom sheet covers the lower canvas, shift the projected image
-   * upward via setViewOffset so the visual centre sits in the uncovered area.
-   */
-  private lastFrameMs = 0;
-
   private updateViewOffset(targetInset: number, dtMs: number): void {
     if (this.appliedBottomInset === targetInset) return;
     const alpha = this.lastFrameMs === 0 ? 1 : 1 - Math.exp(-Math.max(dtMs, 16) / 60);
@@ -1078,6 +1076,7 @@ export class MeridianScene {
     const settled = Math.abs(targetInset - next) < 0.5 ? targetInset : next;
     this.appliedBottomInset = settled;
     this.applyViewOffset();
+    this.wakeRenderLoop();
   }
 
   private applyViewOffset(): void {
@@ -1087,7 +1086,6 @@ export class MeridianScene {
     if (inset < 1) {
       this.camera.clearViewOffset();
     } else {
-      // Shift projection centre upward into the uncovered upper canvas without altering FOV zoom
       this.camera.setViewOffset(w, h, 0, inset * 0.42, w, h);
     }
     this.camera.updateProjectionMatrix();
@@ -1101,14 +1099,32 @@ export class MeridianScene {
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.renderer.setSize(width, height);
     this.applyViewOffset();
+    this.wakeRenderLoop();
   };
 
   private readonly animate = (nowMs: number): void => {
     if (this.disposed) return;
     this.rafId = window.requestAnimationFrame(this.animate);
 
-    const dtMs = this.lastFrameMs > 0 ? nowMs - this.lastFrameMs : 0;
+    // Audit 4.1: Pause WebGL work completely when browser tab is hidden
+    if (typeof document !== 'undefined' && document.hidden) return;
+
     const state = useAtlasStore.getState();
+    const isActive =
+      state.flowAnimation ||
+      this.isOrbiting ||
+      this.picker.isFlying() ||
+      Boolean(state.listHoverCode) ||
+      this.appliedBottomInset !== state.viewportBottomInset ||
+      nowMs - this.lastWakeMs < 1100;
+
+    // Power-saving idle throttle (~10 FPS) when flow animation is off and user is not interacting
+    if (!isActive && nowMs - this.lastRenderMs < 100) {
+      return;
+    }
+    this.lastRenderMs = nowMs;
+
+    const dtMs = this.lastFrameMs > 0 ? nowMs - this.lastFrameMs : 0;
     this.updateViewOffset(state.viewportBottomInset, dtMs);
     this.lastFrameMs = nowMs;
 
@@ -1117,6 +1133,7 @@ export class MeridianScene {
 
     let selectedMarker: MarkerInstance | null = null;
     const listHover = state.listHoverCode;
+    const rxSet = activePrescriptionSet(state);
     const isSelectedVisible = Boolean(
       state.selectedAcupointId && !(state.isQuizMode && state.quizKind === 'locate' && !state.quizQuestion?.answer),
     );
@@ -1125,11 +1142,11 @@ export class MeridianScene {
       if (!m.visualMesh.visible) continue;
       const isSameCode = m.code === state.selectedAcupointId;
       const isSelected = isSameCode && (!m.bilateral || m.side === state.activeSide);
-      const isMirror = isSameCode && !isSelected; // UI audit 4.7: faint highlight on contralateral point
+      const isMirror = isSameCode && !isSelected;
+      const isRxPartner = Boolean(rxSet?.has(m.code)) && !isSelected;
       const isHovered = m.code === this.hoveredCode || m.code === listHover;
       if (isSelected) selectedMarker = m;
 
-      // Shrink marker smoothly as camera zooms in close so exact anatomical landmarks are never occluded
       const camDist = this.camera.position.distanceTo(m.visualMesh.position);
       const distScale = THREE.MathUtils.clamp(camDist / 2.35, 0.28, 1.0);
 
@@ -1139,11 +1156,13 @@ export class MeridianScene {
           ? 1.3 + 0.15 * Math.sin(nowMs * 0.012)
           : isHovered
             ? 1.22
-            : isMirror
-              ? 1.08
-              : m.isEndpoint
-                ? 1.15
-                : 1.0;
+            : isRxPartner
+              ? 1.18 + 0.05 * Math.sin(nowMs * 0.005)
+              : isMirror
+                ? 1.08
+                : m.isEndpoint
+                  ? 1.15
+                  : 1.0;
       m.visualMesh.scale.setScalar(distScale * stateScale);
 
       if (isSelected) {
@@ -1151,10 +1170,11 @@ export class MeridianScene {
       } else if (isHovered) {
         m.visualMesh.material.color.setHex(HOVER_COLOR);
       } else if (import.meta.env.DEV && state.auditMode) {
-        // PRD 4.5: Color-code draft_imported (amber) vs gb_verified (emerald) in DEV audit mode
         m.visualMesh.material.color.setHex(
           m.auditStatus === 'gb_verified' ? 0x10b981 : 0xf59e0b,
         );
+      } else if (isRxPartner) {
+        m.visualMesh.material.color.setHex(PRESCRIPTION_COLOR);
       } else if (isMirror) {
         this.tmpColor.set(m.meridianColor).lerp(new THREE.Color(SELECTED_COLOR), 0.45);
         m.visualMesh.material.color.copy(this.tmpColor);
@@ -1182,22 +1202,27 @@ export class MeridianScene {
     }
 
     for (const t of this.tubes) {
-      if (!t.arrow.visible) continue;
-      const aDist = this.camera.position.distanceTo(t.arrow.position);
-      t.arrow.scale.setScalar(THREE.MathUtils.clamp(aDist / 2.35, 0.3, 1.0));
+      for (const arr of t.arrows) {
+        if (!arr.visible) continue;
+        const aDist = this.camera.position.distanceTo(arr.position);
+        arr.scale.setScalar(THREE.MathUtils.clamp(aDist / 2.35, 0.3, 1.0));
+      }
     }
 
     if (state.flowAnimation) {
       for (const qp of this.qiParticles) {
         if (!qp.sprite.visible) continue;
-        const t = (nowMs * 0.00038 + qp.offset) % 1;
+        // Uniform physical speed (~0.13 m/s) along branches of any length
+        const speed = 0.00013 / Math.max(qp.arcLength, 0.18);
+        const t = (nowMs * speed + qp.offset) % 1;
         qp.sprite.position.copy(qp.curve.getPointAt(t));
         const pDist = this.camera.position.distanceTo(qp.sprite.position);
         const pScale = 0.0085 * THREE.MathUtils.clamp(pDist / 2.35, 0.32, 1.0);
         qp.sprite.scale.set(pScale, pScale, 1);
-        // Fading comet tail behind the particle makes the circulation direction readable
+
+        const trailStep = Math.min(0.06, 0.012 / Math.max(qp.arcLength, 0.18));
         for (let k = 0; k < qp.trails.length; k++) {
-          const tt = t - 0.045 * (k + 1);
+          const tt = t - trailStep * (k + 1);
           const tr = qp.trails[k];
           if (tt < 0) {
             tr.visible = false;
@@ -1226,6 +1251,8 @@ export class MeridianScene {
 
     this.resizeObserver.disconnect();
     window.removeEventListener('resize', this.handleResize);
+    document.removeEventListener('visibilitychange', this.wakeRenderLoop);
+    this.controls.removeEventListener('change', this.wakeRenderLoop);
     this.unsubscribeStore();
     useAtlasStore.getState().registerLiveCameraGetter(null);
     this.picker.dispose();
@@ -1236,6 +1263,8 @@ export class MeridianScene {
     this.sharedVisualSphere.dispose();
     this.sharedOutlineMaterial.dispose();
     this.sharedArrowCone.dispose();
+    this.sharedLandmarkGeo.dispose();
+    this.sharedLandmarkMat.dispose();
     this.glowTexture?.dispose();
 
     this.scene.traverse((obj) => {

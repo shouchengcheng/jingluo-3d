@@ -31,6 +31,7 @@ export interface ViewportHudProps {
   azimuthDeg: number;
   isInteracting: boolean;
   onOpenShortcuts: () => void;
+  onOpenCunReference: () => void;
   onAfterMobilePick?: () => void;
 }
 
@@ -49,6 +50,7 @@ export function ViewportHud({
   azimuthDeg,
   isInteracting,
   onOpenShortcuts,
+  onOpenCunReference,
   onAfterMobilePick,
 }: ViewportHudProps) {
   const [regionOpen, setRegionOpen] = useState(false);
@@ -72,6 +74,7 @@ export function ViewportHud({
   const wireframeOverlay = useAtlasStore((s) => s.wireframeOverlay);
   const flowAnimation = useAtlasStore((s) => s.flowAnimation);
   const showLabels = useAtlasStore((s) => s.showLabels);
+  const showLandmarks = useAtlasStore((s) => s.showLandmarks);
   const viewportBottomInset = useAtlasStore((s) => s.viewportBottomInset);
 
   const requestViewPreset = useAtlasStore((s) => s.requestViewPreset);
@@ -82,6 +85,7 @@ export function ViewportHud({
   const setWireframeOverlay = useAtlasStore((s) => s.setWireframeOverlay);
   const setFlowAnimation = useAtlasStore((s) => s.setFlowAnimation);
   const setShowLabels = useAtlasStore((s) => s.setShowLabels);
+  const setShowLandmarks = useAtlasStore((s) => s.setShowLandmarks);
   const selectAcupoint = useAtlasStore((s) => s.selectAcupoint);
   const revealQuizAnswer = useAtlasStore((s) => s.revealQuizAnswer);
   const nextQuizQuestion = useAtlasStore((s) => s.nextQuizQuestion);
@@ -357,12 +361,21 @@ export function ViewportHud({
         </div>
       </div>
 
-      {/* Bottom-Right Floating Display Settings & Shortcut Help Dock (UI audit 3.2 & 4.8) */}
+      {/* Bottom-Right Floating Display Settings, Cun Reference & Shortcut Help Dock */}
       <div
         ref={displayRef}
         style={{ bottom: `${bottomDockOffset}px` }}
         className="pointer-events-auto absolute right-3 z-20 flex items-center gap-1.5"
       >
+        <button
+          type="button"
+          onClick={onOpenCunReference}
+          title="查看 GB/T 12346-2021 骨度分寸折量表与体表骨性标志"
+          className="glass tap hidden items-center rounded-xl px-2.5 py-2 text-xs font-medium text-fg-muted transition hover:text-fg sm:inline-flex"
+        >
+          骨度分寸
+        </button>
+
         <button
           type="button"
           onClick={onOpenShortcuts}
@@ -464,12 +477,13 @@ export function ViewportHud({
               />
             </div>
 
-            <div className="grid grid-cols-3 gap-1.5 pt-0.5">
+            <div className="grid grid-cols-2 gap-1.5 pt-0.5">
               {(
                 [
                   [flowAnimation, setFlowAnimation, '经气流向', false],
-                  [wireframeOverlay, setWireframeOverlay, '解剖线框', false],
                   [showLabels, setShowLabels, '穴名引线', isQuizMode],
+                  [wireframeOverlay, setWireframeOverlay, '解剖线框', false],
+                  [showLandmarks, setShowLandmarks, '骨性标志', false],
                 ] as [boolean, (v: boolean) => void, string, boolean][]
               ).map(([checked, setter, label, disabled]) => (
                 <button

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useAtlasStore } from '../store/useAtlasStore';
 
 const SHORTCUT_ROWS: { keys: string; desc: string }[] = [
@@ -19,6 +19,12 @@ export interface ShortcutsModalProps {
 }
 
 export function ShortcutsModal({ open, onClose, onToggle }: ShortcutsModalProps) {
+  const closeBtnRef = useRef<HTMLButtonElement | null>(null);
+
+  useEffect(() => {
+    if (open) closeBtnRef.current?.focus();
+  }, [open]);
+
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
       const target = e.target as HTMLElement | null;
@@ -29,11 +35,19 @@ export function ShortcutsModal({ open, onClose, onToggle }: ShortcutsModalProps)
           target.tagName === 'SELECT' ||
           target.isContentEditable);
 
-      if (e.key === 'Escape' && open) {
-        e.preventDefault();
-        onClose();
-        return;
+      if (open) {
+        if (e.key === 'Escape' || e.key === '?') {
+          e.preventDefault();
+          onClose();
+          return;
+        }
+        if (e.key === 'Tab') {
+          e.preventDefault();
+          closeBtnRef.current?.focus();
+          return;
+        }
       }
+
       if (inInput || e.metaKey || e.ctrlKey || e.altKey) return;
 
       const s = useAtlasStore.getState();
@@ -90,16 +104,23 @@ export function ShortcutsModal({ open, onClose, onToggle }: ShortcutsModalProps)
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/55 p-4 backdrop-blur-xs"
     >
       <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="shortcuts-modal-title"
         onClick={(e) => e.stopPropagation()}
         className="glass animate-fade-in-up w-full max-w-md rounded-xl p-5 text-sm"
       >
         <div className="flex items-center justify-between border-b border-line pb-3">
           <div>
-            <h2 className="font-serif text-lg font-bold text-fg">课堂演示键盘快捷键</h2>
+            <h2 id="shortcuts-modal-title" className="font-serif text-lg font-bold text-fg">
+              课堂演示键盘快捷键
+            </h2>
             <p className="text-xs text-fg-subtle">在非输入框焦点下可直接触发</p>
           </div>
           <button
+            ref={closeBtnRef}
             type="button"
+            aria-label="关闭快捷键说明"
             onClick={onClose}
             className="rounded-lg px-2 py-1 text-fg-subtle hover:bg-surface-2 hover:text-fg"
           >

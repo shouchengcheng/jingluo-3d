@@ -25,12 +25,15 @@ export function ControlPanel({ onSelectAcupointDone }: ControlPanelProps) {
 
 function DirectoryPanel({ onSelectAcupointDone }: ControlPanelProps) {
   const [meridianGridOpen, setMeridianGridOpen] = useState(true);
+  const [rxDrawerOpen, setRxDrawerOpen] = useState(false);
   const [collapsedGroups, setCollapsedGroups] = useState<Record<string, boolean>>({});
   const rowRefs = useRef<Record<string, HTMLButtonElement | null>>({});
 
   const meridians = useAtlasStore((s) => s.meridians);
   const acupoints = useAtlasStore((s) => s.acupoints);
   const coordinates = useAtlasStore((s) => s.coordinates);
+  const prescriptions = useAtlasStore((s) => s.prescriptions);
+  const activePrescriptionId = useAtlasStore((s) => s.activePrescriptionId);
   const visibleMeridians = useAtlasStore((s) => s.visibleMeridians);
   const multiCompare = useAtlasStore((s) => s.multiCompare);
   const selectedAcupointId = useAtlasStore((s) => s.selectedAcupointId);
@@ -40,12 +43,18 @@ function DirectoryPanel({ onSelectAcupointDone }: ControlPanelProps) {
 
   const selectMeridian = useAtlasStore((s) => s.selectMeridian);
   const setVisibleMeridians = useAtlasStore((s) => s.setVisibleMeridians);
+  const selectPrescription = useAtlasStore((s) => s.selectPrescription);
   const setMultiCompare = useAtlasStore((s) => s.setMultiCompare);
   const setSearchQuery = useAtlasStore((s) => s.setSearchQuery);
   const setSpecialFilter = useAtlasStore((s) => s.setSpecialFilter);
   const clearFilters = useAtlasStore((s) => s.clearFilters);
   const selectAcupoint = useAtlasStore((s) => s.selectAcupoint);
   const setListHoverCode = useAtlasStore((s) => s.setListHoverCode);
+
+  const activePrescription = useMemo(
+    () => prescriptions.find((p) => p.id === activePrescriptionId) ?? null,
+    [prescriptions, activePrescriptionId],
+  );
 
   // Order meridians strictly by 12-meridian Qi circulation + CV + GV (UI audit 5.3)
   const orderedMeridians = useMemo(
@@ -72,6 +81,10 @@ function DirectoryPanel({ onSelectAcupointDone }: ControlPanelProps) {
   }, [acupoints]);
 
   const filteredAcupoints = useMemo(() => {
+    if (activePrescription) {
+      const rxSet = new Set(activePrescription.points);
+      return acupoints.filter((a) => rxSet.has(a.code)).sort(sortByFlow);
+    }
     const visibleSet = new Set(visibleMeridians);
     const hasSearch = searchQuery.trim().length > 0;
     return acupoints
@@ -80,7 +93,7 @@ function DirectoryPanel({ onSelectAcupointDone }: ControlPanelProps) {
         return matchesAcupointQuery(a, a.code, searchQuery, specialFilter);
       })
       .sort(sortByFlow);
-  }, [acupoints, visibleMeridians, searchQuery, specialFilter]);
+  }, [acupoints, activePrescription, visibleMeridians, searchQuery, specialFilter]);
 
   // Group acupoints by meridian in circulation order and sort LU1 -> LU11 inside each group (UI audit 5.2)
   const groupedAcupoints = useMemo(() => {
@@ -167,9 +180,19 @@ function DirectoryPanel({ onSelectAcupointDone }: ControlPanelProps) {
         </div>
 
         {/* Active removable filter pills */}
-        {(searchQuery.trim() || specialFilter) && (
+        {(searchQuery.trim() || specialFilter || activePrescription) && (
           <div className="flex flex-wrap items-center gap-1.5 pt-0.5 text-xs">
             <span className="text-[11px] text-fg-subtle">筛选中:</span>
+            {activePrescription && (
+              <button
+                type="button"
+                onClick={() => selectPrescription(null)}
+                className="inline-flex items-center gap-1 rounded-md bg-azure/20 px-2 py-0.5 font-medium text-azure-fg"
+              >
+                <span>配穴:{activePrescription.name}</span>
+                <span>✕</span>
+              </button>
+            )}
             {specialFilter && (
               <button
                 type="button"
@@ -192,7 +215,10 @@ function DirectoryPanel({ onSelectAcupointDone }: ControlPanelProps) {
             )}
             <button
               type="button"
-              onClick={clearFilters}
+              onClick={() => {
+                selectPrescription(null);
+                clearFilters();
+              }}
               className="ml-auto text-[11px] text-fg-subtle hover:text-fg"
             >
               全部重置
@@ -307,6 +333,62 @@ function DirectoryPanel({ onSelectAcupointDone }: ControlPanelProps) {
           </div>
         )}
       </div>
+
+      {/* Collapsible Classic Point-Pairing Prescriptions Drawer (Audit 3.3) */}
+      {prescriptions.length > 0 && (
+        <div className="shrink-0 border-b border-line bg-surface/40 px-3.5 py-2">
+          <div className="flex items-center justify-between">
+            <button
+              type="button"
+              onClick={() => setRxDrawerOpen((o) => !o)}
+              className="flex items-center gap-1.5 text-xs font-semibold tracking-wider text-fg-muted uppercase hover:text-fg"
+            >
+              <span className="text-[10px]">{rxDrawerOpen ? '▾' : '▸'}</span>
+              <span>经典临床配穴 ({prescriptions.length})</span>
+            </button>
+            {activePrescription && (
+              <button
+                type="button"
+                onClick={() => selectPrescription(null)}
+                className="text-[11px] text-azure-fg hover:underline"
+              >
+                退出配穴
+              </button>
+            )}
+          </div>
+
+          {rxDrawerOpen && (
+            <div className="mt-2 max-h-44 space-y-1 overflow-y-auto pr-0.5">
+              {prescriptions.map((rx) => {
+                const active = rx.id === activePrescriptionId;
+                return (
+                  <button
+                    key={rx.id}
+                    type="button"
+                    onClick={() => {
+                      selectPrescription(active ? null : rx.id);
+                      onSelectAcupointDone?.();
+                    }}
+                    className={`flex w-full items-center justify-between gap-2 rounded-lg border px-2.5 py-1.5 text-left text-xs transition ${
+                      active
+                        ? 'border-azure bg-azure/18 font-semibold text-fg'
+                        : 'border-line bg-surface/60 text-fg-muted hover:border-line-strong hover:text-fg'
+                    }`}
+                  >
+                    <div className="min-w-0">
+                      <div className="truncate font-medium text-fg">{rx.name}</div>
+                      <div className="truncate text-[10px] text-fg-subtle">{rx.category}</div>
+                    </div>
+                    <span className="shrink-0 font-mono text-[10px] text-gold-fg">
+                      {rx.points.join('+')}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Single Scrollable Acupoint List Filling Remaining Height (UI audit 3.1, 5.2, 5.4, 5.5) */}
       <div className="min-h-0 flex-1 overflow-y-auto px-3.5 py-2.5">

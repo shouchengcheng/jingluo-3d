@@ -1,6 +1,7 @@
-import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { useAtlasStore } from '../../store/useAtlasStore';
 import { isBilateralCode } from '../../utils/acupointMeta';
+import { CunReferenceModal } from '../CunReferenceModal';
 import { ShortcutsModal } from '../ShortcutsModal';
 import { ViewportHud } from '../ViewportHud';
 import type { AmbiguousPick, HoverInfo, ProjectedLabel } from '../../types/atlas';
@@ -46,6 +47,7 @@ export function ResponsiveShell({
   const [mobileTab, setMobileTab] = useState<MobileTab>('detail');
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
   const [shortcutsOpen, setShortcutsOpen] = useState(false);
+  const [cunModalOpen, setCunModalOpen] = useState(false);
   const [layoutMode, setLayoutMode] = useState<'desktop' | 'landscape' | 'portrait'>('desktop');
 
   const dragStateRef = useRef<{
@@ -58,6 +60,7 @@ export function ResponsiveShell({
   } | null>(null);
 
   const selectedId = useAtlasStore((s) => s.selectedAcupointId);
+  const acupoints = useAtlasStore((s) => s.acupoints);
   const activeSide = useAtlasStore((s) => s.activeSide);
   const searchQuery = useAtlasStore((s) => s.searchQuery);
   const isQuizMode = useAtlasStore((s) => s.isQuizMode);
@@ -67,6 +70,7 @@ export function ResponsiveShell({
   const surfacePickArmed = useAtlasStore((s) => s.surfacePickArmed);
   const uiTheme = useAtlasStore((s) => s.uiTheme);
   const bigScreen = useAtlasStore((s) => s.bigScreen);
+  const showLandmarks = useAtlasStore((s) => s.showLandmarks);
   const leftPanelWidth = useAtlasStore((s) => s.leftPanelWidth);
   const leftPanelCollapsed = useAtlasStore((s) => s.leftPanelCollapsed);
 
@@ -75,9 +79,17 @@ export function ResponsiveShell({
   const selectAcupoint = useAtlasStore((s) => s.selectAcupoint);
   const setUiTheme = useAtlasStore((s) => s.setUiTheme);
   const setBigScreen = useAtlasStore((s) => s.setBigScreen);
+  const setShowLandmarks = useAtlasStore((s) => s.setShowLandmarks);
   const setLeftPanelWidth = useAtlasStore((s) => s.setLeftPanelWidth);
   const setLeftPanelCollapsed = useAtlasStore((s) => s.setLeftPanelCollapsed);
   const setViewportBottomInset = useAtlasStore((s) => s.setViewportBottomInset);
+
+  const liveAnnouncement = useMemo(() => {
+    if (isQuizMode) return '教学盲测模式已开启';
+    if (!selectedId) return '';
+    const pt = acupoints.find((a) => a.code === selectedId);
+    return pt ? `已选中穴位 ${pt.name} (${pt.code})，${pt.gbLocation}` : `已选中 ${selectedId}`;
+  }, [isQuizMode, selectedId, acupoints]);
 
   // Sync theme & big-screen root attributes onto <html>
   useEffect(() => {
@@ -380,6 +392,7 @@ export function ResponsiveShell({
             azimuthDeg={azimuthDeg}
             isInteracting={isInteracting}
             onOpenShortcuts={() => setShortcutsOpen(true)}
+            onOpenCunReference={() => setCunModalOpen(true)}
             onAfterMobilePick={() => {
               setMobileTab('detail');
               if (sheetSnap === 'collapsed') setSheetSnap('half');
@@ -614,10 +627,21 @@ export function ResponsiveShell({
         </span>
       </footer>
 
+      <div aria-live="polite" aria-atomic="true" className="sr-only">
+        {liveAnnouncement}
+      </div>
+
       <ShortcutsModal
         open={shortcutsOpen}
         onClose={() => setShortcutsOpen(false)}
         onToggle={() => setShortcutsOpen((o) => !o)}
+      />
+
+      <CunReferenceModal
+        open={cunModalOpen}
+        onClose={() => setCunModalOpen(false)}
+        showLandmarks={showLandmarks}
+        onToggleLandmarks={() => setShowLandmarks(!showLandmarks)}
       />
     </div>
   );
