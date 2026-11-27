@@ -97,6 +97,8 @@ export interface ProjectedLabel {
   color: string;
   x: number;
   y: number;
+  labelY: number;
+  align: 'left' | 'right';
   isSelected: boolean;
   auditStatus: AuditStatus;
 }

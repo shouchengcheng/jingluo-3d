@@ -133,32 +133,54 @@ export function ResponsiveShell({
 
           {/* 3D Projected Floating Labels Overlay (Automatically empty in Quiz Mode) */}
           <div className="pointer-events-none absolute inset-0 z-10 overflow-hidden">
-            {projectedLabels.map((lbl) => (
-              <button
-                key={`${lbl.code}`}
-                type="button"
-                onClick={() => {
-                  selectAcupoint(lbl.code, { focus: true });
-                  setMobileTab('detail');
-                  if (sheetSnap === 'collapsed') setSheetSnap('half');
-                }}
-                style={{
-                  transform: `translate(${lbl.x}px, ${lbl.y}px) translate(-50%, -135%)`,
-                }}
-                className={`pointer-events-auto absolute top-0 left-0 flex items-center gap-1 rounded-md border px-1.5 py-0.5 text-[11px] whitespace-nowrap shadow backdrop-blur transition ${
-                  lbl.isSelected
-                    ? 'border-amber-300 bg-slate-900/95 font-semibold text-amber-200'
-                    : 'border-slate-700/80 bg-slate-950/75 text-slate-200 hover:border-sky-400'
-                }`}
-              >
-                <span
-                  className="h-1.5 w-1.5 rounded-full"
-                  style={{ backgroundColor: lbl.color }}
-                />
-                <span>{lbl.name}</span>
-                <span className="font-mono text-[10px] text-slate-400">{lbl.code}</span>
-              </button>
-            ))}
+            <svg className="h-full w-full">
+              {projectedLabels.map((lbl) => {
+                const dir = lbl.align === 'left' ? 1 : -1;
+                return (
+                  <line
+                    key={`line-${lbl.code}`}
+                    x1={lbl.x + dir * 6}
+                    y1={lbl.y}
+                    x2={lbl.x + dir * 22}
+                    y2={lbl.labelY}
+                    stroke={lbl.isSelected ? '#fbbf24' : lbl.color}
+                    strokeWidth={lbl.isSelected ? 1.25 : 0.9}
+                    strokeOpacity={lbl.isSelected ? 0.85 : 0.45}
+                  />
+                );
+              })}
+            </svg>
+            {projectedLabels.map((lbl) => {
+              const offsetX = lbl.align === 'left' ? lbl.x + 24 : lbl.x - 24;
+              const anchorTransform =
+                lbl.align === 'left' ? 'translate(0, -50%)' : 'translate(-100%, -50%)';
+              return (
+                <button
+                  key={`${lbl.code}`}
+                  type="button"
+                  onClick={() => {
+                    selectAcupoint(lbl.code, { focus: true });
+                    setMobileTab('detail');
+                    if (sheetSnap === 'collapsed') setSheetSnap('half');
+                  }}
+                  style={{
+                    transform: `translate(${offsetX}px, ${lbl.labelY}px) ${anchorTransform}`,
+                  }}
+                  className={`pointer-events-auto absolute top-0 left-0 flex items-center gap-1 rounded-md border px-1.5 py-0.5 text-[11px] whitespace-nowrap shadow backdrop-blur transition ${
+                    lbl.isSelected
+                      ? 'border-amber-300/90 bg-slate-900/95 font-semibold text-amber-200'
+                      : 'border-slate-700/80 bg-slate-950/75 text-slate-200 hover:border-sky-400'
+                  }`}
+                >
+                  <span
+                    className="h-1.5 w-1.5 rounded-full"
+                    style={{ backgroundColor: lbl.color }}
+                  />
+                  <span>{lbl.name}</span>
+                  <span className="font-mono text-[10px] text-slate-400">{lbl.code}</span>
+                </button>
+              );
+            })}
           </div>
 
           {/* Loading / Error State Overlay */}

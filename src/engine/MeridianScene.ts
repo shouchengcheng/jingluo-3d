@@ -110,8 +110,8 @@ export class MeridianScene {
   private outerReticle!: THREE.Mesh<THREE.RingGeometry, THREE.MeshBasicMaterial>;
   private needleGroup!: THREE.Group;
 
-  private readonly sharedVisualSphere = new THREE.SphereGeometry(0.0082, 16, 12);
-  private readonly sharedHitboxSphere = new THREE.SphereGeometry(0.024, 10, 8);
+  private readonly sharedVisualSphere = new THREE.SphereGeometry(0.0042, 16, 12);
+  private readonly sharedHitboxSphere = new THREE.SphereGeometry(0.018, 10, 8);
   private readonly sharedHitboxMaterial = new THREE.MeshBasicMaterial({
     transparent: true,
     opacity: 0,
@@ -295,44 +295,44 @@ export class MeridianScene {
 
   private setupSelectionReticle(): void {
     this.innerReticle = new THREE.Mesh(
-      new THREE.RingGeometry(0.015, 0.02, 40),
+      new THREE.RingGeometry(0.0068, 0.008, 48),
       new THREE.MeshBasicMaterial({
         color: 0xfbbf24,
         side: THREE.DoubleSide,
         transparent: true,
-        opacity: 0.95,
+        opacity: 0.9,
         depthTest: false,
       }),
     );
 
     this.outerReticle = new THREE.Mesh(
-      new THREE.RingGeometry(0.026, 0.03, 40),
+      new THREE.RingGeometry(0.0095, 0.0105, 48),
       new THREE.MeshBasicMaterial({
         color: 0x38bdf8,
         side: THREE.DoubleSide,
         transparent: true,
-        opacity: 0.7,
+        opacity: 0.45,
         depthTest: false,
       }),
     );
 
     this.needleGroup = new THREE.Group();
     const shaft = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.0007, 0.0022, 0.085, 10),
+      new THREE.CylinderGeometry(0.00025, 0.0008, 0.042, 10),
       new THREE.MeshBasicMaterial({
         color: 0xfde68a,
         transparent: true,
-        opacity: 0.92,
+        opacity: 0.85,
       }),
     );
     shaft.rotation.x = Math.PI / 2;
-    shaft.position.z = 0.044;
+    shaft.position.z = 0.025;
 
     const handleTip = new THREE.Mesh(
-      new THREE.SphereGeometry(0.004, 12, 10),
+      new THREE.SphereGeometry(0.0018, 12, 10),
       new THREE.MeshBasicMaterial({ color: 0xfef3c7 }),
     );
-    handleTip.position.z = 0.088;
+    handleTip.position.z = 0.047;
 
     this.needleGroup.add(shaft, handleTip);
     this.reticleGroup.add(this.innerReticle, this.outerReticle, this.needleGroup);
@@ -466,32 +466,6 @@ export class MeridianScene {
     this.picker.flyTo(coord.cameraPreset, side, 620);
   }
 
-  private nearestSkinSurface(target: THREE.Vector3): { point: THREE.Vector3; normal: THREE.Vector3 } | null {
-    if (this.skinMeshes.length === 0) return null;
-    const mesh = this.skinMeshes[0];
-    const posAttr = mesh.geometry.attributes.position;
-    const normAttr = mesh.geometry.attributes.normal;
-    if (!posAttr || !normAttr) return null;
-
-    let bestDistSq = Infinity;
-    let bestIdx = 0;
-    for (let i = 0; i < posAttr.count; i++) {
-      const dx = posAttr.getX(i) - target.x;
-      const dy = posAttr.getY(i) - target.y;
-      const dz = posAttr.getZ(i) - target.z;
-      const dSq = dx * dx + dy * dy + dz * dz;
-      if (dSq < bestDistSq) {
-        bestDistSq = dSq;
-        bestIdx = i;
-      }
-    }
-
-    return {
-      point: new THREE.Vector3().fromBufferAttribute(posAttr, bestIdx),
-      normal: new THREE.Vector3().fromBufferAttribute(normAttr, bestIdx).normalize(),
-    };
-  }
-
   private clearDynamicGroups(): void {
     // AGENTS.md Rule 4.1: Explicitly dispose materials and geometries to prevent WebGL memory leaks
     for (const m of this.markers) {
@@ -600,35 +574,48 @@ export class MeridianScene {
           const controlPoints: THREE.Vector3[] = [
             a.surfacePos.clone().addScaledVector(a.worldNormal, TUBE_NORMAL_OFFSET),
           ];
-          const subSteps = 4;
+
+          const subSteps = dist < 0.045 ? 2 : dist < 0.12 ? 3 : 5;
           for (let s = 1; s < subSteps; s++) {
-            const lerped = a.surfacePos.clone().lerp(b.surfacePos, s / subSteps);
-            const snapped = this.nearestSkinSurface(lerped);
-            if (snapped && snapped.point.distanceTo(lerped) < 0.06) {
-              controlPoints.push(
-                snapped.point.addScaledVector(snapped.normal, TUBE_NORMAL_OFFSET),
-              );
-            } else {
-              const interpNormal = a.worldNormal
-                .clone()
-                .lerp(b.worldNormal, s / subSteps)
-                .normalize();
-              controlPoints.push(lerped.addScaledVector(interpNormal, TUBE_NORMAL_OFFSET));
+            const t = s / subSteps;
+            const lerped = a.surfacePos.clone().lerp(b.surfacePos, t);
+            const interpNormal = a.worldNormal.clone().lerp(b.worldNormal, t).normalize();
+
+            // Raycast onto exact continuous mesh triangle face along -interpNormal
+            let projectedPt: THREE.Vector3 | null = null;
+            if (this.skinMeshes.length > 0) {
+              const rayOrigin = lerped.clone().addScaledVector(interpNormal, 0.05);
+              this.occlusionRaycaster.set(rayOrigin, interpNormal.clone().negate());
+              const hit = this.occlusionRaycaster.intersectObjects(this.skinMeshes, false)[0];
+              if (hit && hit.distance < 0.1) {
+                projectedPt = hit.point.clone().addScaledVector(interpNormal, TUBE_NORMAL_OFFSET);
+              }
+            }
+
+            const candidate =
+              projectedPt ?? lerped.addScaledVector(interpNormal, TUBE_NORMAL_OFFSET);
+            const prevPt = controlPoints[controlPoints.length - 1];
+            if (prevPt && candidate.distanceTo(prevPt) > 0.003) {
+              controlPoints.push(candidate);
             }
           }
-          controlPoints.push(
-            b.surfacePos.clone().addScaledVector(b.worldNormal, TUBE_NORMAL_OFFSET),
-          );
 
-          const curve = new THREE.CatmullRomCurve3(controlPoints);
+          const endPt = b.surfacePos.clone().addScaledVector(b.worldNormal, TUBE_NORMAL_OFFSET);
+          if (controlPoints[controlPoints.length - 1].distanceTo(endPt) < 0.003 && controlPoints.length > 1) {
+            controlPoints[controlPoints.length - 1] = endPt;
+          } else {
+            controlPoints.push(endPt);
+          }
+
+          const curve = new THREE.CatmullRomCurve3(controlPoints, false, 'centripetal', 0.5);
           const baseColor = new THREE.Color(meta.color);
           const highlightColor = baseColor.clone().lerp(new THREE.Color(0xffffff), 0.35);
 
-          const tubeGeo = new THREE.TubeGeometry(curve, 18, 0.0022, 6, false);
+          const tubeGeo = new THREE.TubeGeometry(curve, 18, 0.00095, 6, false);
           const tubeMat = new THREE.MeshBasicMaterial({
             color: baseColor,
             transparent: true,
-            opacity: 0.72,
+            opacity: 0.6,
           });
           const tubeMesh = new THREE.Mesh(tubeGeo, tubeMat);
           this.tubeGroup.add(tubeMesh);
@@ -647,12 +634,12 @@ export class MeridianScene {
               map: this.glowTexture,
               color: highlightColor,
               transparent: true,
-              opacity: 0.9,
+              opacity: 0.82,
               depthWrite: false,
               blending: THREE.AdditiveBlending,
             });
             const sprite = new THREE.Sprite(spMat);
-            sprite.scale.set(0.018, 0.018, 1);
+            sprite.scale.set(0.0085, 0.0085, 1);
             this.particleGroup.add(sprite);
 
             this.qiParticles.push({
@@ -707,7 +694,7 @@ export class MeridianScene {
       if (t.mesh.visible) {
         const isActiveMeridian = t.meridianCode === selectedPrefix;
         t.mesh.material.color.copy(isActiveMeridian ? t.highlightColor : t.baseColor);
-        t.mesh.material.opacity = isActiveMeridian ? 0.92 : 0.45;
+        t.mesh.material.opacity = isActiveMeridian ? 0.65 : 0.32;
       }
     }
 
@@ -737,7 +724,11 @@ export class MeridianScene {
     const height = this.renderer.domElement.clientHeight;
     if (width <= 0 || height <= 0) return;
 
-    const candidates: ProjectedLabel[] = [];
+    // Project torso center to decide clean left/right outward label direction
+    this.tmpProj.set(0, 1.0, 0).project(this.camera);
+    const bodyScreenCenterX = (this.tmpProj.x * 0.5 + 0.5) * width;
+
+    const rawCandidates: ProjectedLabel[] = [];
     const orderedMarkers = [...this.markers].sort((a, b) => {
       const aSel = a.code === state.selectedAcupointId ? 1 : 0;
       const bSel = b.code === state.selectedAcupointId ? 1 : 0;
@@ -755,17 +746,17 @@ export class MeridianScene {
 
       const sx = (this.tmpProj.x * 0.5 + 0.5) * width;
       const sy = (-this.tmpProj.y * 0.5 + 0.5) * height;
-      if (sx < 24 || sx > width - 24 || sy < 36 || sy > height - 36) continue;
+      if (sx < 24 || sx > width - 24 || sy < 44 || sy > height - 44) continue;
 
       // Backface culling via surface normal
       this.tmpToCam.copy(this.camera.position).sub(m.visualMesh.position);
       if (this.tmpToCam.dot(m.worldNormal) < 0.05) continue;
 
       const isSelected = m.code === state.selectedAcupointId;
-      if (!isSelected && candidates.length >= 12) continue;
+      if (!isSelected && rawCandidates.length >= 11) continue;
       if (
         !isSelected &&
-        candidates.some((c) => Math.hypot(c.x - sx, c.y - sy) < 38)
+        rawCandidates.some((c) => Math.hypot(c.x - sx, c.y - sy) < 22)
       ) {
         continue;
       }
@@ -781,19 +772,39 @@ export class MeridianScene {
         if (hit && hit.distance < distToCam - 0.012) continue;
       }
 
-      candidates.push({
+      // Place label outward away from body midline so acupoints & meridian paths stay unobstructed
+      const placeRightOfDot = sx >= bodyScreenCenterX - 8;
+      const align: 'left' | 'right' =
+        sx > width - 135 ? 'right' : sx < 135 ? 'left' : placeRightOfDot ? 'left' : 'right';
+
+      rawCandidates.push({
         code: m.code,
         name: m.name,
         meridianCode: m.meridianCode,
         color: m.meridianColor,
         x: Math.round(sx),
         y: Math.round(sy),
+        labelY: Math.round(sy),
+        align,
         isSelected,
         auditStatus: m.auditStatus,
       });
     }
 
-    this.onLabelsUpdate(candidates);
+    // Resolve vertical overlaps independently per side
+    const minGap = 26;
+    for (const sideAlign of ['left', 'right'] as const) {
+      const group = rawCandidates
+        .filter((c) => c.align === sideAlign)
+        .sort((a, b) => a.y - b.y);
+      for (let i = 1; i < group.length; i++) {
+        if (group[i].labelY - group[i - 1].labelY < minGap) {
+          group[i].labelY = group[i - 1].labelY + minGap;
+        }
+      }
+    }
+
+    this.onLabelsUpdate(rawCandidates);
   }
 
   private readonly handleResize = (): void => {
@@ -823,12 +834,17 @@ export class MeridianScene {
       const isHovered = m.code === this.hoveredCode;
       if (isSelected) selectedMarker = m;
 
-      const scale = isSelected
-        ? 1.55 + 0.14 * Math.sin(nowMs * 0.006)
+      // Shrink marker smoothly as camera zooms in close so exact anatomical landmarks are never occluded
+      const camDist = this.camera.position.distanceTo(m.visualMesh.position);
+      const distScale = THREE.MathUtils.clamp(camDist / 2.35, 0.28, 1.0);
+
+      const stateScale = isSelected
+        ? 1.16 + 0.06 * Math.sin(nowMs * 0.005)
         : isHovered
-          ? 1.32
+          ? 1.18
           : 1.0;
-      m.visualMesh.scale.setScalar(scale);
+      m.visualMesh.scale.setScalar(distScale * stateScale);
+      m.hitboxMesh.scale.setScalar(THREE.MathUtils.clamp(camDist / 2.2, 0.36, 1.0));
 
       if (isSelected) {
         m.visualMesh.material.color.setHex(0xfef08a);
@@ -845,14 +861,19 @@ export class MeridianScene {
     }
 
     if (selectedMarker && selectedMarker.visualMesh.visible) {
+      const selDist = this.camera.position.distanceTo(selectedMarker.visualMesh.position);
+      const reticleDistScale = THREE.MathUtils.clamp(selDist / 2.35, 0.32, 1.0);
+
       this.reticleGroup.visible = true;
       this.reticleGroup.position.copy(selectedMarker.visualMesh.position);
       this.reticleGroup.quaternion.setFromUnitVectors(this.zAxis, selectedMarker.worldNormal);
-      const wave = (nowMs * 0.0009) % 1;
-      this.innerReticle.scale.setScalar(1 + 0.1 * Math.sin(nowMs * 0.005));
-      this.outerReticle.scale.setScalar(0.9 + wave * 0.55);
-      this.outerReticle.material.opacity = 0.72 * (1 - wave);
-      this.needleGroup.position.z = 0.004 + 0.005 * Math.sin(nowMs * 0.004);
+      this.reticleGroup.scale.setScalar(reticleDistScale);
+
+      const wave = (nowMs * 0.0008) % 1;
+      this.innerReticle.scale.setScalar(1 + 0.05 * Math.sin(nowMs * 0.004));
+      this.outerReticle.scale.setScalar(1.0 + wave * 0.32);
+      this.outerReticle.material.opacity = 0.42 * (1 - wave);
+      this.needleGroup.position.z = 0.002 + 0.003 * Math.sin(nowMs * 0.004);
     } else {
       this.reticleGroup.visible = false;
     }
@@ -862,6 +883,9 @@ export class MeridianScene {
         if (!qp.sprite.visible) continue;
         const t = (nowMs * 0.00038 + qp.offset) % 1;
         qp.sprite.position.copy(qp.curve.getPointAt(t));
+        const pDist = this.camera.position.distanceTo(qp.sprite.position);
+        const pScale = 0.0085 * THREE.MathUtils.clamp(pDist / 2.35, 0.32, 1.0);
+        qp.sprite.scale.set(pScale, pScale, 1);
       }
     }
 
