@@ -77,9 +77,9 @@ export function AuditCalibration() {
       <button
         type="button"
         onClick={() => setAuditMode(true)}
-        className="rounded-lg border border-amber-500/40 bg-amber-500/15 px-2.5 py-1 text-xs font-medium text-amber-300 transition hover:bg-amber-500/25"
+        className="rounded-lg border border-gold/45 bg-gold/15 px-2.5 py-1 text-xs font-medium text-gold-fg transition hover:bg-gold/25"
       >
-        DEV 国标复核标定 ({stats.verified}/{stats.total})
+        复核 ({stats.verified}/{stats.total})
       </button>
     );
   }
@@ -87,16 +87,16 @@ export function AuditCalibration() {
   const isVerified = selectedCoord?.audit.status === 'gb_verified';
 
   return (
-    <div className="fixed right-4 bottom-12 z-40 w-[340px] max-w-[calc(100vw-2rem)] rounded-xl border border-amber-500/40 bg-slate-950/95 p-4 text-xs text-slate-200 shadow-2xl backdrop-blur">
-      <div className="flex items-center justify-between border-b border-slate-800 pb-2.5">
+    <div className="glass fixed top-14 right-4 z-40 w-[340px] max-w-[calc(100vw-2rem)] rounded-xl p-4 text-xs text-fg">
+      <div className="flex items-center justify-between border-b border-line pb-2.5">
         <div className="flex items-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-amber-400" />
-          <span className="font-semibold text-amber-300">DEV · 3D 国标坐标复核台</span>
+          <span className="h-2 w-2 rounded-full bg-gold" />
+          <span className="font-semibold text-gold-fg">DEV · 3D 国标坐标复核台</span>
         </div>
         <button
           type="button"
           onClick={() => setAuditMode(false)}
-          className="rounded px-1.5 py-0.5 text-slate-400 hover:bg-slate-800 hover:text-white"
+          className="rounded px-1.5 py-0.5 text-fg-subtle hover:bg-surface-2 hover:text-fg"
         >
           收起
         </button>

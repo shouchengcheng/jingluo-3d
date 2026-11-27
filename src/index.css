@@ -1,1 +1,183 @@
 @import "tailwindcss";
+
+/*
+ * Semantic design tokens (UI audit 2.1 / 2.2 / 2.5).
+ * 墨色 ink theme (default) — warm dark ink + cinnabar / mineral-azure / ochre-gold accents.
+ * 宣纸 paper theme — high-contrast light theme for bright lecture-hall projectors.
+ */
+:root,
+[data-theme='ink'] {
+  --c-bg: #13110e;
+  --c-canvas: #0f0d0b;
+  --c-surface: #1c1915;
+  --c-surface-2: #26221d;
+  --c-surface-3: #322d26;
+  --c-line: #3a342c;
+  --c-line-strong: #574e42;
+  --c-fg: #f2ebdd;
+  --c-fg-muted: #c9bfae;
+  --c-fg-subtle: #988d7c;
+  --c-accent: #e2553a; /* 朱砂 cinnabar */
+  --c-accent-fg: #ffb4a3;
+  --c-azure: #4fa3a5; /* 石青 mineral azure */
+  --c-azure-fg: #9fd8d6;
+  --c-gold: #d2a54a; /* 赭金 ochre gold */
+  --c-gold-fg: #f1d394;
+  --c-ok: #5fae74;
+  --c-ok-fg: #a9dcb5;
+  --c-warn: #d99a2b;
+  --c-warn-fg: #f4cf87;
+  --c-danger: #e0483a;
+  --c-danger-fg: #ffb0a6;
+  --c-glass: rgb(28 25 21 / 0.78);
+  --c-shadow: 0 10px 30px -10px rgb(0 0 0 / 0.65);
+  color-scheme: dark;
+}
+
+[data-theme='paper'] {
+  --c-bg: #f4efe4;
+  --c-canvas: #ece5d6;
+  --c-surface: #fbf8f1;
+  --c-surface-2: #f1ebdd;
+  --c-surface-3: #e6dece;
+  --c-line: #d8cdb8;
+  --c-line-strong: #b9aa8f;
+  --c-fg: #1f1a14;
+  --c-fg-muted: #4a4136;
+  --c-fg-subtle: #6f6556;
+  --c-accent: #b8321c;
+  --c-accent-fg: #9a2410;
+  --c-azure: #2c6f72;
+  --c-azure-fg: #1f5659;
+  --c-gold: #9a7420;
+  --c-gold-fg: #7a5a12;
+  --c-ok: #2f7d45;
+  --c-ok-fg: #236236;
+  --c-warn: #b0700c;
+  --c-warn-fg: #8a5506;
+  --c-danger: #c0291b;
+  --c-danger-fg: #a11d10;
+  --c-glass: rgb(251 248 241 / 0.86);
+  --c-shadow: 0 10px 28px -12px rgb(60 40 10 / 0.35);
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-bg: var(--c-bg);
+  --color-canvas: var(--c-canvas);
+  --color-surface: var(--c-surface);
+  --color-surface-2: var(--c-surface-2);
+  --color-surface-3: var(--c-surface-3);
+  --color-line: var(--c-line);
+  --color-line-strong: var(--c-line-strong);
+  --color-fg: var(--c-fg);
+  --color-fg-muted: var(--c-fg-muted);
+  --color-fg-subtle: var(--c-fg-subtle);
+  --color-accent: var(--c-accent);
+  --color-accent-fg: var(--c-accent-fg);
+  --color-azure: var(--c-azure);
+  --color-azure-fg: var(--c-azure-fg);
+  --color-gold: var(--c-gold);
+  --color-gold-fg: var(--c-gold-fg);
+  --color-ok: var(--c-ok);
+  --color-ok-fg: var(--c-ok-fg);
+  --color-warn: var(--c-warn);
+  --color-warn-fg: var(--c-warn-fg);
+  --color-danger: var(--c-danger);
+  --color-danger-fg: var(--c-danger-fg);
+  --color-glass: var(--c-glass);
+  --font-serif: 'Noto Serif SC', 'Source Han Serif SC', 'Source Han Serif CN', 'Songti SC', 'STSong',
+    'SimSun', serif;
+  --font-sans: 'PingFang SC', 'Noto Sans SC', 'Source Han Sans SC', 'Microsoft YaHei', system-ui,
+    -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'SFMono-Regular', ui-monospace, Menlo, Consolas, monospace;
+}
+
+/* 大屏模式 (UI audit 2.3): scale every rem-based size by 1.25 for classroom big screens */
+html {
+  font-size: 16px;
+}
+html[data-bigscreen='true'] {
+  font-size: 20px;
+}
+
+body {
+  background: var(--c-bg);
+  color: var(--c-fg);
+  font-family: var(--font-sans);
+}
+
+/* Thin translucent scrollbars (UI audit 2.4) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--c-fg-subtle) 45%, transparent) transparent;
+}
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--c-fg-subtle) 35%, transparent);
+  border-radius: 999px;
+}
+*:hover::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--c-fg-subtle) 60%, transparent);
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Glass floating layer (UI audit 2.5) */
+.glass {
+  background: var(--c-glass);
+  border: 1px solid color-mix(in srgb, var(--c-line-strong) 70%, transparent);
+  box-shadow: var(--c-shadow);
+  backdrop-filter: blur(12px) saturate(1.2);
+  -webkit-backdrop-filter: blur(12px) saturate(1.2);
+}
+
+/* Touch targets >= 44px on coarse pointers (UI audit 8.5) */
+@media (pointer: coarse) {
+  .tap {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+.safe-top {
+  padding-top: env(safe-area-inset-top);
+}
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in-up {
+  animation: fade-in-up 160ms ease-out both;
+}
+
+@keyframes list-flash {
+  0%,
+  100% {
+    box-shadow: inset 0 0 0 0 transparent;
+  }
+  50% {
+    box-shadow: inset 0 0 0 1px var(--c-accent);
+  }
+}

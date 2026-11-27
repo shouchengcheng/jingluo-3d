@@ -20,9 +20,73 @@ export type AuditStatus = 'draft_imported' | 'gb_verified';
 
 export type ViewPreset = 'front' | 'back' | 'left' | 'right' | 'reset';
 
+/** Local anatomical region quick-jump presets (UI audit 4.3) */
+export type RegionPreset =
+  | 'head_face'
+  | 'head_side'
+  | 'neck_nape'
+  | 'chest_abdomen'
+  | 'back_lumbar'
+  | 'arm_inner'
+  | 'arm_outer'
+  | 'hand_palm'
+  | 'hand_back'
+  | 'leg_front'
+  | 'leg_back'
+  | 'foot_dorsum'
+  | 'foot_sole';
+
 export type DisplaySide = 'right' | 'left' | 'both';
 
 export type BodyTheme = 'jade' | 'skin' | 'bronze';
+
+/** UI chrome theme: 墨色 (dark ink) vs 宣纸 (light classroom projection) */
+export type UiTheme = 'ink' | 'paper';
+
+/** Camera focus behaviour: full fly-to preset, pan-only when zoomed close, or auto (pan if close else full) */
+export type FocusMode = 'full' | 'pan' | 'auto';
+
+export type QuizKind = 'identify' | 'locate';
+export type QuizScope = 'meridian' | 'visible' | 'core' | 'special' | 'wrong' | 'all';
+
+export interface QuizAnswer {
+  correct: boolean;
+  chosen?: string;
+  distanceCm?: number;
+  clickPoint?: Vec3Tuple;
+}
+
+export interface QuizQuestion {
+  code: string;
+  side: 1 | -1;
+  options: string[];
+  answer: QuizAnswer | null;
+}
+
+export interface QuizStats {
+  total: number;
+  correct: number;
+  streak: number;
+  bestStreak: number;
+}
+
+export interface HoverInfo {
+  code: string;
+  side: 1 | -1;
+  x: number;
+  y: number;
+}
+
+export interface PickCandidate {
+  code: string;
+  side: 1 | -1;
+}
+
+export interface AmbiguousPick {
+  candidates: PickCandidate[];
+  x: number;
+  y: number;
+}
 
 export interface AcupointEtymology {
   meaning: string;
