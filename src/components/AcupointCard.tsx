@@ -15,6 +15,7 @@ export function AcupointCard() {
   const quizRevealedIds = useAtlasStore((s) => s.quizRevealedIds);
 
   const revealQuizAnswer = useAtlasStore((s) => s.revealQuizAnswer);
+  const pickRandomQuizAcupoint = useAtlasStore((s) => s.pickRandomQuizAcupoint);
   const selectAcupoint = useAtlasStore((s) => s.selectAcupoint);
   const requestFocusSelected = useAtlasStore((s) => s.requestFocusSelected);
 
@@ -61,8 +62,8 @@ export function AcupointCard() {
           </div>
           <h2 className="text-xl font-bold text-white">请辨识当前高亮的三维穴位</h2>
           <p className="text-sm leading-relaxed text-slate-300">
-            观察 3D 模型上金色光针指示的解剖部位与所属经脉循行走向，尝试在心中默念其
-            <strong className="text-sky-300"> 穴位名称、国标代码、定位及特定穴属性</strong>。
+            观察 3D 模型上发丝靶环与毫针指示的体表部位及经脉走向，尝试说出其
+            <strong className="text-sky-300"> 穴位名称、国标代码、标准定位及特定穴属性</strong>。
           </p>
 
           <div className="rounded-xl border border-slate-800 bg-slate-900/70 p-4 text-xs text-slate-400">
@@ -80,7 +81,7 @@ export function AcupointCard() {
             </ul>
           </div>
 
-          <div className="flex gap-2 pt-2">
+          <div className="flex flex-wrap gap-2 pt-2">
             <button
               type="button"
               onClick={requestFocusSelected}
@@ -96,6 +97,14 @@ export function AcupointCard() {
               揭示国标答案
             </button>
           </div>
+
+          <button
+            type="button"
+            onClick={pickRandomQuizAcupoint}
+            className="w-full rounded-lg border border-slate-700/80 bg-slate-900/80 px-3 py-2 text-xs font-medium text-slate-300 hover:border-emerald-500/40 hover:text-emerald-300"
+          >
+            换一题：随机抽考下一穴 →
+          </button>
         </div>
       </div>
     );
@@ -256,6 +265,16 @@ export function AcupointCard() {
           <p className="mt-0.5 leading-relaxed text-slate-200">{acupoint.clinical.operation}</p>
         </div>
       </section>
+
+      {isQuizMode && (
+        <button
+          type="button"
+          onClick={pickRandomQuizAcupoint}
+          className="w-full rounded-lg bg-emerald-500 px-4 py-2 text-xs font-semibold text-slate-950 shadow hover:bg-emerald-400"
+        >
+          下一题：随机抽考下一穴 →
+        </button>
+      )}
 
       {/* Previous / Next Acupoint along Meridian */}
       {siblings.length > 1 && (

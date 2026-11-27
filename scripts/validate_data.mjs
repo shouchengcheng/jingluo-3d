@@ -29,21 +29,42 @@ function main() {
   const meridians = readJson(meridiansPath);
   const meridianCodes = new Set(meridians.map((m) => m.code));
   if (meridianCodes.size !== 14) {
-    console.error(`[ERROR] Expected 14 unique meridians in data/meridians.json, found ${meridianCodes.size}`);
+    console.error(
+      `[ERROR] Expected 14 unique meridians in data/meridians.json, found ${meridianCodes.size}`,
+    );
     hasErrors = true;
   }
 
-  // 2. Validate acupoint datasets under data/acupoints/*.json
+  // 2. Validate coordinates-3d.json
+  const coordPath = path.join(dataDir, 'coordinates-3d.json');
+  const coordData = readJson(coordPath);
+  if (!validateCoord3d(coordData)) {
+    console.error('[ERROR] Schema validation failed for data/coordinates-3d.json:');
+    console.error(ajv.errorsText(validateCoord3d.errors, { separator: '\n  ' }));
+    hasErrors = true;
+  }
+
+  // 3. Validate acupoint datasets under data/acupoints/*.json
   const acupointsDir = path.join(dataDir, 'acupoints');
   const seenAcupointCodes = new Set();
+  const perMeridianCounts = {};
   const acupointFiles = fs
     .readdirSync(acupointsDir)
     .filter((file) => file.endsWith('.json'))
     .sort();
 
+  let withCoordCount = 0;
   for (const file of acupointFiles) {
     const filePath = path.join(acupointsDir, file);
-    const items = readJson(filePath);
+    let items;
+    try {
+      items = readJson(filePath);
+    } catch (err) {
+      console.error(`[ERROR] Invalid JSON syntax in data/acupoints/${file}: ${err.message}`);
+      hasErrors = true;
+      continue;
+    }
+
     const valid = validateAcupointList(items);
     if (!valid) {
       console.error(`[ERROR] Schema validation failed for data/acupoints/${file}:`);
@@ -53,10 +74,18 @@ function main() {
     }
 
     const expectedMeridian = path.basename(file, '.json');
+    perMeridianCounts[expectedMeridian] = items.length;
+
     for (const item of items) {
       if (item.meridianCode !== expectedMeridian) {
         console.error(
           `[ERROR] ${item.code} in ${file} has meridianCode="${item.meridianCode}" (expected "${expectedMeridian}")`,
+        );
+        hasErrors = true;
+      }
+      if (!item.code.startsWith(expectedMeridian)) {
+        console.error(
+          `[ERROR] ${item.code} in ${file} does not start with meridian prefix "${expectedMeridian}"`,
         );
         hasErrors = true;
       }
@@ -65,16 +94,11 @@ function main() {
         hasErrors = true;
       }
       seenAcupointCodes.add(item.code);
-    }
-  }
 
-  // 3. Validate coordinates-3d.json
-  const coordPath = path.join(dataDir, 'coordinates-3d.json');
-  const coordData = readJson(coordPath);
-  if (!validateCoord3d(coordData)) {
-    console.error('[ERROR] Schema validation failed for data/coordinates-3d.json:');
-    console.error(ajv.errorsText(validateCoord3d.errors, { separator: '\n  ' }));
-    hasErrors = true;
+      if (coordData.points?.[item.code]) {
+        withCoordCount += 1;
+      }
+    }
   }
 
   let draftCount = 0;
@@ -95,10 +119,14 @@ function main() {
     process.exit(1);
   }
 
+  const meridianSummary = Object.entries(perMeridianCounts)
+    .map(([k, v]) => `${k}:${v}`)
+    .join(' ');
+
   console.log(
-    `[OK] Data validation passed: ${meridianCodes.size} meridians, ${seenAcupointCodes.size} acupoints, ${
+    `[OK] Data validation passed: ${meridianCodes.size} meridians (${acupointFiles.length} files: ${meridianSummary}), ${seenAcupointCodes.size} acupoints (${withCoordCount} with 3D coords), ${
       draftCount + verifiedCount
-    } 3D coordinates (gb_verified: ${verifiedCount}, draft_imported: ${draftCount}).`,
+    } total 3D coordinates (gb_verified: ${verifiedCount}, draft_imported: ${draftCount}).`,
   );
 }
 

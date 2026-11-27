@@ -1,0 +1,202 @@
+[
+  {
+    "code": "GV3",
+    "standard": "GB/T 12346-2021",
+    "name": "腰阳关",
+    "pinyin": "Yaoyangguan",
+    "meridianCode": "GV",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": [],
+    "gbLocation": "在脊柱区，第4腰椎棘突下凹陷中，后正中线上。",
+    "quickLocation": "俯卧或正坐，两手叉腰摸到两侧髂嵴最高点，两髂嵴最高点连线与后正中线交点正当第4腰椎棘突，于其下方凹陷中取穴。",
+    "etymology": {
+      "meaning": "腰，指腰部（以别于足少阳经膝部之膝阳关）；阳，督脉阳气；关，机关、关隘。穴居第4腰椎棘突下，为腰骶俯仰转侧之枢纽及督脉阳气通行的关隘，故名腰阳关。",
+      "origin": "《素问·骨空论》王冰注"
+    },
+    "clinical": {
+      "functions": "温肾壮阳，强健腰膝，调理下焦，祛寒除湿",
+      "indications": ["腰骶疼痛", "下肢痿痹", "月经不调", "赤白带下", "遗精", "阳痿", "泄泻"],
+      "operation": "直刺或向上微斜刺0.5～1寸；多用灸法。"
+    }
+  },
+  {
+    "code": "GV4",
+    "standard": "GB/T 12346-2021",
+    "name": "命门",
+    "pinyin": "Mingmen",
+    "meridianCode": "GV",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": [],
+    "gbLocation": "在脊柱区，第2腰椎棘突下凹陷中，后正中线上。",
+    "quickLocation": "俯卧，先定两髂嵴最高点连线平第4腰椎棘突，向上数2个椎体至第2腰椎棘突下凹陷中（约与前脐中相对）取穴。",
+    "etymology": {
+      "meaning": "命，生命根本；门，出入之门户。穴居两肾之间（第2腰椎棘突下），内应肾间动气，为真阳之居所、生命之门户，故名命门。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "培元补肾，固精壮阳，强健腰膝，温煦下元",
+      "indications": ["腰痛", "下肢痿痹", "遗精", "阳痿", "早泄", "遗尿", "尿频", "月经不调", "赤白带下", "宫寒不孕", "五更泄泻"],
+      "operation": "直刺或向上斜刺0.5～1寸；不可深刺以免伤及脊髓；多用灸法。"
+    }
+  },
+  {
+    "code": "GV9",
+    "standard": "GB/T 12346-2021",
+    "name": "至阳",
+    "pinyin": "Zhiyang",
+    "meridianCode": "GV",
+    "textbookScope": "extended",
+    "specialCategory": [],
+    "gbLocation": "在脊柱区，第7胸椎棘突下凹陷中，后正中线上。",
+    "quickLocation": "俯卧或正坐垂臂，两侧肩胛骨下角连线与后正中线相交处平第7胸椎棘突，于其下方凹陷中取穴。",
+    "etymology": {
+      "meaning": "至，极也、到达；阳，阳气。背为阳，膈以上为阳中之阳，本穴平膈居第7胸椎棘突下，督脉阳气至此极盛，故名至阳。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "利胆退黄，宽胸利膈，行气止痛",
+      "indications": ["黄疸", "胸胁胀痛", "腹痛", "心痛", "咳嗽", "气喘", "脊强", "背痛"],
+      "operation": "向上斜刺0.5～1寸；不可深刺以免伤及脊髓；可灸。"
+    }
+  },
+  {
+    "code": "GV12",
+    "standard": "GB/T 12346-2021",
+    "name": "身柱",
+    "pinyin": "Shenzhu",
+    "meridianCode": "GV",
+    "textbookScope": "extended",
+    "specialCategory": [],
+    "gbLocation": "在脊柱区，第3胸椎棘突下凹陷中，后正中线上。",
+    "quickLocation": "俯卧或正坐低头，先找第7颈椎棘突（大椎），向下数3个椎体至第3胸椎棘突（约平两侧肩胛冈内侧端连线），于其下方凹陷中取穴。",
+    "etymology": {
+      "meaning": "身，躯干全身；柱，楹柱、支柱。穴居上背部第3胸椎棘突下，内应肺气，承上启下，如支撑一身之栋梁支柱，故名身柱。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "宣肺清热，宁神镇惊，补虚强身，通调督脉",
+      "indications": ["咳嗽", "气喘", "小儿惊风", "癫狂痫", "身热", "疔疮", "脊背强痛"],
+      "operation": "向上斜刺0.5～1寸；不可深刺以免伤及脊髓；小儿保健多用灸法。"
+    }
+  },
+  {
+    "code": "GV14",
+    "standard": "GB/T 12346-2021",
+    "name": "大椎",
+    "pinyin": "Dazhui",
+    "meridianCode": "GV",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["交会穴-手足三阳督脉"],
+    "gbLocation": "在脊柱区，第7颈椎棘突下凹陷中，后正中线上。",
+    "quickLocation": "正坐低头，颈后部最明显的隆起骨突一般为第7颈椎棘突（随摇头不转动者为第7颈椎，微转动者为第6颈椎），于第7颈椎棘突下凹陷中取穴。",
+    "etymology": {
+      "meaning": "大，高大显著；椎，脊椎骨。第7颈椎棘突高大隆起，为诸椎之最显者，穴在其棘突下凹陷中，又总汇手足三阳与督脉阳气，故名大椎。",
+      "origin": "《素问·气府论》"
+    },
+    "clinical": {
+      "functions": "清热解表，截疟止痫，振奋阳气，肃肺宁心",
+      "indications": ["热病", "疟疾", "恶寒发热", "咳嗽", "气喘", "骨蒸潮热", "癫狂痫", "小儿惊风", "项强", "脊痛", "风疹", "痤疮"],
+      "operation": "向上斜刺0.5～1寸，或点刺出血及拔罐；不可深刺以免伤及脊髓；虚寒证多用灸法。"
+    }
+  },
+  {
+    "code": "GV16",
+    "standard": "GB/T 12346-2021",
+    "name": "风府",
+    "pinyin": "Fengfu",
+    "meridianCode": "GV",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["交会穴-督脉阳维脉"],
+    "gbLocation": "在颈后区，枕外隆凸直下，两侧斜方肌之间凹陷中。",
+    "quickLocation": "正坐微低头，沿后发际正中直上1寸，在头后枕外隆凸直下方、两侧斜方肌上端之间的凹陷处取穴。",
+    "etymology": {
+      "meaning": "风，指风邪；府，聚会之所。项后高处最易受风邪侵袭，本穴居枕骨下凹陷中，为风邪易聚之处及治风要穴，故名风府。",
+      "origin": "《素问·骨空论》"
+    },
+    "clinical": {
+      "functions": "祛风散邪，通关开窍，清神醒脑，利咽舒筋",
+      "indications": ["中风", "舌强难言", "半身不遂", "癫狂", "头痛", "项强", "眩晕", "咽喉肿痛", "失音", "目痛", "鼻衄"],
+      "operation": "伏案正坐位或俯卧位，使头微前倾，项肌放松，向下颌方向缓慢刺入0.5～1寸。针尖切不可向上方深刺，以免刺入枕骨大孔，伤及延髓危及生命。"
+    }
+  },
+  {
+    "code": "GV20",
+    "standard": "GB/T 12346-2021",
+    "name": "百会",
+    "pinyin": "Baihui",
+    "meridianCode": "GV",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["交会穴-诸阳之会", "交会穴-督脉足太阳"],
+    "gbLocation": "在头部，前发际正中直上5寸。",
+    "quickLocation": "正坐，折合两侧耳廓向前，于两耳尖直上连线的中点（头部正中线交点）处取穴。",
+    "etymology": {
+      "meaning": "百，数量众多；会，聚会交汇。穴居颠顶正中极高之处，人体手足三阳、督脉及足厥阴诸经脉气百脉朝宗聚会于此，故名百会。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "醒脑开窍，平肝熄风，升阳举陷，宁神定志",
+      "indications": ["痴呆", "中风", "失语", "瘛疭", "失眠", "健忘", "癫狂痫", "头风", "头痛", "眩晕", "耳鸣", "脱肛", "阴挺", "胃下垂", "久泻"],
+      "operation": "平刺0.5～0.8寸；升阳举陷可用灸法；小儿囟门未合者禁刺。"
+    }
+  },
+  {
+    "code": "GV23",
+    "standard": "GB/T 12346-2021",
+    "name": "上星",
+    "pinyin": "Shangxing",
+    "meridianCode": "GV",
+    "textbookScope": "extended",
+    "specialCategory": [],
+    "gbLocation": "在头部，前发际正中直上1寸。",
+    "quickLocation": "正坐或仰卧，于前额发际正中直上1寸（约1横指）处取穴；若发际不明，取眉间（印堂）直上4寸处。",
+    "etymology": {
+      "meaning": "上，高处；星，日月星辰之光明。穴居头部前额上方，善能清泄头目郁热、退翳明目、宣通鼻窍，使双目清明如星，故名上星。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "清热散风，宣通鼻窍，明目宁神",
+      "indications": ["鼻渊", "鼻衄", "鼻塞", "头痛", "眩晕", "目赤肿痛", "迎风流泪", "热病", "疟疾", "癫狂"],
+      "operation": "平刺0.5～0.8寸，或点刺出血；小儿囟门未合者禁刺；可灸。"
+    }
+  },
+  {
+    "code": "GV24",
+    "standard": "GB/T 12346-2021",
+    "name": "神庭",
+    "pinyin": "Shenting",
+    "meridianCode": "GV",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["交会穴-督脉足太阳阳明"],
+    "gbLocation": "在头部，前发际正中直上0.5寸。",
+    "quickLocation": "正坐或仰卧，于前额发际正中直上0.5寸处取穴；若前发际不明显，从眉间（印堂）直上3.5寸处取穴。",
+    "etymology": {
+      "meaning": "神，指脑为元神之府；庭，宫庭门庭。穴居前额发际正中，古人以前额为天庭，内应元神之府，犹如脑神出入门庭，故名神庭。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "宁神醒脑，熄风定惊，清头明目，通利鼻窍",
+      "indications": ["癫狂", "痫证", "惊悸", "失眠", "头痛", "眩晕", "目赤", "目翳", "流泪", "鼻渊", "鼻衄"],
+      "operation": "平刺0.5～0.8寸；可灸。"
+    }
+  },
+  {
+    "code": "GV26",
+    "standard": "GB/T 12346-2021",
+    "name": "水沟",
+    "pinyin": "Shuigou",
+    "meridianCode": "GV",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["交会穴-督脉手足阳明"],
+    "gbLocation": "在面部，人中沟的上1/3与中1/3交点处。",
+    "quickLocation": "正坐或仰卧，将鼻柱下人中沟（鼻底至上唇缘正中纵沟）分成三等份，于上1/3与中1/3交界处取穴。",
+    "etymology": {
+      "meaning": "水，指鼻涕口津水液；沟，沟渠。本穴又名人中，位于鼻柱下、上唇上之纵沟内，形如涕液流经之沟渠，故名水沟。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "醒神开窍，清热熄风，调和阴阳，通利腰脊",
+      "indications": ["昏迷", "晕厥", "中风", "中暑", "休克", "癫狂痫", "小儿惊风", "口眼歪斜", "面肿", "鼻塞", "鼻衄", "闪挫腰痛", "牙关紧闭"],
+      "operation": "向上斜刺0.3～0.5寸（雀啄泻法以促苏醒），或用指甲按掐；一般不灸。"
+    }
+  }
+]

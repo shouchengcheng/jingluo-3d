@@ -3,10 +3,12 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { assetLoader } from './AssetLoader';
 import { RaycasterPicker, type PickableMarkerMeta } from './RaycasterPicker';
 import { useAtlasStore, type AtlasState } from '../store/useAtlasStore';
+import { matchesAcupointQuery } from '../utils/searchMatch';
 import type {
   Acupoint,
   AcupointCoordinate3D,
   AuditStatus,
+  BodyTheme,
   MeridianCode,
   MeridianMeta,
   ProjectedLabel,
@@ -60,32 +62,7 @@ function parsePointNumber(code: string): number {
 }
 
 function matchesFilter(acupoint: Acupoint | undefined, code: string, state: AtlasState): boolean {
-  if (state.specialFilter) {
-    if (!acupoint) return false;
-    const matchedSpecial = acupoint.specialCategory.some((cat) =>
-      cat.includes(state.specialFilter ?? ''),
-    );
-    if (!matchedSpecial) return false;
-  }
-
-  const q = state.searchQuery.trim().toLowerCase();
-  if (!q) return true;
-  if (!acupoint) {
-    return code.toLowerCase().includes(q);
-  }
-
-  const haystack = [
-    acupoint.code,
-    acupoint.name,
-    acupoint.pinyin,
-    ...acupoint.specialCategory,
-    ...acupoint.clinical.indications,
-    acupoint.clinical.functions,
-  ]
-    .join(' ')
-    .toLowerCase();
-
-  return haystack.includes(q);
+  return matchesAcupointQuery(acupoint, code, state.searchQuery, state.specialFilter);
 }
 
 /**
@@ -369,18 +346,10 @@ export class MeridianScene {
           obj.material = eyeMat;
         } else {
           const skinMat = new THREE.MeshPhysicalMaterial({
-            color: 0x1e3a4c,
-            emissive: 0x071521,
-            emissiveIntensity: 0.45,
-            roughness: 0.46,
-            metalness: 0.06,
-            clearcoat: 0.2,
-            clearcoatRoughness: 0.45,
-            sheen: 0.55,
-            sheenColor: new THREE.Color(0x7dd3fc),
             transparent: true,
             opacity: useAtlasStore.getState().bodyOpacity,
           });
+          this.applyMaterialTheme(skinMat, useAtlasStore.getState().bodyTheme);
           obj.material = skinMat;
           this.skinMeshes.push(obj);
           this.skinMaterials.push(skinMat);
@@ -410,7 +379,48 @@ export class MeridianScene {
     }
   }
 
+  private applyMaterialTheme(mat: THREE.MeshPhysicalMaterial, theme: BodyTheme): void {
+    if (theme === 'skin') {
+      mat.color.setHex(0xc89a7e);
+      mat.emissive.setHex(0x1f1109);
+      mat.emissiveIntensity = 0.18;
+      mat.roughness = 0.56;
+      mat.metalness = 0.02;
+      mat.clearcoat = 0.08;
+      mat.clearcoatRoughness = 0.58;
+      mat.sheen = 0.42;
+      mat.sheenColor = new THREE.Color(0xffe4d1);
+    } else if (theme === 'bronze') {
+      mat.color.setHex(0x8e673e);
+      mat.emissive.setHex(0x170e05);
+      mat.emissiveIntensity = 0.3;
+      mat.roughness = 0.34;
+      mat.metalness = 0.78;
+      mat.clearcoat = 0.18;
+      mat.clearcoatRoughness = 0.38;
+      mat.sheen = 0.32;
+      mat.sheenColor = new THREE.Color(0xfbbf24);
+    } else {
+      mat.color.setHex(0x1e3a4c);
+      mat.emissive.setHex(0x071521);
+      mat.emissiveIntensity = 0.45;
+      mat.roughness = 0.46;
+      mat.metalness = 0.06;
+      mat.clearcoat = 0.2;
+      mat.clearcoatRoughness = 0.45;
+      mat.sheen = 0.55;
+      mat.sheenColor = new THREE.Color(0x7dd3fc);
+    }
+    mat.needsUpdate = true;
+  }
+
   private onStoreChanged(state: AtlasState, prevState: AtlasState): void {
+    if (state.bodyTheme !== prevState.bodyTheme) {
+      for (const mat of this.skinMaterials) {
+        this.applyMaterialTheme(mat, state.bodyTheme);
+      }
+    }
+
     if (state.bodyOpacity !== prevState.bodyOpacity) {
       for (const mat of this.skinMaterials) {
         mat.opacity = state.bodyOpacity;
@@ -562,14 +572,32 @@ export class MeridianScene {
           .filter((m) => m.meridianCode === meta.code && m.side === side)
           .sort((a, b) => a.order - b.order);
 
+        const byCode = new Map(orderedMarkers.map((m) => [m.code, m]));
+        const segmentPairs: [MarkerInstance, MarkerInstance][] = [];
         for (let i = 1; i < orderedMarkers.length; i++) {
-          const a = orderedMarkers[i - 1];
-          const b = orderedMarkers[i];
+          const prev = orderedMarkers[i - 1];
+          const curr = orderedMarkers[i];
+          // ST40 (丰隆) is the lateral Luo-connecting branch off the main anterior tibial line (ST37->ST39->ST41)
+          if (prev.code === 'ST39' && curr.code === 'ST40') continue;
+          if (prev.code === 'ST40' && curr.code === 'ST41') continue;
+          segmentPairs.push([prev, curr]);
+        }
+        if (meta.code === 'ST') {
+          const st37 = byCode.get('ST37');
+          const st39 = byCode.get('ST39');
+          const st40 = byCode.get('ST40');
+          const st41 = byCode.get('ST41');
+          if (st39 && st41) segmentPairs.push([st39, st41]);
+          if (st37 && st40) segmentPairs.push([st37, st40]);
+        }
+
+        for (let i = 0; i < segmentPairs.length; i++) {
+          const [a, b] = segmentPairs[i];
           const dist = a.surfacePos.distanceTo(b.surfacePos);
           const normalDot = a.worldNormal.dot(b.worldNormal);
 
           // Avoid connecting distant non-adjacent gaps across torso/limbs on partially modeled meridians
-          if (dist > 0.32 || normalDot < -0.15) continue;
+          if (dist > 0.34 || normalDot < -0.15) continue;
 
           const controlPoints: THREE.Vector3[] = [
             a.surfacePos.clone().addScaledVector(a.worldNormal, TUBE_NORMAL_OFFSET),

@@ -1,15 +1,19 @@
 import { useMemo } from 'react';
 import { useAtlasStore } from '../store/useAtlasStore';
-import type { Acupoint, DisplaySide, MeridianCode } from '../types/atlas';
+import { matchesAcupointQuery } from '../utils/searchMatch';
+import type { Acupoint, BodyTheme, DisplaySide, MeridianCode } from '../types/atlas';
 
 const SPECIAL_CATEGORIES = [
   '五输穴',
   '原穴',
   '络穴',
+  '背俞穴',
   '募穴',
   '郄穴',
+  '下合穴',
   '八会穴',
   '八脉交会穴',
+  '四总穴',
 ];
 
 function parseOrder(code: string): number {
@@ -31,6 +35,7 @@ export function ControlPanel({ onSelectAcupointDone }: ControlPanelProps) {
   const specialFilter = useAtlasStore((s) => s.specialFilter);
   const isQuizMode = useAtlasStore((s) => s.isQuizMode);
   const displaySide = useAtlasStore((s) => s.displaySide);
+  const bodyTheme = useAtlasStore((s) => s.bodyTheme);
   const bodyOpacity = useAtlasStore((s) => s.bodyOpacity);
   const wireframeOverlay = useAtlasStore((s) => s.wireframeOverlay);
   const flowAnimation = useAtlasStore((s) => s.flowAnimation);
@@ -41,7 +46,9 @@ export function ControlPanel({ onSelectAcupointDone }: ControlPanelProps) {
   const setSearchQuery = useAtlasStore((s) => s.setSearchQuery);
   const setSpecialFilter = useAtlasStore((s) => s.setSpecialFilter);
   const setQuizMode = useAtlasStore((s) => s.setQuizMode);
+  const pickRandomQuizAcupoint = useAtlasStore((s) => s.pickRandomQuizAcupoint);
   const setDisplaySide = useAtlasStore((s) => s.setDisplaySide);
+  const setBodyTheme = useAtlasStore((s) => s.setBodyTheme);
   const setBodyOpacity = useAtlasStore((s) => s.setBodyOpacity);
   const setWireframeOverlay = useAtlasStore((s) => s.setWireframeOverlay);
   const setFlowAnimation = useAtlasStore((s) => s.setFlowAnimation);
@@ -68,31 +75,14 @@ export function ControlPanel({ onSelectAcupointDone }: ControlPanelProps) {
 
   const filteredAcupoints = useMemo(() => {
     const visibleSet = new Set(visibleMeridians);
-    const q = searchQuery.trim().toLowerCase();
+    const hasSearch = searchQuery.trim().length > 0;
 
     return acupoints
       .filter((a: Acupoint) => {
-        // When user searches or applies a special category filter, search across all loaded acupoints;
-        // otherwise scope list to visible meridians.
-        if (!q && !specialFilter && !visibleSet.has(a.meridianCode)) {
+        if (!hasSearch && !specialFilter && !visibleSet.has(a.meridianCode)) {
           return false;
         }
-        if (specialFilter) {
-          const hit = a.specialCategory.some((c) => c.includes(specialFilter));
-          if (!hit) return false;
-        }
-        if (!q) return true;
-        const text = [
-          a.code,
-          a.name,
-          a.pinyin,
-          ...a.specialCategory,
-          ...a.clinical.indications,
-          a.clinical.functions,
-        ]
-          .join(' ')
-          .toLowerCase();
-        return text.includes(q);
+        return matchesAcupointQuery(a, a.code, searchQuery, specialFilter);
       })
       .sort((a, b) => {
         if (a.meridianCode !== b.meridianCode) {
@@ -107,16 +97,16 @@ export function ControlPanel({ onSelectAcupointDone }: ControlPanelProps) {
   return (
     <div className="flex h-full flex-col gap-4 overflow-y-auto p-4 text-sm">
       {/* Search Box */}
-      <section className="space-y-2">
+      <section className="shrink-0 space-y-2">
         <label className="block text-xs font-medium tracking-wider text-slate-400 uppercase">
-          多维检索（穴名 / 拼音 / 国标码 / 主治）
+          多维检索（穴名 / 首字母 / 国标码 / 主治）
         </label>
         <div className="relative">
           <input
             type="search"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="例如：太渊 / LU9 / 咳嗽 / 无脉症..."
+            placeholder="如：足三里 / zsl / ST36 / 胃痛..."
             className="w-full rounded-lg border border-slate-700/80 bg-slate-900/90 px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:border-sky-400 focus:outline-none"
           />
           {searchQuery && (
@@ -132,12 +122,12 @@ export function ControlPanel({ onSelectAcupointDone }: ControlPanelProps) {
       </section>
 
       {/* Teaching Blind-Test Mode Toggle */}
-      <section className="rounded-lg border border-slate-800 bg-slate-900/70 p-3">
+      <section className="shrink-0 space-y-2.5 rounded-lg border border-slate-800 bg-slate-900/70 p-3">
         <div className="flex items-center justify-between gap-2">
           <div>
             <div className="font-medium text-slate-100">教学盲测模式</div>
             <div className="text-xs text-slate-400">
-              隐藏 3D 穴名标签，点击穴位后自测揭示答案
+              隐藏 3D 穴名标签，点击或随机抽考自测
             </div>
           </div>
           <button
@@ -156,10 +146,23 @@ export function ControlPanel({ onSelectAcupointDone }: ControlPanelProps) {
             />
           </button>
         </div>
+
+        {isQuizMode && (
+          <button
+            type="button"
+            onClick={() => {
+              pickRandomQuizAcupoint();
+              onSelectAcupointDone?.();
+            }}
+            className="w-full rounded-lg border border-emerald-500/40 bg-emerald-500/15 px-3 py-1.5 text-xs font-semibold text-emerald-300 transition hover:bg-emerald-500/25"
+          >
+            随机抽考一穴（聚焦三维穴位）
+          </button>
+        )}
       </section>
 
       {/* Special Acupoint Category Filter */}
-      <section className="space-y-2">
+      <section className="shrink-0 space-y-2">
         <div className="flex items-center justify-between">
           <span className="text-xs font-medium tracking-wider text-slate-400 uppercase">
             特定穴筛选
@@ -196,7 +199,7 @@ export function ControlPanel({ onSelectAcupointDone }: ControlPanelProps) {
       </section>
 
       {/* 14 Meridians Management */}
-      <section className="space-y-2">
+      <section className="shrink-0 space-y-2">
         <div className="flex items-center justify-between">
           <span className="text-xs font-medium tracking-wider text-slate-400 uppercase">
             十四经脉循行开关
@@ -273,7 +276,7 @@ export function ControlPanel({ onSelectAcupointDone }: ControlPanelProps) {
         <div className="max-h-64 space-y-1 overflow-y-auto pr-1">
           {filteredAcupoints.length === 0 ? (
             <div className="rounded-lg border border-dashed border-slate-800 p-4 text-center text-xs text-slate-500">
-              当前筛选条件下暂无已录入教材文本的穴位（可勾选“手太阴肺经”或调整筛选词）。
+              当前筛选条件下暂无匹配穴位（请勾选经脉或调整检索词）。
             </div>
           ) : (
             filteredAcupoints.map((item) => {
@@ -333,8 +336,34 @@ export function ControlPanel({ onSelectAcupointDone }: ControlPanelProps) {
       </section>
 
       {/* 3D Model Display & Auxiliary Controls */}
-      <section className="space-y-2.5 rounded-lg border border-slate-800 bg-slate-900/60 p-3 text-xs">
-        <div className="font-medium text-slate-300">3D 模型辅助显示</div>
+      <section className="shrink-0 space-y-2.5 rounded-lg border border-slate-800 bg-slate-900/60 p-3 text-xs">
+        <div className="font-medium text-slate-300">3D 模型材质与辅助显示</div>
+
+        <div className="flex items-center justify-between gap-2">
+          <span className="text-slate-400">人体材质主题</span>
+          <div className="inline-flex rounded-md border border-slate-700 bg-slate-950 p-0.5">
+            {(
+              [
+                ['jade', '青玉'],
+                ['skin', '肤色'],
+                ['bronze', '铜人'],
+              ] as [BodyTheme, string][]
+            ).map(([val, label]) => (
+              <button
+                key={val}
+                type="button"
+                onClick={() => setBodyTheme(val)}
+                className={`rounded px-2 py-0.5 text-[11px] transition ${
+                  bodyTheme === val
+                    ? 'bg-sky-500/25 font-medium text-sky-300'
+                    : 'text-slate-400 hover:text-slate-200'
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
 
         <div className="flex items-center justify-between gap-2">
           <span className="text-slate-400">双侧经穴显示</span>

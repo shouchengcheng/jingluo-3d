@@ -22,6 +22,8 @@ export type ViewPreset = 'front' | 'back' | 'left' | 'right' | 'reset';
 
 export type DisplaySide = 'right' | 'left' | 'both';
 
+export type BodyTheme = 'jade' | 'skin' | 'bronze';
+
 export interface AcupointEtymology {
   meaning: string;
   origin: string;

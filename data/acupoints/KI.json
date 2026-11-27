@@ -1,0 +1,162 @@
+[
+  {
+    "code": "KI1",
+    "standard": "GB/T 12346-2021",
+    "name": "涌泉",
+    "pinyin": "Yongquan",
+    "meridianCode": "KI",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-井穴"],
+    "gbLocation": "在足底，屈足卷趾时足心最凹陷中，约当足底第2、3趾蹼缘与足跟后缘连线的前1/3与后2/3交点处。",
+    "quickLocation": "仰卧或正坐抬足，用力弯曲脚趾，脚掌前部中央出现的明显“人”字纹最深凹陷处即是。",
+    "etymology": {
+      "meaning": "涌，水向上冒出；泉，泉水也。肾主水，本穴居人身最下部足心，为肾经井穴，肾气自下如泉水涌出上行，故名涌泉。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "滋阴降火，开窍醒神，平肝熄风",
+      "indications": ["昏迷", "中暑", "小儿惊风", "癫狂痫", "头痛", "头晕", "咽喉肿痛", "失音", "二便不利", "足心热"],
+      "operation": "直刺0.5～1寸；临床亦常用艾灸或药物贴敷法（引火归元）。"
+    }
+  },
+  {
+    "code": "KI2",
+    "standard": "GB/T 12346-2021",
+    "name": "然谷",
+    "pinyin": "Rangu",
+    "meridianCode": "KI",
+    "textbookScope": "extended",
+    "specialCategory": ["五输穴-荥穴"],
+    "gbLocation": "在足内侧，足舟骨粗隆下方，赤白肉际处。",
+    "quickLocation": "正坐或仰卧，在足内侧前下方摸到明显凸起的圆骨（足舟骨粗隆），于其下缘赤白肉际凹陷处取穴。",
+    "etymology": {
+      "meaning": "然，古通“燃”，火貌，又足舟骨古称然骨；谷，山谷凹陷。穴在然骨下方凹陷处，又为肾经荥火穴，故名然谷。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "滋阴泻火，益肾固精",
+      "indications": ["月经不调", "阴挺", "阴痒", "遗精", "小便不利", "消渴", "咯血", "咽喉肿痛", "小儿脐风", "足跗肿痛"],
+      "operation": "直刺0.5～0.8寸；治小儿脐风可点刺出血；可灸。"
+    }
+  },
+  {
+    "code": "KI3",
+    "standard": "GB/T 12346-2021",
+    "name": "太溪",
+    "pinyin": "Taixi",
+    "meridianCode": "KI",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-输穴", "原穴"],
+    "gbLocation": "在踝区，内踝尖与跟腱之间的凹陷中。",
+    "quickLocation": "正坐垂足或仰卧，在内踝最高点（内踝尖）与后方跟腱连线的中点凹陷处，胫后动脉搏动旁取穴。",
+    "etymology": {
+      "meaning": "太，盛大也；溪，山涧水流。本穴为足少阴肾经之输穴兼原穴，肾水原气汇聚充盛，如巨大溪流奔注，故名太溪。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "滋阴益肾，壮阳强腰，清热纳气",
+      "indications": ["头痛", "目眩", "耳鸣", "耳聋", "咽喉肿痛", "齿痛", "失眠", "咳血", "气喘", "消渴", "月经不调", "遗精", "阳痿", "腰脊痛", "内踝肿痛"],
+      "operation": "直刺0.5～0.8寸，注意避开胫后动脉；可灸。"
+    }
+  },
+  {
+    "code": "KI6",
+    "standard": "GB/T 12346-2021",
+    "name": "照海",
+    "pinyin": "Zhaohai",
+    "meridianCode": "KI",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["八脉交会穴-通阴跷脉"],
+    "gbLocation": "在踝区，内踝尖下1寸，内踝下缘边际凹陷中。",
+    "quickLocation": "正坐垂足或双足底相对，由内踝尖垂直向下推1寸（一拇指宽），于内踝下缘骨缝凹陷处取穴。",
+    "etymology": {
+      "meaning": "照，光明照射；海，百川汇聚之处。本穴通阴跷脉，肾阴真水充沛如海，上濡目系咽喉而明彻映照，故名照海。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "滋阴清热，宁神调经，利咽润燥",
+      "indications": ["失眠", "嗜睡", "癫痫", "咽喉干痛", "目赤肿痛", "月经不调", "痛经", "带下", "阴挺", "小便频数", "便秘"],
+      "operation": "直刺0.5～0.8寸；可灸。"
+    }
+  },
+  {
+    "code": "KI7",
+    "standard": "GB/T 12346-2021",
+    "name": "复溜",
+    "pinyin": "Fuliu",
+    "meridianCode": "KI",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-经穴"],
+    "gbLocation": "在小腿内侧，太溪（KI3）直上2寸，跟腱的前缘。",
+    "quickLocation": "正坐或仰卧，先定内踝尖与跟腱之间的太溪穴，直上2寸（三横指），于跟腱前缘凹陷处取穴。",
+    "etymology": {
+      "meaning": "复，重返、恢复；溜，通流。肾经脉气自太溪绕行照海、水泉、大钟后，至此复归直上流行，又为经金生水之穴，故名复溜。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "益肾滋阴，利水消肿，调汗固表",
+      "indications": ["水肿", "腹胀", "泄泻", "盗汗", "热病无汗", "下肢痿痹"],
+      "operation": "直刺0.6～1寸；可灸。"
+    }
+  },
+  {
+    "code": "KI10",
+    "standard": "GB/T 12346-2021",
+    "name": "阴谷",
+    "pinyin": "Yingu",
+    "meridianCode": "KI",
+    "textbookScope": "extended",
+    "specialCategory": ["五输穴-合穴"],
+    "gbLocation": "在膝后区，腘横纹内侧端，半腱肌肌腱与半膜肌肌腱之间。",
+    "quickLocation": "正坐屈膝，于膝窝内侧横纹头，用手指摸到两条明显肌腱（半腱肌腱与半膜肌腱），在两筋之间的凹陷处取穴。",
+    "etymology": {
+      "meaning": "阴，指小腿内侧足少阴经；谷，两山夹缝。屈膝时腘横纹内侧两条大筋之间深陷如谷，且为肾经合水之穴，故名阴谷。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "益肾调经，清利下焦，舒筋通络",
+      "indications": ["阳痿", "疝痛", "崩漏", "小便不利", "癫狂", "膝股内侧痛"],
+      "operation": "直刺1～1.5寸；可灸。"
+    }
+  },
+  {
+    "code": "KI16",
+    "standard": "GB/T 12346-2021",
+    "name": "肓俞",
+    "pinyin": "Huangshu",
+    "meridianCode": "KI",
+    "textbookScope": "extended",
+    "specialCategory": ["交会穴-足少阴冲脉"],
+    "gbLocation": "在腹中部，横平脐中，前正中线旁开0.5寸。",
+    "quickLocation": "仰卧，于肚脐中央（神阙穴）左右旁开0.5寸（约半横指）处取穴。",
+    "etymology": {
+      "meaning": "肓，指腹内脂膜膏肓；俞，输注也。肾经夹脐内连肓膜，本穴平脐近中，为肾与冲脉之气输注肓膜之处，故名肓俞。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "调和冲任，温肾理肠，行气止痛",
+      "indications": ["腹痛绕脐", "呕吐", "腹胀", "便秘", "泄泻", "疝气", "月经不调"],
+      "operation": "直刺1～1.5寸；孕妇慎针；可灸。"
+    }
+  },
+  {
+    "code": "KI27",
+    "standard": "GB/T 12346-2021",
+    "name": "俞府",
+    "pinyin": "Shufu",
+    "meridianCode": "KI",
+    "textbookScope": "extended",
+    "specialCategory": [],
+    "gbLocation": "在胸部，锁骨下缘，前正中线旁开2寸。",
+    "quickLocation": "仰卧或正坐，于锁骨内侧端下缘凹陷中，前正中线（璇玑穴）旁开2寸（约第1肋间隙上方锁骨下缘）处取穴。",
+    "etymology": {
+      "meaning": "俞，输也；府，聚也。本穴为足少阴肾经最上端之终穴，肾经脉气自下而上输注汇聚于胸府，故名俞府。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "宽胸理气，纳气平喘，和胃降逆",
+      "indications": ["咳嗽", "气喘", "胸痛", "呕吐", "不嗜食"],
+      "operation": "斜刺或平刺0.5～0.8寸；不可直刺或深刺，以免伤及肺脏引起气胸；可灸。"
+    }
+  }
+]

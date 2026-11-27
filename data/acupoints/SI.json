@@ -1,0 +1,162 @@
+[
+  {
+    "code": "SI1",
+    "standard": "GB/T 12346-2021",
+    "name": "少泽",
+    "pinyin": "Shaoze",
+    "meridianCode": "SI",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-井穴"],
+    "gbLocation": "在手指，小指末节尺侧，指甲根角侧上方0.1寸（指寸）。",
+    "quickLocation": "伸小指，沿小指指甲底部与尺侧缘（外侧缘）各作一直线，两线交点外上方约0.1寸处。",
+    "etymology": {
+      "meaning": "少，微小、初始，亦承接手少阴经气；泽，润泽水津。本穴为手太阳小肠经井穴，脉气初生润泽，故名少泽。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "清热利咽，通乳散结，开窍醒神",
+      "indications": ["乳痈", "产后缺乳", "昏迷", "热病", "头痛", "目翳", "咽喉肿痛"],
+      "operation": "浅刺0.1寸，或用三棱针点刺出血；可灸。"
+    }
+  },
+  {
+    "code": "SI3",
+    "standard": "GB/T 12346-2021",
+    "name": "后溪",
+    "pinyin": "Houxi",
+    "meridianCode": "SI",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-输穴", "八脉交会穴-通督脉"],
+    "gbLocation": "在手内侧，第5掌指关节尺侧近端赤白肉际凹陷中。",
+    "quickLocation": "微握拳，掌心向上，在第5掌指关节后尺侧，掌横纹头赤白肉际凹陷处取穴。",
+    "etymology": {
+      "meaning": "后，指第5掌指关节之后；溪，沟溪凹陷。握拳时本节后尺侧显现横纹深沟如溪，且为输穴经气渐盛，故名后溪。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "通督解痉，清心安神，散风舒筋",
+      "indications": ["头项强痛", "腰背痛", "手指及肘臂挛痛", "耳聋", "目赤", "癫狂痫", "疟疾", "盗汗"],
+      "operation": "直刺0.5～1寸；治急性腰扭伤或落枕可向合谷方向透刺并配合患处活动；可灸。"
+    }
+  },
+  {
+    "code": "SI4",
+    "standard": "GB/T 12346-2021",
+    "name": "腕骨",
+    "pinyin": "Wangu",
+    "meridianCode": "SI",
+    "textbookScope": "extended",
+    "specialCategory": ["原穴"],
+    "gbLocation": "在手内侧，第5掌骨基底与钩骨之间的凹陷中，赤白肉际处。",
+    "quickLocation": "微握拳，沿手掌尺侧赤白肉际由后溪穴向腕部推摸，触及第5掌骨基底与钩骨交界凹陷处取穴。",
+    "etymology": {
+      "meaning": "腕骨，古指手腕部豌豆骨、钩骨等诸骨。本穴位于第5掌骨基底与钩骨（古称腕骨）之间凹陷中，以解剖部位得名。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "利胆退黄，舒筋活络，清热生津",
+      "indications": ["黄疸", "消渴", "胁痛", "头项强痛", "耳鸣", "目翳", "指挛腕痛"],
+      "operation": "直刺0.3～0.5寸；可灸。"
+    }
+  },
+  {
+    "code": "SI6",
+    "standard": "GB/T 12346-2021",
+    "name": "养老",
+    "pinyin": "Yanglao",
+    "meridianCode": "SI",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["郄穴"],
+    "gbLocation": "在前臂后区，腕背横纹上1寸，尺骨头桡侧凹陷中。",
+    "quickLocation": "屈肘，掌心向胸，以另一手食指按住尺骨小头最高点，然后将手旋至掌心向下，手指滑入的骨缝凹陷处即是。",
+    "etymology": {
+      "meaning": "养，供养、调养；老，年老体衰。本穴善明目舒筋，主治老年目视不明、肩背腰膝酸痛等老年常见病证，故名养老。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "清利头目，舒筋活络，缓急止痛",
+      "indications": ["目视不明", "肩、背、肘、臂酸痛", "急性腰痛", "落枕"],
+      "operation": "直刺或斜刺0.5～0.8寸；可灸。"
+    }
+  },
+  {
+    "code": "SI8",
+    "standard": "GB/T 12346-2021",
+    "name": "小海",
+    "pinyin": "Xiaohai",
+    "meridianCode": "SI",
+    "textbookScope": "extended",
+    "specialCategory": ["五输穴-合穴"],
+    "gbLocation": "在肘后区，尺骨鹰嘴与肱骨内上髁之间凹陷中。",
+    "quickLocation": "屈肘，于肘尖（尺骨鹰嘴）与肱骨内上髁之间的尺神经沟凹陷中取穴，按之有酸麻感。",
+    "etymology": {
+      "meaning": "小，指手太阳小肠经；海，脉气汇合之处。本穴为手太阳小肠经之合穴，与手少阴心经合穴少海相对，故名小海。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "清热定惊，散结通络，聪耳止痛",
+      "indications": ["肘臂疼痛麻木", "癫痫", "耳鸣", "耳聋", "颊肿", "瘰疬"],
+      "operation": "直刺0.3～0.5寸，注意避开尺神经，勿直接重刺神经干；可灸。"
+    }
+  },
+  {
+    "code": "SI9",
+    "standard": "GB/T 12346-2021",
+    "name": "肩贞",
+    "pinyin": "Jianzhen",
+    "meridianCode": "SI",
+    "textbookScope": "extended",
+    "specialCategory": [],
+    "gbLocation": "在肩胛区，肩关节后下方，腋后纹头直上1寸。",
+    "quickLocation": "正坐垂肩，上臂内收夹紧腋窝，于腋后纵纹顶端直上1寸（一横指）凹陷处取穴。",
+    "etymology": {
+      "meaning": "肩，肩部；贞，正也、固也。穴在肩关节后下方，善祛风通络以固护肩部正气、端正肩臂活动，故名肩贞。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "通经活络，散结聪耳",
+      "indications": ["肩臂疼痛", "上肢不遂", "瘰疬", "耳鸣", "耳聋"],
+      "operation": "直刺1～1.5寸，不宜向胸侧深刺；可灸。"
+    }
+  },
+  {
+    "code": "SI11",
+    "standard": "GB/T 12346-2021",
+    "name": "天宗",
+    "pinyin": "Tianzong",
+    "meridianCode": "SI",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": [],
+    "gbLocation": "在肩胛区，肩胛冈中点与肩胛骨下角连线上1/3与下2/3交点凹陷中。",
+    "quickLocation": "正坐或俯伏，先摸到肩胛冈中点与肩胛骨下角，取两者连线的上1/3与下2/3交点（冈下窝中央凹陷），按压明显酸胀处。",
+    "etymology": {
+      "meaning": "天，上部也；宗，聚也、本也。穴居肩胛冈下窝中央上部，如天星之宗，为手太阳经气在肩背部聚会要处，故名天宗。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "舒筋活络，宽胸理气，通乳散结",
+      "indications": ["肩胛疼痛", "肩背部损伤", "肘臂外后侧痛", "气喘", "乳痈"],
+      "operation": "直刺或斜刺0.5～1寸，遇到骨质即止，切勿透过肩胛骨孔隙深刺；可灸。"
+    }
+  },
+  {
+    "code": "SI19",
+    "standard": "GB/T 12346-2021",
+    "name": "听宫",
+    "pinyin": "Tinggong",
+    "meridianCode": "SI",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["交会穴-手足少阳手太阳"],
+    "gbLocation": "在面部，耳屏正中与下颌骨髁突之间的凹陷中。",
+    "quickLocation": "微张口，于耳屏正中前缘与下颌骨髁突后缘之间出现的明显凹陷处取穴。",
+    "etymology": {
+      "meaning": "听，听觉；宫，宫室要所。穴居耳屏前正中，手足少阳与手太阳三脉汇集于此，为司掌耳部听觉之要穴，故名听宫。",
+      "origin": "《灵枢·刺节真邪》"
+    },
+    "clinical": {
+      "functions": "聪耳开窍，宁神止痛",
+      "indications": ["耳鸣", "耳聋", "聤耳", "齿痛", "下颌关节痛", "癫狂痫"],
+      "operation": "张口，直刺0.5～1寸，留针期间嘱患者保持微张口或轻闭口而勿咀嚼说话；可灸。"
+    }
+  }
+]

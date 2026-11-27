@@ -1,0 +1,242 @@
+[
+  {
+    "code": "CV3",
+    "standard": "GB/T 12346-2021",
+    "name": "中极",
+    "pinyin": "Zhongji",
+    "meridianCode": "CV",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["募穴-膀胱募", "交会穴-任脉足三阴"],
+    "gbLocation": "在下腹部，脐中下4寸，前正中线上。",
+    "quickLocation": "仰卧，在肚脐中央与耻骨联合上缘中点连线的下1/5与上4/5交点处（耻骨联合上缘中点直上1寸）。",
+    "etymology": {
+      "meaning": "中，中央、内也；极，顶点、方位之极。穴居人体上下左右之中部极处，内应胞宫与膀胱水府，且为膀胱募穴，故名中极。",
+      "origin": "《素问·骨空论》"
+    },
+    "clinical": {
+      "functions": "助气化，利膀胱，调冲任，固精气",
+      "indications": ["遗尿", "小便不利", "癃闭", "遗精", "阳痿", "月经不调", "崩漏", "带下", "阴挺", "不孕"],
+      "operation": "直刺1～1.5寸；需排空小便后针刺，以免伤及膀胱；孕妇禁针；可灸。"
+    }
+  },
+  {
+    "code": "CV4",
+    "standard": "GB/T 12346-2021",
+    "name": "关元",
+    "pinyin": "Guanyuan",
+    "meridianCode": "CV",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["募穴-小肠募", "交会穴-任脉足三阴"],
+    "gbLocation": "在下腹部，脐中下3寸，前正中线上。",
+    "quickLocation": "仰卧，在肚脐中央与耻骨联合上缘中点连线的上3/5与下2/5交点处（脐中直下4横指）。",
+    "etymology": {
+      "meaning": "关，封藏、关锁；元，元阴元阳之气。穴居下焦丹田，为男子藏精、女子蓄血之处，能封藏一身真元之气，故名关元。",
+      "origin": "《灵枢·寒热病》"
+    },
+    "clinical": {
+      "functions": "培元固本，补益下焦，回阳固脱，调理冲任",
+      "indications": ["中风脱证", "虚劳冷惫", "少腹疼痛", "泄泻", "痢疾", "遗尿", "尿频", "遗精", "阳痿", "月经不调", "痛经", "闭经", "崩漏", "带下", "不孕"],
+      "operation": "直刺1～1.5寸；需排空小便后针刺；多用灸法，为强壮保健要穴；孕妇慎用。"
+    }
+  },
+  {
+    "code": "CV6",
+    "standard": "GB/T 12346-2021",
+    "name": "气海",
+    "pinyin": "Qihai",
+    "meridianCode": "CV",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": [],
+    "gbLocation": "在下腹部，脐中下1.5寸，前正中线上。",
+    "quickLocation": "仰卧，先取脐中下3寸的关元穴，于肚脐中央与关元穴连线的中点处取穴。",
+    "etymology": {
+      "meaning": "气，指先天元气；海，百川汇聚之处。本穴一名脖胦，居下焦丹田，为生气之海、元气汇聚之处，故名气海。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "培补元气，益肾固精，温阳固脱，调理气机",
+      "indications": ["虚脱", "形体羸瘦", "腹痛", "泄泻", "便秘", "五淋", "遗尿", "遗精", "阳痿", "月经不调", "痛经", "闭经", "崩漏", "带下"],
+      "operation": "直刺1～1.5寸；多用灸法，为强壮保健要穴；孕妇慎用。"
+    }
+  },
+  {
+    "code": "CV8",
+    "standard": "GB/T 12346-2021",
+    "name": "神阙",
+    "pinyin": "Shenque",
+    "meridianCode": "CV",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": [],
+    "gbLocation": "在脐区，脐中央。",
+    "quickLocation": "仰卧，于肚脐正中央凹陷处取穴。",
+    "etymology": {
+      "meaning": "神，指元神、真气；阙，宫门高耸之牌楼门观。脐为先天胎儿禀受母体气血之门户，元神出入所居之宫阙，故名神阙。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "温阳救逆，利水固脱，温通元阳，运肠胃气机",
+      "indications": ["虚脱", "中风脱证", "四肢厥冷", "绕脐腹痛", "腹胀", "泄泻", "久痢", "便秘", "脱肛", "水肿", "小便不利"],
+      "operation": "一般不针（禁针），多用艾条温和灸或隔盐灸、隔姜灸、隔附子饼灸。"
+    }
+  },
+  {
+    "code": "CV9",
+    "standard": "GB/T 12346-2021",
+    "name": "水分",
+    "pinyin": "Shuifen",
+    "meridianCode": "CV",
+    "textbookScope": "extended",
+    "specialCategory": [],
+    "gbLocation": "在上腹部，脐中上1寸，前正中线上。",
+    "quickLocation": "仰卧，在肚脐中央直上1寸（约1横指）的前正中线上取穴。",
+    "etymology": {
+      "meaning": "水，水液；分，分清别浊。穴居小肠下口（阑门）之上，内应小肠泌别清浊之职，能分利水谷、化湿行水，故名水分。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "通调水道，理气止痛，健脾化湿",
+      "indications": ["水肿", "小便不利", "腹胀", "腹痛", "绕脐痛", "泄泻", "反胃吐食"],
+      "operation": "直刺1～1.5寸；治水病多用灸法；孕妇慎用。"
+    }
+  },
+  {
+    "code": "CV10",
+    "standard": "GB/T 12346-2021",
+    "name": "下脘",
+    "pinyin": "Xiawan",
+    "meridianCode": "CV",
+    "textbookScope": "extended",
+    "specialCategory": ["交会穴-任脉足太阴"],
+    "gbLocation": "在上腹部，脐中上2寸，前正中线上。",
+    "quickLocation": "仰卧，先取脐中上4寸的中脘穴，在中脘穴与肚脐中央连线的中点处取穴。",
+    "etymology": {
+      "meaning": "下，下方；脘，胃府之腔管。古分胃脘为上、中、下三部，本穴内应胃之下脘（幽门部），居三脘之下，故名下脘。",
+      "origin": "《灵枢·四时气》"
+    },
+    "clinical": {
+      "functions": "健脾和胃，消食导滞，理气止痛",
+      "indications": ["腹痛", "腹胀", "泄泻", "呕吐", "食谷不化", "小儿疳积", "痞块"],
+      "operation": "直刺1～1.5寸；孕妇慎用；可灸。"
+    }
+  },
+  {
+    "code": "CV12",
+    "standard": "GB/T 12346-2021",
+    "name": "中脘",
+    "pinyin": "Zhongwan",
+    "meridianCode": "CV",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["募穴-胃募", "八会穴-腑会", "交会穴-手太阳少阳足阳明任脉"],
+    "gbLocation": "在上腹部，脐中上4寸，前正中线上。",
+    "quickLocation": "仰卧，取胸剑结合部（歧骨）与肚脐中央连线的中点处（胸剑结合部至脐中为8寸）。",
+    "etymology": {
+      "meaning": "中，中间；脘，胃府之腔管。本穴居上脘、下脘之间，内应胃体中部，又为胃之募穴、六腑之会，故名中脘。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "和胃健脾，降逆利水，消食导滞，化痰安神",
+      "indications": ["胃痛", "腹胀", "纳呆", "呕吐", "吞酸", "呃逆", "小儿疳积", "泄泻", "黄疸", "癫狂", "失眠"],
+      "operation": "直刺1～1.5寸；不可过深刺以免伤及腹腔脏器；孕妇慎用；可灸。"
+    }
+  },
+  {
+    "code": "CV13",
+    "standard": "GB/T 12346-2021",
+    "name": "上脘",
+    "pinyin": "Shangwan",
+    "meridianCode": "CV",
+    "textbookScope": "extended",
+    "specialCategory": ["交会穴-任脉足阳明手太阳"],
+    "gbLocation": "在上腹部，脐中上5寸，前正中线上。",
+    "quickLocation": "仰卧，先取胸剑结合部与肚脐中央连线中点的中脘穴（脐上4寸），再向上量1寸处取穴。",
+    "etymology": {
+      "meaning": "上，上方；脘，胃府之腔管。本穴居三脘之最上方，内应胃之上口（贲门部），善治胃气上逆诸疾，故名上脘。",
+      "origin": "《灵枢·四时气》"
+    },
+    "clinical": {
+      "functions": "和胃降逆，宽胸理气，化痰宁神",
+      "indications": ["胃痛", "呕吐", "呃逆", "腹胀", "反胃", "癫痫", "心痛"],
+      "operation": "直刺1～1.5寸；深部近肝左叶，不可深刺；孕妇慎用；可灸。"
+    }
+  },
+  {
+    "code": "CV14",
+    "standard": "GB/T 12346-2021",
+    "name": "巨阙",
+    "pinyin": "Juque",
+    "meridianCode": "CV",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["募穴-心募"],
+    "gbLocation": "在上腹部，脐中上6寸，前正中线上。",
+    "quickLocation": "仰卧，先定胸剑结合部与肚脐中央连线中点（中脘），再取胸剑结合部与中脘连线的中点（胸剑结合部下2寸）即是。",
+    "etymology": {
+      "meaning": "巨，大也、至尊也；阙，君王宫城门观。心为君主之官，本穴居胸剑之下，如君主宫阙之巨门，且为心之募穴，故名巨阙。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "宁心安神，宽胸止痛，和胃降逆",
+      "indications": ["心痛", "胸闷", "心悸", "怔忡", "癫狂", "痫证", "呕吐", "吞酸", "胃痛"],
+      "operation": "直刺0.5～1寸，或向上斜刺0.5～1寸；深部正当肝左叶，严禁深刺或大幅度提插，以免伤及肝脏及心脏；可灸。"
+    }
+  },
+  {
+    "code": "CV17",
+    "standard": "GB/T 12346-2021",
+    "name": "膻中",
+    "pinyin": "Danzhong",
+    "meridianCode": "CV",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["募穴-心包募", "八会穴-气会", "交会穴-任脉足太阴少阴手太阳少阳"],
+    "gbLocation": "在胸部，横平第4肋间隙，前正中线上。",
+    "quickLocation": "仰卧，男子可于两乳头连线与前正中线交点处取穴；女子于胸骨中线上横平第4肋间隙处取穴。",
+    "etymology": {
+      "meaning": "膻，通袒，指胸膛袒露之处，亦指心包络臣使之宫城；中，中央也。穴居两乳之间胸骨正中，为宗气汇聚之“上气海”及心包募穴，故名膻中。",
+      "origin": "《灵枢·海论》"
+    },
+    "clinical": {
+      "functions": "宽胸理气，活血通络，清肺止喘，舒畅气机",
+      "indications": ["咳嗽", "气喘", "胸闷", "心痛", "心悸", "噎膈", "呃逆", "产后乳少", "乳痈", "乳癖"],
+      "operation": "平刺0.3～0.5寸；胸骨体较薄，小儿胸骨未完全骨化，切忌直刺深刺；可灸。"
+    }
+  },
+  {
+    "code": "CV22",
+    "standard": "GB/T 12346-2021",
+    "name": "天突",
+    "pinyin": "Tiantu",
+    "meridianCode": "CV",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["交会穴-阴维任脉"],
+    "gbLocation": "在颈前区，胸骨上窝中央，前正中线上。",
+    "quickLocation": "正坐或仰卧，微仰头，于左右锁骨内侧端之间的胸骨柄上缘凹陷（胸骨上窝）正中取穴。",
+    "etymology": {
+      "meaning": "天，指人体上部及呼吸之天气；突，烟囱、通道。穴居咽喉之下、胸骨上窝，为肺系呼吸清浊之气出入咽喉的通道要冲，故名天突。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "宣肺化痰，利咽开音，降气平喘",
+      "indications": ["哮喘", "咳嗽", "暴失音", "咽喉肿痛", "梅核气", "噎膈", "瘿气"],
+      "operation": "先直刺0.2～0.3寸，然后将针尖转向下方，紧靠胸骨柄后方刺入0.5～1寸。必须严格掌握针刺角度与深度，切勿向左右偏斜或向深部直刺，以防刺伤肺尖、气管及主动脉弓等大血管。"
+    }
+  },
+  {
+    "code": "CV24",
+    "standard": "GB/T 12346-2021",
+    "name": "承浆",
+    "pinyin": "Chengjiang",
+    "meridianCode": "CV",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["交会穴-任脉足阳明"],
+    "gbLocation": "在面部，颏唇沟的正中凹陷处。",
+    "quickLocation": "正坐或仰卧，在下唇下方正中凹陷（颏唇沟中央）处取穴。",
+    "etymology": {
+      "meaning": "承，承受；浆，水浆、口津饮食之液。穴居下唇之下颏唇沟正中凹陷处，宛如承受口中水浆津液之器皿，故名承浆。",
+      "origin": "《素问·气府论》"
+    },
+    "clinical": {
+      "functions": "祛风通络，消肿止痛，生津敛液，宁神开窍",
+      "indications": ["口眼歪斜", "唇紧", "面肿", "齿痛", "齿龈肿痛", "流涎", "口舌生疮", "暴喑", "癫狂"],
+      "operation": "向上斜刺0.3～0.5寸；可灸。"
+    }
+  }
+]

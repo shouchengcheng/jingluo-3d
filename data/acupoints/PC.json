@@ -1,0 +1,162 @@
+[
+  {
+    "code": "PC1",
+    "standard": "GB/T 12346-2021",
+    "name": "天池",
+    "pinyin": "Tianchi",
+    "meridianCode": "PC",
+    "textbookScope": "extended",
+    "specialCategory": ["交会穴-手厥阴足少阳"],
+    "gbLocation": "在胸部，第4肋间隙，前正中线旁开5寸。",
+    "quickLocation": "正坐或仰卧，在胸部第4肋间隙，男性约当乳头外侧1寸，距前正中线5寸处取穴。",
+    "etymology": {
+      "meaning": "天，指人体上部胸廓；池，水泽池塘，喻乳汁与脉气汇聚之处。穴居乳房外侧第4肋间隙，如天部之池，故名天池。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "宽胸理气，化痰散结，宣肺止咳",
+      "indications": ["胸闷", "心烦", "咳嗽", "痰多", "气喘", "胸痛", "乳痈", "瘰疬", "胁肋胀痛"],
+      "operation": "斜刺或平刺0.5～0.8寸；不可深刺，以免伤及肺脏引起气胸。"
+    }
+  },
+  {
+    "code": "PC3",
+    "standard": "GB/T 12346-2021",
+    "name": "曲泽",
+    "pinyin": "Quze",
+    "meridianCode": "PC",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-合穴"],
+    "gbLocation": "在肘前区，肘横纹上，肱二头肌腱尺侧缘凹陷中。",
+    "quickLocation": "微屈肘，掌心向上，在肘横纹中摸到粗大的肱二头肌腱，于其尺侧（小指侧）凹陷处取穴。",
+    "etymology": {
+      "meaning": "曲，指肘部屈曲处；泽，沼泽水聚之处。本穴居肘窝屈曲处，为手厥阴心包经合穴，经气汇合浅聚如泽，故名曲泽。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "清心泻火，除烦安神，和胃止呕，舒筋活络",
+      "indications": ["心痛", "心悸", "善惊", "胃痛", "呕吐", "泄泻", "热病", "中暑", "肘臂挛痛"],
+      "operation": "直刺1～1.5寸，或用三棱针点刺尺侧浅静脉出血；避开肱动脉。"
+    }
+  },
+  {
+    "code": "PC4",
+    "standard": "GB/T 12346-2021",
+    "name": "郄门",
+    "pinyin": "Ximen",
+    "meridianCode": "PC",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["郄穴"],
+    "gbLocation": "在前臂前区，腕掌侧远端横纹上5寸，掌长肌腱与桡侧腕屈肌腱之间。",
+    "quickLocation": "伸臂仰掌，用力握拳屈腕以显露掌长肌腱与桡侧腕屈肌腱，于曲泽与大陵连线中点向下1寸（腕横纹上5寸）两筋间取穴。",
+    "etymology": {
+      "meaning": "郄，孔隙也；门，门户也。本穴为手厥阴心包经之郄穴，为气血深聚出入之门户，善治本经急痛与血证，故名郄门。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "宁心安神，理气止痛，清营凉血",
+      "indications": ["心痛", "心悸", "胸痛", "心烦", "咳血", "呕血", "鼻衄", "疔疮", "癫痫"],
+      "operation": "直刺0.8～1.2寸；可灸。"
+    }
+  },
+  {
+    "code": "PC5",
+    "standard": "GB/T 12346-2021",
+    "name": "间使",
+    "pinyin": "Jianshi",
+    "meridianCode": "PC",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-经穴"],
+    "gbLocation": "在前臂前区，腕掌侧远端横纹上3寸，掌长肌腱与桡侧腕屈肌腱之间。",
+    "quickLocation": "伸臂仰掌，微屈腕，于腕掌侧远端横纹上3寸（四横指），掌长肌腱与桡侧腕屈肌腱之间取穴。",
+    "etymology": {
+      "meaning": "间，两筋之间隙；使，臣使也。心包为心之臣使，本穴为心包经经穴，位于两筋之间，如臣使通行经气，故名间使。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "宽胸宁心，化痰开窍，和胃截疟",
+      "indications": ["心痛", "心悸", "胃痛", "呕吐", "热病", "疟疾", "癫狂", "痫证", "肘臂挛痛"],
+      "operation": "直刺0.5～1寸；深部有正中神经干，注意勿损伤神经；可灸。"
+    }
+  },
+  {
+    "code": "PC6",
+    "standard": "GB/T 12346-2021",
+    "name": "内关",
+    "pinyin": "Neiguan",
+    "meridianCode": "PC",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["络穴", "八脉交会穴-通阴维脉"],
+    "gbLocation": "在前臂前区，腕掌侧远端横纹上2寸，掌长肌腱与桡侧腕屈肌腱之间。",
+    "quickLocation": "伸臂仰掌，微屈腕，从腕掌侧远端横纹向上量2寸（约三横指），掌长肌腱与桡侧腕屈肌腱之间的凹陷中取穴。",
+    "etymology": {
+      "meaning": "内，指前臂内侧及胸膈内脏；关，关卡要冲。本穴居前臂内侧，与外关相对，为心包经络穴且通阴维脉，善治心胸胃内脏诸疾，故名内关。",
+      "origin": "《灵枢·经脉》"
+    },
+    "clinical": {
+      "functions": "宁心安神，理气止痛，和胃降逆，通调阴维",
+      "indications": ["心痛", "胸闷", "心动过速或过缓", "胃痛", "呕吐", "呃逆", "失眠", "郁证", "眩晕", "中风", "偏头痛", "肘臂挛痛"],
+      "operation": "直刺0.5～1寸；深部有正中神经，忌大幅度提插捻转以免损伤神经；可灸。"
+    }
+  },
+  {
+    "code": "PC7",
+    "standard": "GB/T 12346-2021",
+    "name": "大陵",
+    "pinyin": "Daling",
+    "meridianCode": "PC",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-输穴", "原穴"],
+    "gbLocation": "在腕前区，腕掌侧远端横纹中，掌长肌腱与桡侧腕屈肌腱之间。",
+    "quickLocation": "仰掌微屈腕，在腕掌侧远端横纹中央，掌长肌腱与桡侧腕屈肌腱之间的凹陷处取穴。",
+    "etymology": {
+      "meaning": "大，高大丰隆；陵，丘陵。腕后掌根高起如丘陵，本穴居其腕横纹凹陷中，又为心包经原穴，脉气丰盛，故名大陵。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "清心宁神，和胃宽胸，清泻心火",
+      "indications": ["心痛", "心悸", "胃痛", "呕吐", "口臭", "癫狂", "痫证", "胸胁满痛", "腕臂痛"],
+      "operation": "直刺0.3～0.5寸；深部正当腕管内正中神经，不宜深刺重刺；可灸。"
+    }
+  },
+  {
+    "code": "PC8",
+    "standard": "GB/T 12346-2021",
+    "name": "劳宫",
+    "pinyin": "Laogong",
+    "meridianCode": "PC",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-荥穴"],
+    "gbLocation": "在掌区，横平第3掌指关节近端，第2、3掌骨之间偏于第3掌骨。",
+    "quickLocation": "自然半握拳，以中指尖点触掌心处，在第2、3掌骨之间偏于第3掌骨处取穴。",
+    "etymology": {
+      "meaning": "劳，操劳动作；宫，宫室中央。手司劳作，心包代心受邪，穴居掌心中央如臣使之宫室，故名劳宫。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "清心泻火，开窍醒神，凉血除湿",
+      "indications": ["中风昏迷", "中暑", "心痛", "烦闷", "癫狂", "痫证", "口疮", "口臭", "鹅掌风"],
+      "operation": "直刺0.3～0.5寸；可灸。"
+    }
+  },
+  {
+    "code": "PC9",
+    "standard": "GB/T 12346-2021",
+    "name": "中冲",
+    "pinyin": "Zhongchong",
+    "meridianCode": "PC",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-井穴"],
+    "gbLocation": "在手指，中指末端最高点。",
+    "quickLocation": "仰掌伸指，于手中指尖端正中央最高点处取穴。",
+    "etymology": {
+      "meaning": "中，指中指中央；冲，冲要、涌出。本穴居手中指尖端中央，为心包经井穴，经气自此涌出上冲，故名中冲。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "清心泻热，开窍苏厥，回阳救逆",
+      "indications": ["中风昏迷", "舌强不语", "中暑", "昏厥", "小儿惊风", "高热", "心痛", "舌下肿痛"],
+      "operation": "浅刺0.1寸，或用三棱针点刺出血。"
+    }
+  }
+]

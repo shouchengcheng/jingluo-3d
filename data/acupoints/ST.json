@@ -1,0 +1,322 @@
+[
+  {
+    "code": "ST2",
+    "standard": "GB/T 12346-2021",
+    "name": "四白",
+    "pinyin": "Sibai",
+    "meridianCode": "ST",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": [],
+    "gbLocation": "在面部，眶下孔处。",
+    "quickLocation": "正坐或仰卧，目正视，瞳孔直下，当眶下缘下方约1横指处的眶下孔凹陷中取穴。",
+    "etymology": {
+      "meaning": "四，四方广阔；白，光明清澈。穴居目下，善治目疾而令四方视物光明清晰，故名四白。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "祛风明目，疏肝利胆，通经活络",
+      "indications": ["目赤痛痒", "目翳", "眼睑瞤动", "口眼歪斜", "面痛", "头痛", "眩晕", "胆道蛔虫症"],
+      "operation": "直刺或斜刺0.3～0.5寸，不可深刺以免伤及眶下神经血管；不宜灸。"
+    }
+  },
+  {
+    "code": "ST4",
+    "standard": "GB/T 12346-2021",
+    "name": "地仓",
+    "pinyin": "Dicang",
+    "meridianCode": "ST",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["交会穴-手足阳明阳跷"],
+    "gbLocation": "在面部，口角旁开0.4寸（指寸）。",
+    "quickLocation": "正坐或仰卧，轻闭口，于口角外侧0.4寸（约半横指），上直瞳孔处取穴。",
+    "etymology": {
+      "meaning": "地，指面下部地阁；仓，粮仓。古人分面为天、人、地三部，口居下部主纳水谷如地之粮仓，穴居口角旁，故名地仓。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "祛风止痛，舒筋活络",
+      "indications": ["口歪", "流涎", "眼睑瞤动", "齿痛", "颊肿"],
+      "operation": "斜刺或向颊车方向平刺0.5～0.8寸；可灸。"
+    }
+  },
+  {
+    "code": "ST6",
+    "standard": "GB/T 12346-2021",
+    "name": "颊车",
+    "pinyin": "Jiache",
+    "meridianCode": "ST",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": [],
+    "gbLocation": "在面部，下颌角前上方1横指（中指）。",
+    "quickLocation": "正坐或侧卧，上下齿咬紧时咬肌隆起最高点处，放松时按之有凹陷酸胀感处即是。",
+    "etymology": {
+      "meaning": "颊，面旁；车，古称下颌骨为牙车，能载齿咀嚼如车轮运转。穴居面颊下颌角前上方，主治牙关不利，故名颊车。",
+      "origin": "《灵枢·经脉》"
+    },
+    "clinical": {
+      "functions": "疏风清热，开关通络，利节止痛",
+      "indications": ["口歪", "齿痛", "颊肿", "口噤不语", "痄腮"],
+      "operation": "直刺0.3～0.5寸，或向地仓方向平刺0.5～1寸；可灸。"
+    }
+  },
+  {
+    "code": "ST7",
+    "standard": "GB/T 12346-2021",
+    "name": "下关",
+    "pinyin": "Xiaguan",
+    "meridianCode": "ST",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["交会穴-足阳明少阳"],
+    "gbLocation": "在面部，颧弓下缘中央与下颌切迹之间凹陷中。",
+    "quickLocation": "闭口取穴，在耳屏前约1横指，颧弓下缘出现的凹陷中，张口时凹陷消失有骨突隆起处即是。",
+    "etymology": {
+      "meaning": "下，下方，与颧弓上方之上关相对；关，机关枢要。穴居颧弓下缘下颌关节处，故名下关。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "聪耳通窍，疏风活络，利颌止痛",
+      "indications": ["耳聋", "耳鸣", "聤耳", "齿痛", "口噤", "口眼歪斜", "面痛"],
+      "operation": "闭口，直刺0.5～1寸；可灸。"
+    }
+  },
+  {
+    "code": "ST8",
+    "standard": "GB/T 12346-2021",
+    "name": "头维",
+    "pinyin": "Touwei",
+    "meridianCode": "ST",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["交会穴-足阳明少阳阳维"],
+    "gbLocation": "在头部，额角发际上0.5寸，头正中线旁开4.5寸。",
+    "quickLocation": "正坐，找到前额发际拐角（额角发际），直上0.5寸，距头正中线4.5寸，咀嚼时颞肌动处取穴。",
+    "etymology": {
+      "meaning": "头，头部；维，隅角、维系。穴居前额发际隅角处，为足阳明脉气维系头角之所，故名头维。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "祛风泄火，清头明目，止痛镇痉",
+      "indications": ["头痛", "目眩", "目痛", "迎风流泪", "眼睑瞤动"],
+      "operation": "平刺0.5～1寸；《针灸甲乙经》载禁灸。"
+    }
+  },
+  {
+    "code": "ST21",
+    "standard": "GB/T 12346-2021",
+    "name": "梁门",
+    "pinyin": "Liangmen",
+    "meridianCode": "ST",
+    "textbookScope": "extended",
+    "specialCategory": [],
+    "gbLocation": "在上腹部，脐中上4寸，前正中线旁开2寸。",
+    "quickLocation": "仰卧，先取胸剑结合部与肚脐连线中点的中脘穴（脐上4寸），再向旁水平量2寸（约3横指）处取穴。",
+    "etymology": {
+      "meaning": "梁，通粱，泛指稻粱五谷，亦指古病名“伏梁”；门，门户。穴当胃部，为水谷出入运化之门户，又能治心下伏梁痞块，故名梁门。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "和胃降逆，消积化滞，理气止痛",
+      "indications": ["胃痛", "呕吐", "食欲不振", "腹胀", "泄泻"],
+      "operation": "直刺0.8～1.2寸；过饱时禁针，肝肿大者右侧慎刺；可灸。"
+    }
+  },
+  {
+    "code": "ST25",
+    "standard": "GB/T 12346-2021",
+    "name": "天枢",
+    "pinyin": "Tianshu",
+    "meridianCode": "ST",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["募穴-大肠募"],
+    "gbLocation": "在腹部，横平脐中，前正中线旁开2寸。",
+    "quickLocation": "仰卧，在肚脐中央向左右各水平旁开2寸（约3横指）处取穴。",
+    "etymology": {
+      "meaning": "天枢，本为北斗第一星名，主司天际运转；人身以脐为天地上下分界，穴居脐旁，为升降清浊之枢纽，又系大肠募穴，故名天枢。",
+      "origin": "《灵枢·骨度》"
+    },
+    "clinical": {
+      "functions": "调中和胃，理气健脾，通调大肠，调经止痛",
+      "indications": ["腹痛", "腹胀", "便秘", "腹泻", "痢疾", "月经不调", "痛经"],
+      "operation": "直刺1～1.5寸；可灸。《千金要方》载孕妇不可灸。"
+    }
+  },
+  {
+    "code": "ST32",
+    "standard": "GB/T 12346-2021",
+    "name": "伏兔",
+    "pinyin": "Futu",
+    "meridianCode": "ST",
+    "textbookScope": "extended",
+    "specialCategory": [],
+    "gbLocation": "在股前区，髌底上6寸，髂前上棘与髌底外侧端的连线上。",
+    "quickLocation": "正坐屈膝或仰卧，在髂前上棘与髌骨底外侧端连线上，髌底直上6寸，股直肌隆起处取穴。",
+    "etymology": {
+      "meaning": "伏，趴伏；兔，兔子。大腿前面股四头肌肌肉丰厚隆起，形如匍伏之兔，穴居其上，故名伏兔。",
+      "origin": "《灵枢·经脉》"
+    },
+    "clinical": {
+      "functions": "祛风除湿，通经活络，散寒止痛",
+      "indications": ["腰胯痛", "下肢痿痹", "膝冷麻木", "疝气", "脚气"],
+      "operation": "直刺1～2寸；可灸。"
+    }
+  },
+  {
+    "code": "ST34",
+    "standard": "GB/T 12346-2021",
+    "name": "梁丘",
+    "pinyin": "Liangqiu",
+    "meridianCode": "ST",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["郄穴"],
+    "gbLocation": "在股前区，髌底上2寸，股外侧肌与股直肌肌腱之间。",
+    "quickLocation": "屈膝或伸膝，在髌骨底外侧端与髂前上棘连线上，髌底上2寸（约3横指）肌沟凹陷处取穴。",
+    "etymology": {
+      "meaning": "梁，山梁；丘，土丘。膝上肌肉隆起如丘陵山梁，穴居膝上高起肌肉间凹陷处，且为胃经郄穴，故名梁丘。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "和胃止痛，通经活络，宁神消肿",
+      "indications": ["急性胃痛", "乳痈", "乳痛", "膝肿痛", "下肢不遂"],
+      "operation": "直刺1～1.5寸；可灸。"
+    }
+  },
+  {
+    "code": "ST35",
+    "standard": "GB/T 12346-2021",
+    "name": "犊鼻",
+    "pinyin": "Dubi",
+    "meridianCode": "ST",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": [],
+    "gbLocation": "在膝前区，髌韧带外侧凹陷中。",
+    "quickLocation": "屈膝90度，在膝盖骨（髌骨）下方髌韧带外侧的明显凹陷（外膝眼）中取穴。",
+    "etymology": {
+      "meaning": "犊，小牛；鼻，鼻孔。屈膝时髌韧带两侧凹陷宛如牛犊之鼻孔，本穴居外侧凹陷处，故名犊鼻。",
+      "origin": "《素问·气穴论》"
+    },
+    "clinical": {
+      "functions": "通经活络，疏风散寒，利膝止痛",
+      "indications": ["膝痛", "屈伸不利", "下肢麻痹", "脚气"],
+      "operation": "向后内斜刺0.5～1寸；可灸。"
+    }
+  },
+  {
+    "code": "ST36",
+    "standard": "GB/T 12346-2021",
+    "name": "足三里",
+    "pinyin": "Zusanli",
+    "meridianCode": "ST",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-合穴", "下合穴-胃下合穴", "四总穴"],
+    "gbLocation": "在小腿外侧，犊鼻（ST35）下3寸，犊鼻（ST35）与解溪（ST41）连线上。",
+    "quickLocation": "正坐屈膝，外膝眼（犊鼻）直下3寸（4横指），距胫骨前缘外侧1横指（中指）处取穴。",
+    "etymology": {
+      "meaning": "足，指下肢足阳明经，以别于手三里；三，指膝下三寸；里，通理，主调理胃肠三焦之气，故名足三里。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "健脾和胃，扶正培元，通经活络，升降气机",
+      "indications": ["胃痛", "呕吐", "噎膈", "腹胀", "腹泻", "痢疾", "便秘", "乳痈", "肠痈", "下肢痿痹", "水肿", "癫狂", "虚劳赢瘦"],
+      "operation": "直刺1～2寸；强壮保健常用温灸或瘢痕灸。"
+    }
+  },
+  {
+    "code": "ST37",
+    "standard": "GB/T 12346-2021",
+    "name": "上巨虚",
+    "pinyin": "Shangjuxu",
+    "meridianCode": "ST",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["下合穴-大肠下合穴"],
+    "gbLocation": "在小腿外侧，犊鼻（ST35）下6寸，犊鼻（ST35）与解溪（ST41）连线上。",
+    "quickLocation": "正坐屈膝，在足三里穴直下3寸（4横指），犊鼻与解溪连线上，距胫骨前缘1横指处取穴。",
+    "etymology": {
+      "meaning": "上，上部，与下巨虚相对；巨虚，古称胫腓两骨间巨大空隙为“巨虚”。穴居该处上部，为大肠下合穴，故名上巨虚。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "调和肠胃，通腑化滞，疏经调气",
+      "indications": ["肠鸣", "腹痛", "腹泻", "便秘", "肠痈", "痢疾", "下肢痿痹"],
+      "operation": "直刺1～2寸；可灸。"
+    }
+  },
+  {
+    "code": "ST39",
+    "standard": "GB/T 12346-2021",
+    "name": "下巨虚",
+    "pinyin": "Xiajuxu",
+    "meridianCode": "ST",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["下合穴-小肠下合穴"],
+    "gbLocation": "在小腿外侧，犊鼻（ST35）下9寸，犊鼻（ST35）与解溪（ST41）连线上。",
+    "quickLocation": "正坐屈膝，在上巨虚穴直下3寸（4横指），或犊鼻与解溪连线中点（条口）下1寸，距胫骨前缘1横指处取穴。",
+    "etymology": {
+      "meaning": "下，下部，与上巨虚相对；巨虚，指胫骨外侧大空隙。穴居巨虚之下部，为小肠下合穴，故名下巨虚。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "清利小肠，化湿导滞，舒筋活络",
+      "indications": ["小腹痛", "泄泻", "痢疾", "乳痈", "腰脊痛引睾丸", "下肢痿痹"],
+      "operation": "直刺1～1.5寸；可灸。"
+    }
+  },
+  {
+    "code": "ST40",
+    "standard": "GB/T 12346-2021",
+    "name": "丰隆",
+    "pinyin": "Fenglong",
+    "meridianCode": "ST",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["络穴"],
+    "gbLocation": "在小腿外侧，外踝尖上8寸，胫骨前肌的外缘。",
+    "quickLocation": "正坐屈膝，先取犊鼻与外踝尖连线中点（外踝尖上8寸），在胫骨前缘外侧2横指（中指）肌肉丰满处取穴。",
+    "etymology": {
+      "meaning": "丰，丰满盛大；隆，隆起。小腿外侧此处肌肉丰满隆起，且本穴为足阳明络穴，气血丰盛，故名丰隆。",
+      "origin": "《灵枢·经脉》"
+    },
+    "clinical": {
+      "functions": "健脾化痰，和胃降逆，开窍宁神",
+      "indications": ["头痛", "眩晕", "痰多咳嗽", "气喘", "胸腹胀痛", "便秘", "癫狂", "下肢痿痹"],
+      "operation": "直刺1～1.5寸；可灸。"
+    }
+  },
+  {
+    "code": "ST41",
+    "standard": "GB/T 12346-2021",
+    "name": "解溪",
+    "pinyin": "Jiexi",
+    "meridianCode": "ST",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-经穴"],
+    "gbLocation": "在踝区，踝关节前面中央凹陷中，拇长伸肌腱与趾长伸肌腱之间。",
+    "quickLocation": "正坐垂足或仰卧，在足背与小腿交界处的横纹中央凹陷处，脚趾上翘时两肌腱之间取穴（古系鞋带解结处）。",
+    "etymology": {
+      "meaning": "解，骨节分解及解带之处；溪，凹陷如溪。穴居踝关节前面两筋间凹陷中，又当古人系解鞋带处，故名解溪。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "清胃化痰，镇惊宁神，舒筋活络",
+      "indications": ["头痛", "眩晕", "癫狂", "腹胀", "便秘", "下肢痿痹", "足踝肿痛"],
+      "operation": "直刺0.5～1寸；可灸。"
+    }
+  },
+  {
+    "code": "ST44",
+    "standard": "GB/T 12346-2021",
+    "name": "内庭",
+    "pinyin": "Neiting",
+    "meridianCode": "ST",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-荥穴"],
+    "gbLocation": "在足背，第2、3趾间，趾蹼缘后方赤白肉际处。",
+    "quickLocation": "正坐垂足或仰卧，在足背第2、3趾缝间的纹头后方凹陷处（赤白肉际）取穴。",
+    "etymology": {
+      "meaning": "内，进入、深处；庭，门庭院落。穴居第2、3趾间凹陷处，犹入趾缝门庭之内，为胃经荥穴，故名内庭。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "清胃泻火，理气止痛，化积通腑",
+      "indications": ["齿痛", "咽喉肿痛", "鼻衄", "口歪", "热病", "胃病吐酸", "腹胀", "腹泻", "痢疾", "便秘", "足背肿痛"],
+      "operation": "直刺或斜刺0.5～0.8寸；可灸。"
+    }
+  }
+]

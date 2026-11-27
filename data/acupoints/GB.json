@@ -1,0 +1,302 @@
+[
+  {
+    "code": "GB1",
+    "standard": "GB/T 12346-2021",
+    "name": "瞳子髎",
+    "pinyin": "Tongziliao",
+    "meridianCode": "GB",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["交会穴-手太阳手足少阳"],
+    "gbLocation": "在面部，目外眦外侧0.5寸，眶外侧缘凹陷中。",
+    "quickLocation": "正坐或仰卧，闭目，于外眼角（目外眦）外侧约半横指，眼眶外侧缘骨性凹陷处取穴。",
+    "etymology": {
+      "meaning": "瞳子，指眼珠瞳孔；髎，近骨之孔隙。本穴位于目外眦外侧眼眶骨际凹陷中，邻近瞳子且善治目疾，故名瞳子髎。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "疏风清热，明目退翳，通络止痛",
+      "indications": ["头痛", "目赤肿痛", "羞明流泪", "内障", "目翳", "近视", "口眼歪斜"],
+      "operation": "向外平刺0.3～0.5寸，或用三棱针点刺出血；不宜瘢痕灸。"
+    }
+  },
+  {
+    "code": "GB2",
+    "standard": "GB/T 12346-2021",
+    "name": "听会",
+    "pinyin": "Tinghui",
+    "meridianCode": "GB",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": [],
+    "gbLocation": "在面部，耳屏间切迹与下颌骨髁突之间的凹陷中。",
+    "quickLocation": "正坐，微张口，在耳屏前下方、耳屏间切迹前方的凹陷处（听宫穴直下方）取穴。",
+    "etymology": {
+      "meaning": "听，指听觉；会，聚会也。穴居耳屏前下方，为耳部脉气聚会之处，针之可宣通耳窍、聪耳助听，故名听会。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "开窍聪耳，疏风清热，通络止痛",
+      "indications": ["耳鸣", "耳聋", "聤耳", "齿痛", "口眼歪斜", "面痛", "下颌关节脱臼"],
+      "operation": "微张口，直刺0.5～1寸；可灸。"
+    }
+  },
+  {
+    "code": "GB8",
+    "standard": "GB/T 12346-2021",
+    "name": "率谷",
+    "pinyin": "Shuaigu",
+    "meridianCode": "GB",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["交会穴-足太阳少阳"],
+    "gbLocation": "在头部，耳尖直上入发际1.5寸。",
+    "quickLocation": "正坐，将耳郭向前对折，于耳尖直上入发际1.5寸（约二横指），咀嚼时颞肌动处取穴。",
+    "etymology": {
+      "meaning": "率，统率、循行；谷，山谷凹陷。穴在耳尖直上入发际颞部浅凹处，如循山谷而行，且统治头侧诸疾，故名率谷。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "平肝熄风，疏风活络，清热止痛",
+      "indications": ["偏头痛", "眩晕", "耳鸣", "耳聋", "小儿惊风", "呕吐"],
+      "operation": "平刺0.5～1寸；可灸。"
+    }
+  },
+  {
+    "code": "GB14",
+    "standard": "GB/T 12346-2021",
+    "name": "阳白",
+    "pinyin": "Yangbai",
+    "meridianCode": "GB",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["交会穴-足少阳阳维脉"],
+    "gbLocation": "在头部，眉上1寸，瞳孔直上。",
+    "quickLocation": "正坐仰靠，目正视，瞳孔直上，眉毛中点上方1寸（一拇指横宽）处取穴。",
+    "etymology": {
+      "meaning": "阳，指额部属阳及少阳经；白，光明洁白。穴居前额明亮之处，善治目疾令视物光明清楚，故名阳白。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "祛风清热，明目止痛，舒筋通络",
+      "indications": ["前额头痛", "目眩", "目痛", "视物模糊", "眼睑瞤动", "眼睑下垂", "口眼歪斜"],
+      "operation": "平刺0.5～0.8寸；可灸。"
+    }
+  },
+  {
+    "code": "GB20",
+    "standard": "GB/T 12346-2021",
+    "name": "风池",
+    "pinyin": "Fengchi",
+    "meridianCode": "GB",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["交会穴-足少阳阳维脉"],
+    "gbLocation": "在项部，枕骨之下，胸锁乳突肌上端与斜方肌上端之间的凹陷中。",
+    "quickLocation": "正坐俯伏，在后头骨（枕外隆凸）下两侧，两条大筋（斜方肌与胸锁乳突肌）外缘之间的明显凹陷处，平风府穴。",
+    "etymology": {
+      "meaning": "风，指风邪；池，池塘凹陷。穴居枕骨下凹陷如池，为风邪易袭留聚之处，又为祛风要穴，治内外风证皆效，故名风池。",
+      "origin": "《灵枢·热病》"
+    },
+    "clinical": {
+      "functions": "祛风解表，平肝熄风，清头明目，聪耳通络",
+      "indications": ["头痛", "眩晕", "感冒", "热病", "颈项强痛", "目赤肿痛", "鼻渊", "鼻衄", "耳鸣", "中风", "癫痫"],
+      "operation": "针尖微下，向鼻尖方向斜刺0.8～1.2寸，或平刺透风府穴；深部中间为延髓，必须严格掌握针刺角度与深度，严禁向对侧眼眶或内上方深刺。"
+    }
+  },
+  {
+    "code": "GB21",
+    "standard": "GB/T 12346-2021",
+    "name": "肩井",
+    "pinyin": "Jianjing",
+    "meridianCode": "GB",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["交会穴-手足少阳阳维脉"],
+    "gbLocation": "在肩胛区，第7颈椎棘突与肩峰最外侧点连线的中点。",
+    "quickLocation": "正坐，先定低头时项后最隆起的第7颈椎棘突（大椎穴）与肩峰最外侧点，于两处连线中点的肩部最高处取穴。",
+    "etymology": {
+      "meaning": "肩，指肩部；井，深凹如井，又指井田之象。穴在肩上肌束间凹陷处，且居大椎与肩峰中点，气血深聚如井，故名肩井。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "通经活络，祛风清热，豁痰散结，催产下乳",
+      "indications": ["肩背痹痛", "颈项强痛", "上肢不遂", "乳痈", "乳汁不下", "瘰疬", "难产", "胞衣不下"],
+      "operation": "直刺0.5～0.8寸；深部正当肺尖，切勿深刺，以免伤及肺脏引起气胸；孕妇禁针。"
+    }
+  },
+  {
+    "code": "GB24",
+    "standard": "GB/T 12346-2021",
+    "name": "日月",
+    "pinyin": "Riyue",
+    "meridianCode": "GB",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["募穴-胆募", "交会穴-足太阴少阳"],
+    "gbLocation": "在胸部，第7肋间隙，前正中线旁开4寸。",
+    "quickLocation": "仰卧，男性于乳头直下（前正中线旁开4寸），期门穴直下1肋，第7肋间隙中取穴。",
+    "etymology": {
+      "meaning": "日为阳，月为阴，日月合而为明。胆主决断，“凡十一脏取决于胆”，本穴为胆之募穴，居胁肋以明断阴阳气机，故名日月。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "疏肝利胆，理气和胃，化湿退黄",
+      "indications": ["胁肋疼痛", "黄疸", "呕吐", "吞酸", "呃逆", "口苦"],
+      "operation": "斜刺或平刺0.5～0.8寸；不可深刺，以免伤及内部脏器。"
+    }
+  },
+  {
+    "code": "GB26",
+    "standard": "GB/T 12346-2021",
+    "name": "带脉",
+    "pinyin": "Daimai",
+    "meridianCode": "GB",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["交会穴-足少阳带脉"],
+    "gbLocation": "在侧腹部，第11肋骨游离端垂线与脐水平线的交点上。",
+    "quickLocation": "侧卧或仰卧，先摸到第11浮肋游离端（章门穴）向下作垂线，与肚脐水平线相交处取穴。",
+    "etymology": {
+      "meaning": "带脉横绕腰腹如束带，总束诸经。本穴居侧腹季胁下平脐处，正当奇经带脉环腰经过之处，且为足少阳与带脉交会穴，故名带脉。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "调理带脉，清利湿热，调经止带",
+      "indications": ["月经不调", "闭经", "赤白带下", "阴挺", "腹痛", "疝气", "腰胁痛"],
+      "operation": "直刺1～1.5寸；可灸。"
+    }
+  },
+  {
+    "code": "GB30",
+    "standard": "GB/T 12346-2021",
+    "name": "环跳",
+    "pinyin": "Huantiao",
+    "meridianCode": "GB",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["交会穴-足少阳太阳"],
+    "gbLocation": "在臀区，股骨大转子最凸点与骶管裂孔连线的外1/3与内2/3交点处。",
+    "quickLocation": "侧卧屈股（底下腿伸直，上面腿屈曲），摸到股骨大转子最高点与尾骨端上方骶管裂孔，两处连线外1/3与内2/3交点凹陷处取穴。",
+    "etymology": {
+      "meaning": "环，指髋臀环曲之处；跳，跳跃屈伸。穴居髋关节后外侧，主下肢屈伸环转跳跃之枢机，针之疾愈可环曲跳跃，故名环跳。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "强健腰膝，舒筋活络，祛风化湿",
+      "indications": ["腰胯疼痛", "下肢痿痹", "半身不遂", "坐骨神经痛", "风疹", "遍身风疹"],
+      "operation": "直刺2～3寸；可灸。"
+    }
+  },
+  {
+    "code": "GB31",
+    "standard": "GB/T 12346-2021",
+    "name": "风市",
+    "pinyin": "Fengshi",
+    "meridianCode": "GB",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": [],
+    "gbLocation": "在股部，腘横纹上7寸，髂胫束后缘。",
+    "quickLocation": "直立垂手，手臂自然下垂贴于大腿外侧，中指尖所指的大腿外侧中线凹陷处即是。",
+    "etymology": {
+      "meaning": "风，指风邪；市，集市聚会也。穴在大腿外侧中线，为风邪集聚之处，善祛下肢及遍身风邪，治风痹、风疹甚效，故名风市。",
+      "origin": "《肘后备急方》"
+    },
+    "clinical": {
+      "functions": "祛风除湿，通经活络，止痒散邪",
+      "indications": ["下肢痿痹", "半身不遂", "麻木不仁", "遍身瘙痒", "脚气"],
+      "operation": "直刺1～1.5寸；可灸。"
+    }
+  },
+  {
+    "code": "GB34",
+    "standard": "GB/T 12346-2021",
+    "name": "阳陵泉",
+    "pinyin": "Yanglingquan",
+    "meridianCode": "GB",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-合穴", "下合穴-胆下合穴", "八会穴-筋会"],
+    "gbLocation": "在小腿外侧，腓骨头前下方凹陷中。",
+    "quickLocation": "正坐屈膝约90°，在膝盖外下方摸到圆形突起的腓骨小头，于其前下方凹陷处取穴。",
+    "etymology": {
+      "meaning": "阳，指小腿外侧阳面；陵，丘陵，喻高起之腓骨头；泉，水泉凹陷。穴居腓骨头前下方凹陷如泉，与小腿内侧阴陵泉相对，故名阳陵泉。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "疏肝利胆，清利湿热，舒筋活络，强健腰膝",
+      "indications": ["黄疸", "胁痛", "口苦", "呕吐", "吞酸", "下肢痿痹", "半身不遂", "膝膑肿痛", "小儿惊风"],
+      "operation": "向内后下方斜刺或直刺1～1.5寸；可灸。"
+    }
+  },
+  {
+    "code": "GB37",
+    "standard": "GB/T 12346-2021",
+    "name": "光明",
+    "pinyin": "Guangming",
+    "meridianCode": "GB",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["络穴"],
+    "gbLocation": "在小腿外侧，外踝尖上5寸，腓骨前缘。",
+    "quickLocation": "正坐垂足，从外踝尖向上量5寸（外踝尖至膝中16寸折量），在腓骨前缘凹陷处取穴。",
+    "etymology": {
+      "meaning": "光明，明亮清晰之意。肝开窍于目，肝胆相表里，本穴为足少阳胆经络穴，别走足厥阴肝经，善治各类目疾使双目复明，故名光明。",
+      "origin": "《灵枢·经脉》"
+    },
+    "clinical": {
+      "functions": "清肝明目，疏风通络，消胀止痛",
+      "indications": ["目痛", "夜盲", "视物不明", "青盲", "近视", "乳胀痛", "下肢痿痹", "颊肿"],
+      "operation": "直刺1～1.5寸；可灸。"
+    }
+  },
+  {
+    "code": "GB39",
+    "standard": "GB/T 12346-2021",
+    "name": "悬钟",
+    "pinyin": "Xuanzhong",
+    "meridianCode": "GB",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["八会穴-髓会"],
+    "gbLocation": "在小腿外侧，外踝尖上3寸，腓骨前缘。",
+    "quickLocation": "正坐或仰卧，于外踝尖直上3寸（四横指），腓骨前缘凹陷处取穴。",
+    "etymology": {
+      "meaning": "悬，悬挂；钟，古代乐器，古时小儿常于踝上系挂铃钟。穴居外踝上3寸如悬钟之处，又名绝骨，为八会穴之髓会，故名悬钟。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "填精益髓，强筋壮骨，平肝熄风，通经活络",
+      "indications": ["痴呆", "中风", "半身不遂", "颈项强痛", "落枕", "胸腹胀满", "胁肋疼痛", "下肢痿痹", "脚气"],
+      "operation": "直刺0.5～0.8寸；可灸。"
+    }
+  },
+  {
+    "code": "GB40",
+    "standard": "GB/T 12346-2021",
+    "name": "丘墟",
+    "pinyin": "Qiuxu",
+    "meridianCode": "GB",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["原穴"],
+    "gbLocation": "在踝区，外踝前下方，趾长伸肌腱的外侧凹陷中。",
+    "quickLocation": "正坐或仰卧，足背微背屈以显露趾长伸肌腱，在外踝前下方，该肌腱外侧的深凹陷处取穴。",
+    "etymology": {
+      "meaning": "丘，土高曰丘；墟，大丘也，喻高突之外踝。穴居外踝前下方凹陷中，如依傍大丘之墟，又为足少阳胆经原穴，故名丘墟。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "疏肝利胆，通经活络，消肿止痛",
+      "indications": ["颈项痛", "腋下肿", "胸胁痛", "外踝肿痛", "下肢痿痹", "疟疾", "目赤肿痛"],
+      "operation": "直刺0.5～0.8寸；可灸。"
+    }
+  },
+  {
+    "code": "GB41",
+    "standard": "GB/T 12346-2021",
+    "name": "足临泣",
+    "pinyin": "Zulinqi",
+    "meridianCode": "GB",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-输穴", "八脉交会穴-通带脉"],
+    "gbLocation": "在足背，第4、5跖骨底结合部的前方，第5趾长伸肌腱外侧凹陷中。",
+    "quickLocation": "正坐垂足，足趾略上翘，沿足背第4、5趾缝向后推至第4、5跖骨底结合部前方，在小趾伸肌腱外侧凹陷处取穴。",
+    "etymology": {
+      "meaning": "临，自上视下；泣，目液也。胆经起于目外眦，本穴居足背，与头部头临泣上下相应，善治目炫流泪，故名足临泣。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "疏肝清胆，明目聪耳，化痰散结，通调带脉",
+      "indications": ["偏头痛", "目赤肿痛", "羞明流泪", "胁肋疼痛", "月经不调", "带下", "乳痈", "退乳", "足跗肿痛", "疟疾"],
+      "operation": "直刺0.5～0.8寸；可灸。"
+    }
+  }
+]

@@ -1,0 +1,242 @@
+[
+  {
+    "code": "LI1",
+    "standard": "GB/T 12346-2021",
+    "name": "商阳",
+    "pinyin": "Shangyang",
+    "meridianCode": "LI",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-井穴"],
+    "gbLocation": "在手指，示指末节桡侧，指甲根角侧上方0.1寸（指寸）。",
+    "quickLocation": "伸食指（示指），沿食指指甲底部与桡侧缘（靠拇指侧）各作一直线，两线交点外上方约0.1寸处。",
+    "etymology": {
+      "meaning": "商，五音之一，属金；阳，指阳明经。手阳明大肠经与肺经相表里，同属西方金，本穴为大肠经井穴，脉气初出，故名商阳。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "清泻阳明，宣肺利咽，开窍醒神",
+      "indications": ["齿痛", "咽喉肿痛", "耳聋", "热病", "昏迷", "手指麻木"],
+      "operation": "浅刺0.1寸，或用三棱针点刺出血。"
+    }
+  },
+  {
+    "code": "LI2",
+    "standard": "GB/T 12346-2021",
+    "name": "二间",
+    "pinyin": "Erjian",
+    "meridianCode": "LI",
+    "textbookScope": "extended",
+    "specialCategory": ["五输穴-荥穴"],
+    "gbLocation": "在手指，第2掌指关节桡侧远端赤白肉际处。",
+    "quickLocation": "微握拳，在食指本节（第2掌指关节）前（远端）桡侧凹陷处，掌背交界线（赤白肉际）上取穴。",
+    "etymology": {
+      "meaning": "二，指手阳明经自商阳起第2穴；间，间隙也。穴居第2掌指关节前凹陷间隙中，故名二间。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "清泻邪热，利咽消肿，散风止痛",
+      "indications": ["鼻衄", "齿痛", "咽喉肿痛", "目昏", "口眼歪斜", "热病"],
+      "operation": "直刺0.2～0.3寸；可灸。"
+    }
+  },
+  {
+    "code": "LI3",
+    "standard": "GB/T 12346-2021",
+    "name": "三间",
+    "pinyin": "Sanjian",
+    "meridianCode": "LI",
+    "textbookScope": "extended",
+    "specialCategory": ["五输穴-输穴"],
+    "gbLocation": "在手背，第2掌指关节桡侧近端凹陷中。",
+    "quickLocation": "微握拳，在食指本节（第2掌指关节）后方（近端）桡侧凹陷处取穴。",
+    "etymology": {
+      "meaning": "三，指本经第3穴；间，骨节间隙。穴居第2掌指关节后方凹陷间隙中，故名三间。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "泄热利咽，调腑通便，消肿止痛",
+      "indications": ["咽喉肿痛", "齿痛", "目痛", "腹满肠鸣", "嗜睡", "手背红肿疼痛"],
+      "operation": "直刺0.3～0.5寸；可灸。"
+    }
+  },
+  {
+    "code": "LI4",
+    "standard": "GB/T 12346-2021",
+    "name": "合谷",
+    "pinyin": "Hegu",
+    "meridianCode": "LI",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["原穴", "四总穴"],
+    "gbLocation": "在手背，第2掌骨桡侧的中点处。",
+    "quickLocation": "以一手的拇指指间关节横纹，放在另一手拇、食指之间的指蹼缘上，当拇指尖下即是。",
+    "etymology": {
+      "meaning": "合，会合、开合；谷，山谷凹陷。拇、食两指并拢时肌肉隆起如山峰，分开时第1、2掌骨间深凹如谷，故名合谷。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "疏风解表，行气活血，通络止痛，清泄肺气",
+      "indications": ["头痛", "目赤肿痛", "鼻衄", "齿痛", "口眼歪斜", "耳聋", "痄腮", "咽喉肿痛", "发热恶寒", "无汗或多汗", "腹痛", "便秘", "滞产", "上肢不遂"],
+      "operation": "直刺0.5～1寸，针刺时手呈半握拳状。孕妇不宜针。"
+    }
+  },
+  {
+    "code": "LI5",
+    "standard": "GB/T 12346-2021",
+    "name": "阳溪",
+    "pinyin": "Yangxi",
+    "meridianCode": "LI",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-经穴"],
+    "gbLocation": "在腕区，腕背侧远端横纹桡侧，桡骨茎突远端，解剖学“鼻烟窝”凹陷中。",
+    "quickLocation": "拇指向上翘起，在腕背桡侧可见拇长伸肌腱与拇短伸肌腱之间的三角形凹陷（鼻烟窝），凹陷正中即是。",
+    "etymology": {
+      "meaning": "阳，指手背阳侧及手阳明经；溪，山涧溪流。拇指翘起时两肌腱间凹陷如溪涧，经气行于其中，故名阳溪。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "清热散风，聪耳明目，舒筋利腕",
+      "indications": ["头痛", "目赤肿痛", "耳聋", "耳鸣", "齿痛", "咽喉肿痛", "手腕痛"],
+      "operation": "直刺0.5～0.8寸；可灸。"
+    }
+  },
+  {
+    "code": "LI6",
+    "standard": "GB/T 12346-2021",
+    "name": "偏历",
+    "pinyin": "Pianli",
+    "meridianCode": "LI",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["络穴"],
+    "gbLocation": "在前臂后区，腕背侧远端横纹上3寸，阳溪（LI5）与曲池（LI11）连线上。",
+    "quickLocation": "两手虎口垂直交叉，中指端落于前臂背面桡侧骨面上方凹陷处；或于阳溪与曲池连线下1/4处取穴。",
+    "etymology": {
+      "meaning": "偏，偏离、旁出；历，经历、行经。本穴为手阳明大肠经络穴，脉气由此偏出别走手太阴肺经，故名偏历。",
+      "origin": "《灵枢·经脉》"
+    },
+    "clinical": {
+      "functions": "清肺宣气，通调水道，通络明目",
+      "indications": ["鼻衄", "耳聋", "耳鸣", "目赤", "口眼歪斜", "水肿", "小便不利", "手臂酸痛"],
+      "operation": "直刺或斜刺0.5～0.8寸；可灸。"
+    }
+  },
+  {
+    "code": "LI10",
+    "standard": "GB/T 12346-2021",
+    "name": "手三里",
+    "pinyin": "Shousanli",
+    "meridianCode": "LI",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": [],
+    "gbLocation": "在前臂后区，肘横纹下2寸，阳溪（LI5）与曲池（LI11）连线上。",
+    "quickLocation": "侧腕屈肘，先取肘横纹外侧端的曲池穴，沿曲池与阳溪连线向下量2寸（约3横指）肌肉隆起处取穴。",
+    "etymology": {
+      "meaning": "手，指上肢手阳明经，以别于足阳明之足三里；三，指肘下约三寸（古法寸度）；里，居也、通达表里之意，故名手三里。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "通经活络，清热明目，调理肠胃",
+      "indications": ["手臂无力", "上肢不遂", "肘臂挛痛", "腹痛", "腹泻", "齿痛", "颊肿"],
+      "operation": "直刺0.8～1.2寸；可灸。"
+    }
+  },
+  {
+    "code": "LI11",
+    "standard": "GB/T 12346-2021",
+    "name": "曲池",
+    "pinyin": "Quchi",
+    "meridianCode": "LI",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-合穴"],
+    "gbLocation": "在肘区，尺泽（LU5）与肱骨外上髁连线的中点处。",
+    "quickLocation": "屈肘成直角，在肘横纹外侧端与肱骨外上髁连线中点，完全屈肘时横纹尽头处取穴。",
+    "etymology": {
+      "meaning": "曲，指屈肘；池，水聚之池泽。屈肘取穴时肘横纹端出现凹陷如池，且本穴为大肠经合穴，经气汇合入池，故名曲池。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "清热解表，调和气血，疏经通络，祛风止痒",
+      "indications": ["热病", "咽喉肿痛", "目赤痛", "齿痛", "瘾疹", "湿疹", "瘰疬", "眩晕", "腹痛", "吐泻", "上肢不遂", "手臂肿痛"],
+      "operation": "直刺1～1.5寸；可灸。"
+    }
+  },
+  {
+    "code": "LI14",
+    "standard": "GB/T 12346-2021",
+    "name": "臂臑",
+    "pinyin": "Binao",
+    "meridianCode": "LI",
+    "textbookScope": "extended",
+    "specialCategory": ["交会穴-手阳明阳维"],
+    "gbLocation": "在臂部，曲池（LI11）上7寸，三角肌前缘处。",
+    "quickLocation": "垂臂或微屈肘，在曲池与肩髃连线上，曲池直上7寸，三角肌下端前缘凹陷处取穴。",
+    "etymology": {
+      "meaning": "臂，上肢统称；臑，指上臂肌肉丰满处（臑肉）。穴居上臂三角肌前缘隆起部，故名臂臑。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "通络止痛，清热明目，化痰散结",
+      "indications": ["肩臂痛", "上肢不遂", "目疾", "瘰疬", "颈项拘挛"],
+      "operation": "直刺或向上斜刺0.8～1.5寸；可灸。"
+    }
+  },
+  {
+    "code": "LI15",
+    "standard": "GB/T 12346-2021",
+    "name": "肩髃",
+    "pinyin": "Jianyu",
+    "meridianCode": "LI",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["交会穴-手阳明阳跷"],
+    "gbLocation": "在肩胛区，肩峰外侧缘前端与肱骨大结节两骨间凹陷中。",
+    "quickLocation": "上臂外展平举，肩峰前下方与后下方各现一凹陷，取前下方凹陷处即是。",
+    "etymology": {
+      "meaning": "肩，肩部；髃，骨角端隅，指肩端高骨。穴居肩峰端前下方骨缝凹陷处，故名肩髃。",
+      "origin": "《灵枢·经别》"
+    },
+    "clinical": {
+      "functions": "疏经利节，祛风通络，理气化痰",
+      "indications": ["肩臂挛痛", "上肢不遂", "瘾疹", "瘰疬"],
+      "operation": "直刺或向下斜刺0.8～1.5寸；可灸。"
+    }
+  },
+  {
+    "code": "LI16",
+    "standard": "GB/T 12346-2021",
+    "name": "巨骨",
+    "pinyin": "Jugu",
+    "meridianCode": "LI",
+    "textbookScope": "extended",
+    "specialCategory": ["交会穴-手阳明阳跷"],
+    "gbLocation": "在肩胛区，锁骨肩峰端与肩胛冈之间凹陷中。",
+    "quickLocation": "正坐垂肩，在肩上部摸到锁骨外侧端与后方肩胛冈所夹的叉状凹陷中取穴。",
+    "etymology": {
+      "meaning": "巨骨，古解剖名，指锁骨。本穴位于锁骨肩峰端与肩胛冈相接凹陷处，故名巨骨。",
+      "origin": "《素问·气府论》"
+    },
+    "clinical": {
+      "functions": "通经活络，散瘀消肿，化痰散结",
+      "indications": ["肩背痛", "手臂挛痛不得屈伸", "瘰疬", "瘿气", "惊痫"],
+      "operation": "直刺或微向外斜刺0.5～1寸，不可向内深刺以免伤及肺尖导致气胸；可灸。"
+    }
+  },
+  {
+    "code": "LI20",
+    "standard": "GB/T 12346-2021",
+    "name": "迎香",
+    "pinyin": "Yingxiang",
+    "meridianCode": "LI",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["交会穴-手足阳明"],
+    "gbLocation": "在面部，鼻翼外缘中点旁，鼻唇沟中。",
+    "quickLocation": "正坐或仰卧，在鼻翼外缘中点旁开约0.5寸，当鼻唇沟凹陷中取穴。",
+    "etymology": {
+      "meaning": "迎，迎接；香，芳香气味。穴居鼻旁，善通鼻窍以治鼻塞不闻香臭，针后能迎受香臭之气，故名迎香。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "宣通鼻窍，疏风清热，利胆安蛔",
+      "indications": ["鼻塞", "鼽衄", "口歪", "面痒", "胆道蛔虫症"],
+      "operation": "略向内上方斜刺或平刺0.3～0.5寸；不宜灸。"
+    }
+  }
+]

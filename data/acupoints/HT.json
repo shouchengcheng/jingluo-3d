@@ -1,0 +1,122 @@
+[
+  {
+    "code": "HT1",
+    "standard": "GB/T 12346-2021",
+    "name": "极泉",
+    "pinyin": "Jiquan",
+    "meridianCode": "HT",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": [],
+    "gbLocation": "在腋区，腋窝顶点，腋动脉搏动处。",
+    "quickLocation": "正坐或仰卧，上臂外展暴露腋窝，于腋窝正中央最高点摸到腋动脉搏动处取穴。",
+    "etymology": {
+      "meaning": "极，高也、端也；泉，水始出之处。手少阴心经脉气自胸出腋，穴居腋窝极高顶点，经气如泉涌出，故名极泉。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "宽胸理气，通经活络",
+      "indications": ["心痛", "胸闷", "心悸", "肩臂疼痛", "上肢不遂", "胁肋疼痛", "瘰疬"],
+      "operation": "避开腋动脉，直刺或斜刺0.3～0.5寸；治中风上肢不遂可用弹拨针法，以有触电感向指端放射为度。"
+    }
+  },
+  {
+    "code": "HT3",
+    "standard": "GB/T 12346-2021",
+    "name": "少海",
+    "pinyin": "Shaohai",
+    "meridianCode": "HT",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-合穴"],
+    "gbLocation": "在肘前区，横平肘横纹，肱骨内上髁前缘。",
+    "quickLocation": "屈肘成直角，在肘横纹尺侧端与肱骨内上髁连线的中点，肱骨内上髁前缘凹陷处取穴。",
+    "etymology": {
+      "meaning": "少，指手少阴心经；海，百川所归之处。本穴为手少阴心经五输穴之合穴，属水，脉气汇聚深广如海，故名少海。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "宁心安神，清心泻火，通络止痛",
+      "indications": ["心痛", "心烦", "癫狂", "健忘", "肘臂挛痛", "臂麻手颤", "头项痛", "瘰疬"],
+      "operation": "直刺0.5～1寸，注意避开尺神经；可灸。"
+    }
+  },
+  {
+    "code": "HT5",
+    "standard": "GB/T 12346-2021",
+    "name": "通里",
+    "pinyin": "Tongli",
+    "meridianCode": "HT",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["络穴"],
+    "gbLocation": "在前臂前区，腕掌侧远端横纹上1寸，尺侧腕屈肌腱的桡侧缘。",
+    "quickLocation": "仰掌，先定腕掌侧远端横纹尺侧端的神门穴，直上1寸（约一横指），尺侧腕屈肌腱桡侧缘凹陷处取穴。",
+    "etymology": {
+      "meaning": "通，通达；里，内里、居处。本穴为手少阴心经络穴，络脉由此别走手太阳经并入心中系舌本，沟通内外表里，故名通里。",
+      "origin": "《灵枢·经脉》"
+    },
+    "clinical": {
+      "functions": "宁心安神，聪耳利舌，通络止痛",
+      "indications": ["心悸", "怔忡", "暴喑", "舌强不语", "腕臂痛"],
+      "operation": "直刺0.3～0.5寸，不宜深刺，以免伤及尺侧血管和神经；可灸。"
+    }
+  },
+  {
+    "code": "HT7",
+    "standard": "GB/T 12346-2021",
+    "name": "神门",
+    "pinyin": "Shenmen",
+    "meridianCode": "HT",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-输穴", "原穴"],
+    "gbLocation": "在腕前区，腕掌侧远端横纹尺侧端，尺侧腕屈肌腱的桡侧缘。",
+    "quickLocation": "仰掌，于腕掌侧远端横纹尺侧（小指侧），摸到豌豆骨上方的尺侧腕屈肌腱，在其桡侧凹陷处取穴。",
+    "etymology": {
+      "meaning": "神，心所藏之神；门，出入之门户。心藏神，本穴为手少阴心经之输穴兼原穴，乃心神出入之门户，故名神门。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "宁心安神，清心调气，通经活络",
+      "indications": ["心痛", "心烦", "惊悸", "怔忡", "不寐", "健忘", "痴呆", "癫狂痫", "胸胁痛"],
+      "operation": "直刺0.3～0.5寸，注意避开尺动、静脉与尺神经；可灸。"
+    }
+  },
+  {
+    "code": "HT8",
+    "standard": "GB/T 12346-2021",
+    "name": "少府",
+    "pinyin": "Shaofu",
+    "meridianCode": "HT",
+    "textbookScope": "extended",
+    "specialCategory": ["五输穴-荥穴"],
+    "gbLocation": "在手掌，横平第5掌指关节近端，第4、5掌骨之间。",
+    "quickLocation": "仰掌屈指握拳，小指指尖所点掌心处，当第4、5掌骨之间取穴。",
+    "etymology": {
+      "meaning": "少，指手少阴心经；府，神气聚会之处。本穴为手少阴心经之荥穴，属火，心火之气汇聚于掌中，故名少府。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "清心泻火，理气活络，清利下焦",
+      "indications": ["心悸", "胸痛", "小便不利", "遗尿", "阴痒痛", "小指挛痛", "掌中热"],
+      "operation": "直刺0.3～0.5寸；可灸。"
+    }
+  },
+  {
+    "code": "HT9",
+    "standard": "GB/T 12346-2021",
+    "name": "少冲",
+    "pinyin": "Shaochong",
+    "meridianCode": "HT",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-井穴"],
+    "gbLocation": "在手指，小指末节桡侧，指甲根角侧上方0.1寸（指寸）。",
+    "quickLocation": "伸小指，沿小指指甲底部与桡侧缘（靠无名指侧）各作一直线，两线交点外上方约0.1寸处。",
+    "etymology": {
+      "meaning": "少，指手少阴心经，又含微小之意；冲，要冲、涌动。本穴为手少阴心经井穴，经气由此交接冲涌而出，故名少冲。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "清热熄风，醒神开窍，泻火宁心",
+      "indications": ["心悸", "心痛", "胸胁痛", "癫狂", "热病", "昏迷", "咽喉肿痛"],
+      "operation": "浅刺0.1寸，或用三棱针点刺出血；可灸。"
+    }
+  }
+]

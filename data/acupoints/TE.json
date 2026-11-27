@@ -1,0 +1,182 @@
+[
+  {
+    "code": "TE3",
+    "standard": "GB/T 12346-2021",
+    "name": "中渚",
+    "pinyin": "Zhongzhu",
+    "meridianCode": "TE",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-输穴"],
+    "gbLocation": "在手背，第4、5掌骨间，第4掌指关节近端凹陷中。",
+    "quickLocation": "俯掌，在第4、5掌指关节后方（近端）凹陷处，握拳时掌骨间凹陷明显处取穴。",
+    "etymology": {
+      "meaning": "中，中间；渚，水中小洲。三焦主决渎水道，本穴为手少阳经输穴，位于第4、5掌骨间凹陷处，经气注此如水流绕渚，故名中渚。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "清热散风，通窍聪耳，舒筋活络",
+      "indications": ["头痛", "目赤", "耳鸣", "耳聋", "喉痹", "热病", "胁肋痛", "手指不能屈伸"],
+      "operation": "直刺0.3～0.5寸，或向腕侧斜刺0.5～0.8寸；可灸。"
+    }
+  },
+  {
+    "code": "TE4",
+    "standard": "GB/T 12346-2021",
+    "name": "阳池",
+    "pinyin": "Yangchi",
+    "meridianCode": "TE",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["原穴"],
+    "gbLocation": "在腕后区，腕背侧远端横纹上，指伸肌腱的尺侧缘凹陷中。",
+    "quickLocation": "俯掌，微背屈手腕以显露指伸肌腱，于腕背侧远端横纹中指伸肌腱尺侧（小指侧）凹陷处取穴。",
+    "etymology": {
+      "meaning": "阳，指手背阳面及少阳经；池，池塘凹陷。穴居手腕背侧凹陷中如池，且为手少阳三焦经原穴，原气留止于此，故名阳池。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "清热通络，通调三焦，生津止渴",
+      "indications": ["腕痛", "肩臂痛", "目赤肿痛", "耳聋", "咽喉肿痛", "疟疾", "消渴"],
+      "operation": "直刺或斜刺0.3～0.5寸；可灸。"
+    }
+  },
+  {
+    "code": "TE5",
+    "standard": "GB/T 12346-2021",
+    "name": "外关",
+    "pinyin": "Waiguan",
+    "meridianCode": "TE",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["络穴", "八脉交会穴-通阳维脉"],
+    "gbLocation": "在前臂后区，腕背侧远端横纹上2寸，尺骨与桡骨间隙中点。",
+    "quickLocation": "俯掌或抬臂俯掌，从腕背侧远端横纹向上量2寸（约三横指），尺骨与桡骨正中间凹陷处，与内关穴相对。",
+    "etymology": {
+      "meaning": "外，指前臂外侧阳面；关，关隘要冲。本穴居前臂背侧，与内关相对，为三焦经络穴且通阳维脉，主表证与少阳枢机，故名外关。",
+      "origin": "《灵枢·经脉》"
+    },
+    "clinical": {
+      "functions": "疏风解表，清热聪耳，通经活络，通调阳维",
+      "indications": ["热病", "头痛", "目赤肿痛", "耳鸣", "耳聋", "瘰疬", "胁肋痛", "上肢痿痹不遂"],
+      "operation": "直刺0.5～1寸；可灸。"
+    }
+  },
+  {
+    "code": "TE6",
+    "standard": "GB/T 12346-2021",
+    "name": "支沟",
+    "pinyin": "Zhigou",
+    "meridianCode": "TE",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-经穴"],
+    "gbLocation": "在前臂后区，腕背侧远端横纹上3寸，尺骨与桡骨间隙中点。",
+    "quickLocation": "俯掌，于腕背侧远端横纹上3寸（四横指），外关穴直上1寸，尺骨与桡骨之间取穴。",
+    "etymology": {
+      "meaning": "支，指上肢前臂；沟，沟渠狭长凹陷。本穴居前臂尺桡两骨狭长间隙如沟，又为三焦经经穴，经气流行其中，故名支沟。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "宣通三焦，行气导滞，疏肝通络，清热泻火",
+      "indications": ["便秘", "胁肋痛", "耳鸣", "耳聋", "暴喑", "瘰疬", "热病", "肩背酸痛"],
+      "operation": "直刺0.8～1.2寸；可灸。"
+    }
+  },
+  {
+    "code": "TE10",
+    "standard": "GB/T 12346-2021",
+    "name": "天井",
+    "pinyin": "Tianjing",
+    "meridianCode": "TE",
+    "textbookScope": "extended",
+    "specialCategory": ["五输穴-合穴"],
+    "gbLocation": "在肘后区，尺骨鹰嘴上1寸凹陷中。",
+    "quickLocation": "屈肘约90°，在肘尖（尺骨鹰嘴最高点）直上1寸的鹰嘴窝凹陷处取穴。",
+    "etymology": {
+      "meaning": "天，指上肢高处；井，深凹如井。尺骨鹰嘴上方凹陷深如水井，本穴又为手少阳三焦经合穴，经气深聚于此，故名天井。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "化痰散结，疏风清热，通络止痛",
+      "indications": ["偏头痛", "胁肋痛", "颈项肩背痛", "耳聋", "瘰疬", "瘿气", "癫痫"],
+      "operation": "直刺0.5～1寸；可灸。"
+    }
+  },
+  {
+    "code": "TE14",
+    "standard": "GB/T 12346-2021",
+    "name": "肩髎",
+    "pinyin": "Jianliao",
+    "meridianCode": "TE",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": [],
+    "gbLocation": "在肩胛区，肩峰角与肱骨大结节两骨间凹陷中。",
+    "quickLocation": "上臂外展平举时，肩峰部呈现前后两个凹陷，前方凹陷为肩髃，后下方凹陷处即是肩髎。",
+    "etymology": {
+      "meaning": "肩，指肩部；髎，骨隙也。本穴位于肩峰后下方肩关节骨缝凹陷处，故名肩髎。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "祛风除湿，通经活络，利节止痛",
+      "indications": ["肩臂挛痛", "上肢不遂", "风湿痹痛", "瘾疹"],
+      "operation": "向肩关节下方斜刺或直刺1～1.5寸；可灸。"
+    }
+  },
+  {
+    "code": "TE17",
+    "standard": "GB/T 12346-2021",
+    "name": "翳风",
+    "pinyin": "Yifeng",
+    "meridianCode": "TE",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["交会穴-手足少阳"],
+    "gbLocation": "在颈部，耳垂后方，乳突下端前方凹陷中。",
+    "quickLocation": "正坐，将耳垂向后按压，耳垂边缘正当乳突与下颌角之间的凹陷处取穴。",
+    "etymology": {
+      "meaning": "翳，羽扇遮蔽也；风，风邪。穴在耳垂后方凹陷中，耳垂掩蔽其前可障御风邪，且善祛内外风邪，故名翳风。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "聪耳通窍，疏风通络，清热消肿",
+      "indications": ["耳鸣", "耳聋", "聤耳", "口眼歪斜", "面痛", "齿痛", "颊肿", "瘰疬", "呃逆"],
+      "operation": "直刺或向内前下方斜刺0.8～1.2寸；可灸。"
+    }
+  },
+  {
+    "code": "TE21",
+    "standard": "GB/T 12346-2021",
+    "name": "耳门",
+    "pinyin": "Ermen",
+    "meridianCode": "TE",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": [],
+    "gbLocation": "在耳区，耳屏上切迹与下颌骨髁突之间的凹陷中。",
+    "quickLocation": "正坐，微张口，在耳屏上切迹前方呈现的凹陷处（听宫穴直上方）取穴。",
+    "etymology": {
+      "meaning": "耳，指耳部；门，门户也。手少阳经脉从耳后入耳中、出走耳前，本穴居耳屏上切迹前如出入耳之门户，故名耳门。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "开窍聪耳，疏风清热，缓急止痛",
+      "indications": ["耳鸣", "耳聋", "聤耳", "齿痛", "下颌关节痛", "眩晕"],
+      "operation": "微张口，直刺0.5～1寸；避开颞浅动脉。"
+    }
+  },
+  {
+    "code": "TE23",
+    "standard": "GB/T 12346-2021",
+    "name": "丝竹空",
+    "pinyin": "Sizhukong",
+    "meridianCode": "TE",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": [],
+    "gbLocation": "在面部，眉梢凹陷中。",
+    "quickLocation": "正坐或仰卧，在眉毛外侧端尽处（眉梢）摸到的骨性小凹陷中取穴。",
+    "etymology": {
+      "meaning": "丝竹，细小竹叶，喻眉毛纤细如丝如竹；空，孔窍凹陷。穴居眉梢外端凹陷孔隙中，故名丝竹空。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "清头明目，疏风通络，镇惊熄风",
+      "indications": ["头痛", "目赤肿痛", "眼睑瞤动", "目眩", "齿痛", "癫痫"],
+      "operation": "平刺0.5～1寸，或点刺出血；《针灸甲乙经》载不宜直接灸。"
+    }
+  }
+]

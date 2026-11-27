@@ -1,0 +1,422 @@
+[
+  {
+    "code": "BL2",
+    "standard": "GB/T 12346-2021",
+    "name": "攒竹",
+    "pinyin": "Cuanzhu",
+    "meridianCode": "BL",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": [],
+    "gbLocation": "在面部，眉头凹陷中，额切迹处。",
+    "quickLocation": "正坐或仰卧，于眉毛内侧端（眉头）摸到眶上切迹（额切迹）的小凹陷处取穴。",
+    "etymology": {
+      "meaning": "攒，聚集也；竹，形容眉毛如细竹叶。穴在眉头，眉毛聚集如竹叶簇生之处，故名攒竹。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "清热明目，祛风通络，和胃降逆",
+      "indications": ["头痛", "眉棱骨痛", "目视不明", "目赤肿痛", "迎风流泪", "眼睑瞤动", "口眼歪斜", "呃逆"],
+      "operation": "平刺0.5～0.8寸，或直刺0.2～0.3寸；治眼病宜向下斜刺，治头痛面瘫宜向鱼腰透刺；禁灸。"
+    }
+  },
+  {
+    "code": "BL10",
+    "standard": "GB/T 12346-2021",
+    "name": "天柱",
+    "pinyin": "Tianzhu",
+    "meridianCode": "BL",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": [],
+    "gbLocation": "在项区，横平第2颈椎棘突上际，斜方肌外缘凹陷中。",
+    "quickLocation": "正坐俯伏，先取后发际正中直上0.5寸的哑门穴，再旁开1.3寸，于斜方肌外侧缘凹陷处取穴。",
+    "etymology": {
+      "meaning": "天，指头部；柱，擎天之楹柱。斜方肌大筋夹项两侧以擎托头颅，犹如天之支柱，穴在其外缘，故名天柱。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "清头明目，祛风散寒，舒筋通络",
+      "indications": ["后头痛", "项强", "肩背腰痛", "鼻塞", "目赤肿痛", "癫狂痫", "热病"],
+      "operation": "直刺或向下斜刺0.5～0.8寸；不可向内上方深刺，以免伤及延髓。"
+    }
+  },
+  {
+    "code": "BL11",
+    "standard": "GB/T 12346-2021",
+    "name": "大杼",
+    "pinyin": "Dazhu",
+    "meridianCode": "BL",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["八会穴-骨会", "交会穴-手足太阳"],
+    "gbLocation": "在脊柱区，第1胸椎棘突下，后正中线旁开1.5寸。",
+    "quickLocation": "俯伏或俯卧，低头摸到颈根部最隆起的第7颈椎棘突，再向下推1个椎体（第1胸椎棘突下），旁开两横指（1.5寸）处取穴。",
+    "etymology": {
+      "meaning": "大，巨大；杼，织布梭，古指椎骨横突如杼。第1胸椎横突粗大居脊骨上端，且本穴为八会穴之骨会，故名大杼。",
+      "origin": "《灵枢·刺节真邪》"
+    },
+    "clinical": {
+      "functions": "疏风解表，宣肺止咳，强筋健骨",
+      "indications": ["咳嗽", "发热", "鼻塞", "头痛", "项强", "肩背痛", "骨痹"],
+      "operation": "向脊柱方向斜刺0.5～0.8寸；不可直刺或深刺，以免伤及肺脏引起气胸；可灸。"
+    }
+  },
+  {
+    "code": "BL12",
+    "standard": "GB/T 12346-2021",
+    "name": "风门",
+    "pinyin": "Fengmen",
+    "meridianCode": "BL",
+    "textbookScope": "extended",
+    "specialCategory": ["交会穴-足太阳督脉"],
+    "gbLocation": "在脊柱区，第2胸椎棘突下，后正中线旁开1.5寸。",
+    "quickLocation": "俯伏或俯卧，于第2胸椎棘突下凹陷旁开1.5寸（肩胛骨内侧缘与后正中线连线中点）处取穴。",
+    "etymology": {
+      "meaning": "风，外感风邪；门，出入之门户。本穴位于上背部肺脏外侧，为风邪出入肌表之门户，亦为祛风要穴，故名风门。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "祛风解表，宣肺止咳",
+      "indications": ["感冒", "咳嗽", "发热", "头痛", "项强", "胸背痛", "瘾疹"],
+      "operation": "向脊柱方向斜刺0.5～0.8寸；不可直刺或深刺，以免伤及肺脏引起气胸；可灸或拔罐。"
+    }
+  },
+  {
+    "code": "BL13",
+    "standard": "GB/T 12346-2021",
+    "name": "肺俞",
+    "pinyin": "Feishu",
+    "meridianCode": "BL",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["背俞穴-肺俞"],
+    "gbLocation": "在脊柱区，第3胸椎棘突下，后正中线旁开1.5寸。",
+    "quickLocation": "俯卧或正坐低头，横平两侧肩胛冈内侧端连线（约当第3胸椎棘突），于棘突下旁开1.5寸处取穴。",
+    "etymology": {
+      "meaning": "肺，指肺脏；俞，输注也。本穴内应肺脏，为肺脏经气输注于背部的背俞穴，故名肺俞。",
+      "origin": "《灵枢·背腧》"
+    },
+    "clinical": {
+      "functions": "调补肺气，止咳平喘，补虚清热",
+      "indications": ["咳嗽", "气喘", "咯血", "骨蒸潮热", "盗汗", "鼻塞", "瘾疹"],
+      "operation": "向脊柱方向斜刺0.5～0.8寸；严禁直刺或深刺，以免伤及肺脏导致气胸；可灸。"
+    }
+  },
+  {
+    "code": "BL15",
+    "standard": "GB/T 12346-2021",
+    "name": "心俞",
+    "pinyin": "Xinshu",
+    "meridianCode": "BL",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["背俞穴-心俞"],
+    "gbLocation": "在脊柱区，第5胸椎棘突下，后正中线旁开1.5寸。",
+    "quickLocation": "俯卧，先定第3胸椎棘突（平肩胛冈内侧端）或第7胸椎棘突（平肩胛骨下角），推算至第5胸椎棘突下旁开1.5寸处取穴。",
+    "etymology": {
+      "meaning": "心，指心脏；俞，输注也。本穴内应心脏，为心之经气输注于背部的背俞穴，故名心俞。",
+      "origin": "《灵枢·背腧》"
+    },
+    "clinical": {
+      "functions": "宽胸理气，通络安神，调养心血",
+      "indications": ["心痛", "惊悸", "胸闷", "失眠", "健忘", "癫狂痫", "梦遗", "盗汗"],
+      "operation": "向脊柱方向斜刺0.5～0.8寸；严禁直刺或深刺，以免伤及肺脏及心脏引起气胸等意外；可灸。"
+    }
+  },
+  {
+    "code": "BL17",
+    "standard": "GB/T 12346-2021",
+    "name": "膈俞",
+    "pinyin": "Geshu",
+    "meridianCode": "BL",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["八会穴-血会"],
+    "gbLocation": "在脊柱区，第7胸椎棘突下，后正中线旁开1.5寸。",
+    "quickLocation": "俯卧或正坐垂肩，两侧肩胛骨下角连线横平第7胸椎棘突，于该棘突下凹陷旁开1.5寸处取穴。",
+    "etymology": {
+      "meaning": "膈，胸膈也；俞，输注也。穴居第7胸椎下，内应横膈，居心俞与肝俞之间，心主血、肝藏血，为八会穴之血会，故名膈俞。",
+      "origin": "《灵枢·背腧》"
+    },
+    "clinical": {
+      "functions": "活血化瘀，养血止血，宽胸降逆",
+      "indications": ["呕吐", "呃逆", "噎膈", "气喘", "吐血", "衄血", "贫血", "瘾疹", "潮热盗汗"],
+      "operation": "向脊柱方向斜刺0.5～0.8寸；不可直刺或深刺，以免伤及肺脏和胸膜引起气胸；可灸。"
+    }
+  },
+  {
+    "code": "BL18",
+    "standard": "GB/T 12346-2021",
+    "name": "肝俞",
+    "pinyin": "Ganshu",
+    "meridianCode": "BL",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["背俞穴-肝俞"],
+    "gbLocation": "在脊柱区，第9胸椎棘突下，后正中线旁开1.5寸。",
+    "quickLocation": "俯卧，先定肩胛骨下角所平的第7胸椎棘突，向下数2个椎体至第9胸椎棘突下，旁开1.5寸处取穴。",
+    "etymology": {
+      "meaning": "肝，指肝脏；俞，输注也。本穴内应肝脏，为肝之经气输注于背部的背俞穴，故名肝俞。",
+      "origin": "《灵枢·背腧》"
+    },
+    "clinical": {
+      "functions": "疏肝利胆，理气明目，柔肝熄风",
+      "indications": ["黄疸", "胁痛", "吐血", "目赤", "目视不明", "雀目", "癫狂痫", "脊背痛"],
+      "operation": "向脊柱方向斜刺0.5～0.8寸；不可直刺或深刺，以免刺穿胸膜引起气胸或伤及肝脏；可灸。"
+    }
+  },
+  {
+    "code": "BL20",
+    "standard": "GB/T 12346-2021",
+    "name": "脾俞",
+    "pinyin": "Pishu",
+    "meridianCode": "BL",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["背俞穴-脾俞"],
+    "gbLocation": "在脊柱区，第11胸椎棘突下，后正中线旁开1.5寸。",
+    "quickLocation": "俯卧，先定第12肋端所平的第2腰椎或脐平的第2腰椎，向上推算至第11胸椎棘突下，旁开1.5寸处取穴。",
+    "etymology": {
+      "meaning": "脾，指脾脏；俞，输注也。本穴内应脾脏，为脾之经气输注于背部的背俞穴，故名脾俞。",
+      "origin": "《灵枢·背腧》"
+    },
+    "clinical": {
+      "functions": "健脾和胃，益气统血，利湿升清",
+      "indications": ["腹胀", "纳呆", "呕吐", "泄泻", "痢疾", "便血", "水肿", "黄疸", "背痛"],
+      "operation": "向脊柱方向斜刺0.5～0.8寸；不宜直刺或深刺，以免伤及胸膜导致气胸或损伤脾肾等内脏；可灸。"
+    }
+  },
+  {
+    "code": "BL21",
+    "standard": "GB/T 12346-2021",
+    "name": "胃俞",
+    "pinyin": "Weishu",
+    "meridianCode": "BL",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["背俞穴-胃俞"],
+    "gbLocation": "在脊柱区，第12胸椎棘突下，后正中线旁开1.5寸。",
+    "quickLocation": "俯卧，于脾俞直下1个椎体，当第12胸椎棘突下凹陷旁开1.5寸处取穴。",
+    "etymology": {
+      "meaning": "胃，指胃腑；俞，输注也。本穴内应胃腑，为胃之经气输注于背部的背俞穴，故名胃俞。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "和胃健脾，理中降逆，化湿消滞",
+      "indications": ["胃脘痛", "呕吐", "腹胀", "肠鸣", "反胃", "纳呆", "胸胁痛"],
+      "operation": "向脊柱方向斜刺0.5～0.8寸；不可过深直刺，谨防伤及胸膜引起气胸或伤及腹腔脏器；可灸。"
+    }
+  },
+  {
+    "code": "BL23",
+    "standard": "GB/T 12346-2021",
+    "name": "肾俞",
+    "pinyin": "Shenshu",
+    "meridianCode": "BL",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["背俞穴-肾俞"],
+    "gbLocation": "在脊柱区，第2腰椎棘突下，后正中线旁开1.5寸。",
+    "quickLocation": "俯卧，前平肚脐找到后正中线上的命门穴（第2腰椎棘突下），于其左右旁开1.5寸（两横指）处取穴。",
+    "etymology": {
+      "meaning": "肾，指肾脏；俞，输注也。本穴平命门而夹脊两旁，内应肾脏，为肾之精气输注于腰背部的背俞穴，故名肾俞。",
+      "origin": "《灵枢·背腧》"
+    },
+    "clinical": {
+      "functions": "益肾助阳，纳气利水，强腰聪耳",
+      "indications": ["腰痛", "遗精", "阳痿", "遗尿", "月经不调", "带下", "耳鸣", "耳聋", "水肿", "久喘"],
+      "operation": "直刺0.5～1寸，不宜向外侧过深刺入以免伤及肾脏；可灸。"
+    }
+  },
+  {
+    "code": "BL25",
+    "standard": "GB/T 12346-2021",
+    "name": "大肠俞",
+    "pinyin": "Dachangshu",
+    "meridianCode": "BL",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["背俞穴-大肠俞"],
+    "gbLocation": "在脊柱区，第4腰椎棘突下，后正中线旁开1.5寸。",
+    "quickLocation": "俯卧，两侧髂嵴最高点连线与后正中线交于第4腰椎棘突，于该棘突下凹陷旁开1.5寸处取穴。",
+    "etymology": {
+      "meaning": "大肠，六腑之一；俞，输注也。本穴内应大肠，为大肠腑气输注于腰部的背俞穴，故名大肠俞。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "理气通便，调和肠胃，强健腰膝",
+      "indications": ["腹胀", "泄泻", "便秘", "肠鸣", "痢疾", "腰腿痛"],
+      "operation": "直刺0.8～1.2寸；可灸。"
+    }
+  },
+  {
+    "code": "BL28",
+    "standard": "GB/T 12346-2021",
+    "name": "膀胱俞",
+    "pinyin": "Pangguangshu",
+    "meridianCode": "BL",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["背俞穴-膀胱俞"],
+    "gbLocation": "在骶区，横平第2骶后孔，骶正中嵴旁开1.5寸。",
+    "quickLocation": "俯卧，摸到髂后上棘内下方的第2骶后孔（次髎穴），横平该处、后正中线（第2骶椎棘突下）旁开1.5寸处取穴。",
+    "etymology": {
+      "meaning": "膀胱，州都之官；俞，输注也。本穴内应膀胱，为膀胱腑气输注于腰骶部的背俞穴，故名膀胱俞。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "通调膀胱，利水通淋，舒筋活络",
+      "indications": ["小便不利", "遗尿", "淋证", "泄泻", "便秘", "腰脊强痛"],
+      "operation": "直刺或斜刺0.8～1.2寸；可灸。"
+    }
+  },
+  {
+    "code": "BL32",
+    "standard": "GB/T 12346-2021",
+    "name": "次髎",
+    "pinyin": "Ciliao",
+    "meridianCode": "BL",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": [],
+    "gbLocation": "在骶区，正对第2骶后孔中。",
+    "quickLocation": "俯卧，于髂后上棘与后正中线之间，适对第2骶后孔凹陷处取穴。",
+    "etymology": {
+      "meaning": "次，第二也；髎，骨孔骨隙。八髎穴自上而下分居第1至第4骶后孔，本穴居第2骶后孔中，位居第二，故名次髎。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "补益下焦，调经止带，强腰利湿",
+      "indications": ["痛经", "月经不调", "带下", "小便不利", "遗精", "疝气", "腰骶痛", "下肢痿痹"],
+      "operation": "直刺1～1.5寸，以刺入第2骶后孔中产生酸胀感向小腹或会阴放散为佳；可灸。"
+    }
+  },
+  {
+    "code": "BL36",
+    "standard": "GB/T 12346-2021",
+    "name": "承扶",
+    "pinyin": "Chengfu",
+    "meridianCode": "BL",
+    "textbookScope": "extended",
+    "specialCategory": [],
+    "gbLocation": "在股后区，臀沟的中点。",
+    "quickLocation": "俯卧，大腿后面臀下横纹（臀沟）的正中央处取穴。",
+    "etymology": {
+      "meaning": "承，承受；扶，扶持。穴居臀下股上，承受上半身之重并扶持下肢站立行走，故名承扶。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "通便消痔，舒筋活络",
+      "indications": ["腰、骶、臀、股部疼痛", "下肢痿痹", "痔疾", "便秘"],
+      "operation": "直刺1～2寸；可灸。"
+    }
+  },
+  {
+    "code": "BL37",
+    "standard": "GB/T 12346-2021",
+    "name": "殷门",
+    "pinyin": "Yinmen",
+    "meridianCode": "BL",
+    "textbookScope": "extended",
+    "specialCategory": [],
+    "gbLocation": "在股后区，臀沟下6寸，股二头肌与半腱肌之间。",
+    "quickLocation": "俯卧，先取承扶穴（臀沟中点）与委中穴（腘横纹中点）连线，于承扶直下6寸（连线中点上方1寸）处取穴。",
+    "etymology": {
+      "meaning": "殷，丰厚盛大、正中；门，门户。大腿后侧肌肉丰厚，本穴正当股后正中分肉之间，为太阳经气出入之门，故名殷门。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "强腰健膝，舒筋通络",
+      "indications": ["腰痛", "大腿疼痛", "下肢痿痹"],
+      "operation": "直刺1～2寸；可灸。"
+    }
+  },
+  {
+    "code": "BL40",
+    "standard": "GB/T 12346-2021",
+    "name": "委中",
+    "pinyin": "Weizhong",
+    "meridianCode": "BL",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-合穴", "下合穴-膀胱下合穴", "四总穴"],
+    "gbLocation": "在膝后区，腘横纹中点。",
+    "quickLocation": "俯卧或微屈膝，于膝盖后方腘窝横纹的正中点，股二头肌腱与半腱肌腱之间动脉搏动处旁取穴。",
+    "etymology": {
+      "meaning": "委，弯曲屈折；中，中央也。《灵枢·本输》云“委而取之”，屈膝时腘窝弯曲，穴居腘横纹正中央，故名委中。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "强腰益肾，凉血泻热，舒筋通络",
+      "indications": ["腰背痛", "下肢痿痹", "腹痛", "急性吐泻", "小便不利", "遗尿", "丹毒", "疔疮"],
+      "operation": "直刺1～1.5寸，或用三棱针点刺腘静脉出血；针刺不宜过快过强，以免损伤腘动、静脉。"
+    }
+  },
+  {
+    "code": "BL57",
+    "standard": "GB/T 12346-2021",
+    "name": "承山",
+    "pinyin": "Chengshan",
+    "meridianCode": "BL",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": [],
+    "gbLocation": "在小腿后区，腓肠肌两肌腹与肌腱交角处。",
+    "quickLocation": "俯卧或站立踮起脚尖，小腿肚腓肠肌内外两肌腹下方出现“人”字形凹陷纹，其尖角正中即是（约在委中与昆仑连线中点）。",
+    "etymology": {
+      "meaning": "承，承受；山，山峰，喻指人身躯干与腓肠肌隆起如山。穴居腓肠肌腹下交角，承托躯体如山之重，故名承山。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "舒筋活络，理肠疗痔",
+      "indications": ["腰腿拘急疼痛", "转筋", "痔疾", "便秘", "脱肛"],
+      "operation": "直刺1～2寸，不宜过强刺激以免引起腓肠肌痉挛；可灸。"
+    }
+  },
+  {
+    "code": "BL60",
+    "standard": "GB/T 12346-2021",
+    "name": "昆仑",
+    "pinyin": "Kunlun",
+    "meridianCode": "BL",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-经穴"],
+    "gbLocation": "在踝区，外踝尖与跟腱之间的凹陷中。",
+    "quickLocation": "正坐垂足，在外踝最高点（外踝尖）与后方粗大的跟腱连线中点凹陷处取穴。",
+    "etymology": {
+      "meaning": "昆仑，高大山名。外踝高起如山，穴在外踝之后、跟骨之上凹陷中，犹昆仑山麓经水流行之处，故名昆仑。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "清头散风，舒筋活络，催产止痛",
+      "indications": ["后头痛", "项强", "目眩", "腰骶疼痛", "足踝肿痛", "癫痫", "滞产"],
+      "operation": "直刺0.5～0.8寸；孕妇禁针，以免引起流产或早产；可灸。"
+    }
+  },
+  {
+    "code": "BL62",
+    "standard": "GB/T 12346-2021",
+    "name": "申脉",
+    "pinyin": "Shenmai",
+    "meridianCode": "BL",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["八脉交会穴-通阳跷脉"],
+    "gbLocation": "在踝区，外踝尖直下，外踝下缘与跟骨之间凹陷中。",
+    "quickLocation": "正坐或仰卧，沿外踝尖直向下推至外踝下缘赤白肉际上方的小凹陷处取穴。",
+    "etymology": {
+      "meaning": "申，伸展也，又十二支申时应足太阳膀胱经；脉，指阳跷脉。本穴为阳跷脉所生，主司肢体屈伸运动，故名申脉。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "清热安神，镇惊定痫，舒筋通阳",
+      "indications": ["头痛", "眩晕", "癫狂痫", "嗜睡", "失眠", "腰腿酸痛", "目赤痛"],
+      "operation": "直刺0.3～0.5寸；可灸。"
+    }
+  },
+  {
+    "code": "BL67",
+    "standard": "GB/T 12346-2021",
+    "name": "至阴",
+    "pinyin": "Zhiyin",
+    "meridianCode": "BL",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-井穴"],
+    "gbLocation": "在足趾，小趾末节外侧，趾甲根角侧后方0.1寸（指寸）。",
+    "quickLocation": "正坐垂足，沿足小趾趾甲底部与外侧缘各作一直线，两线交点外后方约0.1寸处取穴。",
+    "etymology": {
+      "meaning": "至，到达、极也；阴，指足少阴肾经。本穴为足太阳膀胱经终末井穴，太阳阳气至此交接进入足少阴肾经，故名至阴。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "正胎催产，清头明目，散风通窍",
+      "indications": ["胎位不正", "滞产", "头痛", "目痛", "鼻塞", "鼻衄"],
+      "operation": "浅刺0.1寸；矫正胎位多用艾条温和灸15～20分钟。"
+    }
+  }
+]

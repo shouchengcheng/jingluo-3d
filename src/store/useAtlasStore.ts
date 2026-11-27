@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import type {
   Acupoint,
   AcupointCoordinate3D,
+  BodyTheme,
   CameraPreset,
   Coordinates3DFile,
   DisplaySide,
@@ -35,6 +36,7 @@ export interface AtlasState {
   quizRevealedIds: Record<string, boolean>;
 
   displaySide: DisplaySide;
+  bodyTheme: BodyTheme;
   bodyOpacity: number;
   wireframeOverlay: boolean;
   flowAnimation: boolean;
@@ -63,7 +65,9 @@ export interface AtlasState {
   setSpecialFilter: (category: string | null) => void;
   setQuizMode: (enabled: boolean) => void;
   revealQuizAnswer: (code: string) => void;
+  pickRandomQuizAcupoint: () => void;
   setDisplaySide: (side: DisplaySide) => void;
+  setBodyTheme: (theme: BodyTheme) => void;
   setBodyOpacity: (opacity: number) => void;
   setWireframeOverlay: (enabled: boolean) => void;
   setFlowAnimation: (enabled: boolean) => void;
@@ -100,6 +104,7 @@ export const useAtlasStore = create<AtlasState>((set, get) => ({
   quizRevealedIds: {},
 
   displaySide: 'both',
+  bodyTheme: 'jade',
   bodyOpacity: 0.96,
   wireframeOverlay: false,
   flowAnimation: true,
@@ -171,12 +176,43 @@ export const useAtlasStore = create<AtlasState>((set, get) => ({
       quizRevealedIds: { ...state.quizRevealedIds, [code]: true },
     })),
 
+  pickRandomQuizAcupoint: () =>
+    set((state) => {
+      if (!state.coordinates || state.acupoints.length === 0) return state;
+      const visibleSet = new Set(state.visibleMeridians);
+      const modeledInVisible = state.acupoints.filter(
+        (a) => visibleSet.has(a.meridianCode) && Boolean(state.coordinates?.points[a.code]),
+      );
+      const allModeled = state.acupoints.filter((a) => Boolean(state.coordinates?.points[a.code]));
+      const pool = modeledInVisible.length > 1 ? modeledInVisible : allModeled;
+      if (pool.length === 0) return state;
+
+      const candidates =
+        pool.length > 1 ? pool.filter((a) => a.code !== state.selectedAcupointId) : pool;
+      const chosen = candidates[Math.floor(Math.random() * candidates.length)] ?? pool[0];
+      const nextRevealed = { ...state.quizRevealedIds };
+      delete nextRevealed[chosen.code];
+
+      const nextVisible = state.visibleMeridians.includes(chosen.meridianCode)
+        ? state.visibleMeridians
+        : [...state.visibleMeridians, chosen.meridianCode];
+
+      return {
+        isQuizMode: true,
+        selectedAcupointId: chosen.code,
+        visibleMeridians: nextVisible,
+        quizRevealedIds: nextRevealed,
+        focusNonce: state.focusNonce + 1,
+      };
+    }),
+
   setDisplaySide: (displaySide) =>
     set((state) => ({
       displaySide,
       activeSide: displaySide === 'left' ? -1 : displaySide === 'right' ? 1 : state.activeSide,
     })),
 
+  setBodyTheme: (bodyTheme) => set({ bodyTheme }),
   setBodyOpacity: (bodyOpacity) => set({ bodyOpacity }),
   setWireframeOverlay: (wireframeOverlay) => set({ wireframeOverlay }),
   setFlowAnimation: (flowAnimation) => set({ flowAnimation }),

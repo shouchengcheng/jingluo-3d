@@ -1,0 +1,122 @@
+[
+  {
+    "code": "LR2",
+    "standard": "GB/T 12346-2021",
+    "name": "行间",
+    "pinyin": "Xingjian",
+    "meridianCode": "LR",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-荥穴"],
+    "gbLocation": "在足背，第1、2趾间，趾蹼缘后方赤白肉际处。",
+    "quickLocation": "正坐或仰卧，在足背第1、2趾缝间，趾蹼缘后方约0.5寸的背底交界（赤白肉际）处取穴。",
+    "etymology": {
+      "meaning": "行，通行经过；间，两趾之间隙。本穴为足厥阴肝经荥穴，属火，经气流行经过第1、2足趾之间，故名行间。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "清肝泻火，平肝熄风，凉血调经，疏肝理气",
+      "indications": ["头痛", "眩晕", "目赤肿痛", "青盲", "中风", "癫痫", "失眠", "口歪", "月经不调", "痛经", "崩漏", "胁痛", "小便不利"],
+      "operation": "直刺或向上斜刺0.5～0.8寸；可灸。"
+    }
+  },
+  {
+    "code": "LR3",
+    "standard": "GB/T 12346-2021",
+    "name": "太冲",
+    "pinyin": "Taichong",
+    "meridianCode": "LR",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-输穴", "原穴"],
+    "gbLocation": "在足背，第1、2跖骨间，跖骨底结合部前方凹陷中，或触及动脉搏动。",
+    "quickLocation": "正坐垂足或仰卧，沿第1、2趾间横纹向足背上推至两跖骨底结合部前方的明显骨隙凹陷处取穴。",
+    "etymology": {
+      "meaning": "太，盛大也；冲，要冲、冲盛。肝为将军之官，血海所归，本穴为足厥阴肝经原穴与输穴，气血盛大流行于此要冲，故名太冲。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "平肝熄风，疏肝解郁，清热利湿，活血调经",
+      "indications": ["中风", "癫狂痫", "小儿惊风", "头痛", "眩晕", "耳鸣", "目赤肿痛", "郁证", "胁痛", "腹胀", "月经不调", "痛经", "遗尿", "下肢痿痹"],
+      "operation": "直刺0.5～0.8寸；避开足背动脉；可灸。"
+    }
+  },
+  {
+    "code": "LR5",
+    "standard": "GB/T 12346-2021",
+    "name": "蠡沟",
+    "pinyin": "Ligou",
+    "meridianCode": "LR",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["络穴"],
+    "gbLocation": "在小腿内侧，内踝尖上5寸，胫骨内侧面的中央。",
+    "quickLocation": "正坐或仰卧，从内踝尖向上量5寸（内踝尖至胫骨内侧髁下缘13寸折量），在胫骨内侧面正中央凹陷处取穴。",
+    "etymology": {
+      "meaning": "蠡，瓠瓢也，又通虫啮之孔；沟，狭长凹沟。小腿肚形如瓠瓢，胫骨内侧浅凹如沟，本穴又为肝经络穴，主前阴湿痒虫蚀诸证，故名蠡沟。",
+      "origin": "《灵枢·经脉》"
+    },
+    "clinical": {
+      "functions": "疏肝理气，清利湿热，调经止带",
+      "indications": ["阴痒", "阴挺", "月经不调", "带下", "小便不利", "疝气", "睾丸肿痛", "梅核气", "下肢痿痹"],
+      "operation": "平刺0.5～0.8寸；可灸。"
+    }
+  },
+  {
+    "code": "LR8",
+    "standard": "GB/T 12346-2021",
+    "name": "曲泉",
+    "pinyin": "Ququan",
+    "meridianCode": "LR",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-合穴"],
+    "gbLocation": "在膝部，腘横纹内侧端，半腱肌肌腱内侧缘凹陷中。",
+    "quickLocation": "屈膝，在膝关节内侧横纹端上方，股骨内侧髁后缘，半腱肌与半膜肌止端前缘凹陷处取穴。",
+    "etymology": {
+      "meaning": "曲，指屈膝所现横纹弯曲处；泉，水泉也。本穴为足厥阴肝经合穴，属水，屈膝时穴处凹陷如泉水汇聚，故名曲泉。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "清利湿热，滋阴养肝，调经止带，舒筋活络",
+      "indications": ["月经不调", "痛经", "带下", "阴挺", "阴痒", "遗精", "阳痿", "疝气", "小便不利", "膝膑肿痛"],
+      "operation": "直刺1～1.5寸；可灸。"
+    }
+  },
+  {
+    "code": "LR13",
+    "standard": "GB/T 12346-2021",
+    "name": "章门",
+    "pinyin": "Zhangmen",
+    "meridianCode": "LR",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["募穴-脾募", "八会穴-脏会", "交会穴-足厥阴少阳"],
+    "gbLocation": "在侧腹部，第11肋游离端的下际。",
+    "quickLocation": "侧卧，屈肘合腋，肘尖所指处，当侧腹部第11浮肋游离端下方取穴。",
+    "etymology": {
+      "meaning": "章，彰盛、障蔽；门，门户也。穴居季胁第11肋端，障护腹内五脏，又为脾之募穴、八会穴之脏会，五脏气血盛会出入之门，故名章门。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "疏肝健脾，理气散结，和胃消积",
+      "indications": ["腹胀", "泄泻", "肠鸣", "胁痛", "黄疸", "痞块", "呕吐", "小儿疳积"],
+      "operation": "斜刺0.5～0.8寸；不可向内上方深刺，以免伤及肝、脾等脏器；可灸。"
+    }
+  },
+  {
+    "code": "LR14",
+    "standard": "GB/T 12346-2021",
+    "name": "期门",
+    "pinyin": "Qimen",
+    "meridianCode": "LR",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["募穴-肝募", "交会穴-足太阴厥阴阴维脉"],
+    "gbLocation": "在胸部，第6肋间隙，前正中线旁开4寸。",
+    "quickLocation": "仰卧，男性于乳头直下（前正中线旁开4寸）向下数2肋，在第6肋间隙中取穴。",
+    "etymology": {
+      "meaning": "期，周而复始之一周期；门，出入之门户。十二经脉气血起于手太阴云门、中府，终于足厥阴本穴，运行一周复归于肺，且为肝之募穴，故名期门。",
+      "origin": "《伤寒论》"
+    },
+    "clinical": {
+      "functions": "疏肝理气，活血散瘀，健脾和胃",
+      "indications": ["胸胁胀痛", "呕吐", "吞酸", "呃逆", "腹胀", "乳痈", "郁证", "奔豚气", "伤寒热入血室"],
+      "operation": "斜刺或平刺0.5～0.8寸；不可深刺，以免伤及肺、肝等脏器引起气胸或内脏损伤。"
+    }
+  }
+]

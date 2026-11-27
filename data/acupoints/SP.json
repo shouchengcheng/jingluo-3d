@@ -1,0 +1,182 @@
+[
+  {
+    "code": "SP3",
+    "standard": "GB/T 12346-2021",
+    "name": "太白",
+    "pinyin": "Taibai",
+    "meridianCode": "SP",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-输穴", "原穴"],
+    "gbLocation": "在跖区，第1跖趾关节近端赤白肉际凹陷中。",
+    "quickLocation": "正坐或仰卧，在足内侧缘，足大趾本节（第1跖趾关节）后下方赤白肉际凹陷处取穴。",
+    "etymology": {
+      "meaning": "太白，古星名（金星），主治兵戈与土气生金；又足内侧第1跖骨小头后下方骨色显白，本穴为脾经输穴、原穴，故名太白。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "健脾和胃，理气化湿，消食导滞",
+      "indications": ["胃痛", "腹胀", "肠鸣", "泄泻", "便秘", "痢疾", "体重节痛", "脚气"],
+      "operation": "直刺0.5～0.8寸；可灸。"
+    }
+  },
+  {
+    "code": "SP4",
+    "standard": "GB/T 12346-2021",
+    "name": "公孙",
+    "pinyin": "Gongsun",
+    "meridianCode": "SP",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["络穴", "八脉交会穴-通冲脉"],
+    "gbLocation": "在跖区，第1跖骨基底部的前下方，赤白肉际处。",
+    "quickLocation": "正坐或仰卧，从太白穴沿第1跖骨内侧下缘向足跟方向推约1寸，摸到骨突（第1跖骨基底）前下方凹陷处即是。",
+    "etymology": {
+      "meaning": "公孙，古轩辕黄帝之姓。黄帝以土德王天下，脾属中央戊己土，本穴为脾经络穴，支别如公孙旁出，故名公孙。",
+      "origin": "《灵枢·经脉》"
+    },
+    "clinical": {
+      "functions": "健脾益胃，调理冲脉，理气止痛",
+      "indications": ["胃痛", "呕吐", "腹痛", "腹泻", "痢疾", "心烦失眠", "狂证", "逆气里急", "痛经"],
+      "operation": "直刺0.6～1.2寸；可灸。"
+    }
+  },
+  {
+    "code": "SP5",
+    "standard": "GB/T 12346-2021",
+    "name": "商丘",
+    "pinyin": "Shangqiu",
+    "meridianCode": "SP",
+    "textbookScope": "extended",
+    "specialCategory": ["五输穴-经穴"],
+    "gbLocation": "在踝区，内踝前下方，舟骨粗隆与内踝尖连线的中点凹陷中。",
+    "quickLocation": "正坐或仰卧，在内踝前下方凹陷中，当内踝前缘直下线与下缘水平线的交点处取穴。",
+    "etymology": {
+      "meaning": "商，五音之一，属金；丘，高处土陵，指内踝高骨。本穴为足太阴脾经之经穴，属金，位居内踝高丘前下方，故名商丘。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "健脾化湿，肃降肺气，通络利踝",
+      "indications": ["腹胀", "肠鸣", "腹泻", "便秘", "黄疸", "舌本强痛", "足踝肿痛"],
+      "operation": "直刺0.5～0.8寸；可灸。"
+    }
+  },
+  {
+    "code": "SP6",
+    "standard": "GB/T 12346-2021",
+    "name": "三阴交",
+    "pinyin": "Sanyinjiao",
+    "meridianCode": "SP",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["交会穴-足三阴"],
+    "gbLocation": "在小腿内侧，内踝尖上3寸，胫骨内侧缘后际。",
+    "quickLocation": "正坐或仰卧，从内踝尖直上量3寸（4横指），紧靠小腿胫骨内侧后缘凹陷处取穴。",
+    "etymology": {
+      "meaning": "三阴，指足太阴脾经、足厥阴肝经、足少阴肾经三条阴经；交，交会。三条足阴经在此交会，故名三阴交。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "健脾益血，调肝补肾，调经止带，安神通络",
+      "indications": ["肠鸣腹胀", "腹泻", "月经不调", "带下", "阴挺", "不孕", "滞产", "遗精", "阳痿", "遗尿", "小便不利", "水肿", "失眠", "下肢痿痹"],
+      "operation": "直刺1～1.5寸；可灸。孕妇禁针。"
+    }
+  },
+  {
+    "code": "SP8",
+    "standard": "GB/T 12346-2021",
+    "name": "地机",
+    "pinyin": "Diji",
+    "meridianCode": "SP",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["郄穴"],
+    "gbLocation": "在小腿内侧，阴陵泉（SP9）下3寸，胫骨内侧缘后际。",
+    "quickLocation": "正坐或仰卧，先取胫骨内侧髁下缘凹陷处的阴陵泉穴，沿胫骨内侧后缘直下3寸（4横指）处取穴。",
+    "etymology": {
+      "meaning": "地，土地，属脾土，又指下部下肢；机，枢机要害。本穴为足太阴脾经郄穴，气血深聚，为调理脾土血分之枢机，故名地机。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "健脾渗湿，调血调经，和中止痛",
+      "indications": ["痛经", "崩漏", "月经不调", "腹痛", "腹泻", "小便不利", "水肿", "下肢痿痹"],
+      "operation": "直刺1～1.5寸；可灸。"
+    }
+  },
+  {
+    "code": "SP9",
+    "standard": "GB/T 12346-2021",
+    "name": "阴陵泉",
+    "pinyin": "Yinlingquan",
+    "meridianCode": "SP",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["五输穴-合穴"],
+    "gbLocation": "在小腿内侧，胫骨内侧髁下缘与胫骨内侧缘之间的凹陷中。",
+    "quickLocation": "正坐屈膝或仰卧，用拇指沿小腿内侧骨（胫骨）内缘由下向上推，至膝关节下胫骨向内上弯曲凹陷处即是。",
+    "etymology": {
+      "meaning": "阴，指小腿内侧及足太阴经；陵，高起如丘陵之胫骨内侧髁；泉，水泉，合穴属水。穴居膝下内侧高骨下凹陷中，故名阴陵泉。",
+      "origin": "《灵枢·本输》"
+    },
+    "clinical": {
+      "functions": "健脾利水，通利三焦，清化湿热，舒筋通络",
+      "indications": ["腹胀", "腹泻", "水肿", "黄疸", "小便不利或失禁", "遗尿", "阴部痛", "膝痛"],
+      "operation": "直刺1～2寸；可灸。"
+    }
+  },
+  {
+    "code": "SP10",
+    "standard": "GB/T 12346-2021",
+    "name": "血海",
+    "pinyin": "Xuehai",
+    "meridianCode": "SP",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": [],
+    "gbLocation": "在股前区，髌底内侧端上2寸，股内侧肌隆起处。",
+    "quickLocation": "屈膝90度，医者以左手掌心按于患者右膝髌骨上缘，第2～5指向上伸直，拇指约呈45度斜置，拇指尖下即是。",
+    "etymology": {
+      "meaning": "脾统血，该穴为脾血归聚之海，善治一切血分病证，故名血海。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "活血化瘀，补血养血，引血归经，祛风止痒",
+      "indications": ["月经不调", "痛经", "经闭", "崩漏", "瘾疹", "湿疹", "丹毒", "膝股内侧痛"],
+      "operation": "直刺1～1.5寸；可灸。"
+    }
+  },
+  {
+    "code": "SP15",
+    "standard": "GB/T 12346-2021",
+    "name": "大横",
+    "pinyin": "Daheng",
+    "meridianCode": "SP",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["交会穴-足太阴阴维"],
+    "gbLocation": "在腹部，横平脐中，前正中线旁开4寸。",
+    "quickLocation": "仰卧，通过肚脐中央作水平线，与锁骨中线（前正中线旁开4寸）的交点处取穴。",
+    "etymology": {
+      "meaning": "大，广大、大肠；横，横旁。穴居脐中横旁4寸远处，内应横结肠及大肠部位，主治大腹横满诸证，故名大横。",
+      "origin": "《针灸甲乙经》"
+    },
+    "clinical": {
+      "functions": "温中健脾，理气通便，化湿止泻",
+      "indications": ["腹痛", "腹泻", "便秘", "痢疾"],
+      "operation": "直刺1～2寸；可灸。"
+    }
+  },
+  {
+    "code": "SP21",
+    "standard": "GB/T 12346-2021",
+    "name": "大包",
+    "pinyin": "Dabao",
+    "meridianCode": "SP",
+    "textbookScope": "undergraduate_core",
+    "specialCategory": ["脾之大络", "络穴"],
+    "gbLocation": "在侧胸部，腋中线上，第6肋间隙处。",
+    "quickLocation": "侧卧举臂，在腋窝顶点直下的腋中线上，从腋窝下渊腋穴（第4肋间隙）往下数2个肋间隙（第6肋间隙）处取穴。",
+    "etymology": {
+      "meaning": "大，总括宏大；包，包容统摄。本穴为脾之大络，总统阴阳诸络，包罗周身气血以濡养四肢百骸，故名大包。",
+      "origin": "《灵枢·经脉》"
+    },
+    "clinical": {
+      "functions": "统调诸络，宽胸理气，活血止痛",
+      "indications": ["气喘", "胸胁痛", "全身疼痛", "四肢无力"],
+      "operation": "斜刺或向后平刺0.5～0.8寸，不可深刺以免伤及肺脏引起气胸；可灸。"
+    }
+  }
+]
