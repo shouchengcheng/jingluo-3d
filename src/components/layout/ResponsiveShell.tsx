@@ -63,9 +63,10 @@ export function ResponsiveShell({
           <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-sky-500/20 font-mono text-xs font-bold text-sky-300">
             经
           </span>
-          <div>
-            <h1 className="text-sm font-bold tracking-wide text-slate-100 sm:text-base">
-              jingluo-3d · 中医经络穴位三维图谱
+          <div className="shrink-0">
+            <h1 className="text-sm font-bold tracking-wide whitespace-nowrap text-slate-100 sm:text-base">
+              jingluo-3d
+              <span className="hidden sm:inline"> · 中医经络穴位三维图谱</span>
             </h1>
             <p className="hidden text-[11px] text-slate-400 md:block">
               国家标准 GB/T 12346-2021《经穴名称与定位》· 本科《针灸学》交互教学系统
@@ -74,7 +75,7 @@ export function ResponsiveShell({
         </div>
 
         {/* Mobile Quick Search Input */}
-        <div className="flex-1 px-1 lg:hidden">
+        <div className="min-w-0 flex-1 px-1 lg:hidden">
           <input
             type="search"
             value={searchQuery}
@@ -83,14 +84,14 @@ export function ResponsiveShell({
               setMobileTab('directory');
               if (sheetSnap === 'collapsed') setSheetSnap('half');
             }}
-            placeholder="搜穴位 / 主治..."
-            className="w-full rounded-lg border border-slate-700/80 bg-slate-950/90 px-2.5 py-1 text-xs text-slate-100 placeholder-slate-500 focus:border-sky-400 focus:outline-none"
+            placeholder="搜穴名 / 拼音 / 主治..."
+            className="w-full rounded-lg border border-slate-700/80 bg-slate-950/90 px-2.5 py-1.5 text-xs text-slate-100 placeholder-slate-500 focus:border-sky-400 focus:outline-none"
           />
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="hidden items-center gap-2 sm:flex">
           {isQuizMode && (
-            <span className="hidden rounded-full bg-emerald-500/20 px-2.5 py-0.5 text-xs font-medium text-emerald-300 sm:inline">
+            <span className="rounded-full bg-emerald-500/20 px-2.5 py-0.5 text-xs font-medium text-emerald-300">
               盲测模式中
             </span>
           )}
@@ -110,13 +111,13 @@ export function ResponsiveShell({
           {canvasSlot}
 
           {/* Floating Anatomical Camera Preset Bar */}
-          <div className="pointer-events-auto absolute top-3 left-1/2 z-10 flex -translate-x-1/2 items-center gap-1 rounded-full border border-slate-700/80 bg-slate-900/85 p-1 shadow-lg backdrop-blur">
+          <div className="pointer-events-auto absolute top-3 left-1/2 z-10 flex -translate-x-1/2 items-center gap-1 rounded-full border border-slate-700/80 bg-slate-900/85 p-1 whitespace-nowrap shadow-lg backdrop-blur">
             {VIEW_PRESETS.map((v) => (
               <button
                 key={v.key}
                 type="button"
                 onClick={() => requestViewPreset(v.key)}
-                className="rounded-full px-2.5 py-1 text-xs font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white"
+                className="rounded-full px-2.5 py-1 text-xs font-medium whitespace-nowrap text-slate-300 transition hover:bg-slate-800 hover:text-white"
               >
                 {v.label}
               </button>

@@ -348,51 +348,56 @@ export class MeridianScene {
       ]);
       if (this.disposed) return;
 
+      const loadedMeshes: THREE.Mesh[] = [];
       gltf.scene.traverse((obj) => {
         if (obj instanceof THREE.Mesh) {
-          const isEye =
-            (obj.material instanceof THREE.Material && obj.material.name === 'EyeMaterial') ||
-            obj.name.toLowerCase().includes('eye');
-
-          if (isEye) {
-            const eyeMat = new THREE.MeshPhysicalMaterial({
-              color: 0xe2e8f0,
-              roughness: 0.3,
-              metalness: 0.0,
-            });
-            obj.material = eyeMat;
-          } else {
-            const skinMat = new THREE.MeshPhysicalMaterial({
-              color: 0x1e3a4c,
-              emissive: 0x071521,
-              emissiveIntensity: 0.45,
-              roughness: 0.46,
-              metalness: 0.06,
-              clearcoat: 0.2,
-              clearcoatRoughness: 0.45,
-              sheen: 0.55,
-              sheenColor: new THREE.Color(0x7dd3fc),
-              transparent: true,
-              opacity: useAtlasStore.getState().bodyOpacity,
-            });
-            obj.material = skinMat;
-            this.skinMeshes.push(obj);
-            this.skinMaterials.push(skinMat);
-
-            const wireMat = new THREE.MeshBasicMaterial({
-              color: 0x38bdf8,
-              wireframe: true,
-              transparent: true,
-              opacity: 0.08,
-              depthWrite: false,
-            });
-            const wireMesh = new THREE.Mesh(obj.geometry, wireMat);
-            wireMesh.visible = useAtlasStore.getState().wireframeOverlay;
-            obj.add(wireMesh);
-            this.wireframeMeshes.push(wireMesh);
-          }
+          loadedMeshes.push(obj);
         }
       });
+
+      for (const obj of loadedMeshes) {
+        const isEye =
+          (obj.material instanceof THREE.Material && obj.material.name === 'EyeMaterial') ||
+          obj.name.toLowerCase().includes('eye');
+
+        if (isEye) {
+          const eyeMat = new THREE.MeshPhysicalMaterial({
+            color: 0xe2e8f0,
+            roughness: 0.3,
+            metalness: 0.0,
+          });
+          obj.material = eyeMat;
+        } else {
+          const skinMat = new THREE.MeshPhysicalMaterial({
+            color: 0x1e3a4c,
+            emissive: 0x071521,
+            emissiveIntensity: 0.45,
+            roughness: 0.46,
+            metalness: 0.06,
+            clearcoat: 0.2,
+            clearcoatRoughness: 0.45,
+            sheen: 0.55,
+            sheenColor: new THREE.Color(0x7dd3fc),
+            transparent: true,
+            opacity: useAtlasStore.getState().bodyOpacity,
+          });
+          obj.material = skinMat;
+          this.skinMeshes.push(obj);
+          this.skinMaterials.push(skinMat);
+
+          const wireMat = new THREE.MeshBasicMaterial({
+            color: 0x38bdf8,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.08,
+            depthWrite: false,
+          });
+          const wireMesh = new THREE.Mesh(obj.geometry, wireMat);
+          wireMesh.visible = useAtlasStore.getState().wireframeOverlay;
+          obj.add(wireMesh);
+          this.wireframeMeshes.push(wireMesh);
+        }
+      }
 
       this.scene.add(gltf.scene);
       this.scene.updateMatrixWorld(true);

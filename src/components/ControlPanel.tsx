@@ -262,7 +262,7 @@ export function ControlPanel({ onSelectAcupointDone }: ControlPanelProps) {
       </section>
 
       {/* Filtered Acupoint Directory */}
-      <section className="flex min-h-[180px] flex-1 flex-col space-y-2">
+      <section className="shrink-0 space-y-2">
         <div className="flex items-center justify-between">
           <span className="text-xs font-medium tracking-wider text-slate-400 uppercase">
             教学穴位列表 ({filteredAcupoints.length})
@@ -270,7 +270,7 @@ export function ControlPanel({ onSelectAcupointDone }: ControlPanelProps) {
           <span className="text-[11px] text-slate-500">GB/T 12346-2021</span>
         </div>
 
-        <div className="space-y-1">
+        <div className="max-h-64 space-y-1 overflow-y-auto pr-1">
           {filteredAcupoints.length === 0 ? (
             <div className="rounded-lg border border-dashed border-slate-800 p-4 text-center text-xs text-slate-500">
               当前筛选条件下暂无已录入教材文本的穴位（可勾选“手太阴肺经”或调整筛选词）。
